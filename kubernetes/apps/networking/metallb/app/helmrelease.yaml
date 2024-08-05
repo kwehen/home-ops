@@ -18,6 +18,6 @@ spec:
     crds: Create
   interval: 1m0s
   releaseName: metallb
-  targetNamespace: metallb-system
+  targetNamespace: networking
   upgrade:
     crds: CreateReplace
