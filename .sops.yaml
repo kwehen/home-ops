@@ -1,0 +1,6 @@
+---
+creation_rules:
+  - path_regex: '.*'
+    encrypted_regex: "^(data|stringData)$"
+    age: >-
+      age1s4kd2ctw6kvh58hr90gj3t6lx3fvaqgsvp0mtrk9c6wc5slmrprs092rua

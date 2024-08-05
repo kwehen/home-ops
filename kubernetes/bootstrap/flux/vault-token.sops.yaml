@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: vault-token
+    namespace: kube-system
+data:
+    token: ENC[AES256_GCM,data:CEhBG6nLB5V+8KquskEbo0ry15KRYd9SY5nMhdEyDE00BQxI/T4JUQ==,iv:jlTLKtK4UkNhq11e1dx8uSDjac6WGfJN1HFN4lwIqkY=,tag:B9+p0/GVWLqo8uFkYDnf8g==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1s4kd2ctw6kvh58hr90gj3t6lx3fvaqgsvp0mtrk9c6wc5slmrprs092rua
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBCOHJVbEIrWGMwZjVkSC9m
+            MHpsRU5wZU9mN1dvd1l0aERPT041SUIvNkR3ClF0WXdubWxDOVREQ2l3MkxvcjE5
+            ZGdOdWVDd2tZWG8rUnJjWENqSFBLNDAKLS0tIFlseE1yODBLSkxiYVFVWmFkaXAz
+            MzI4NUdOcGV1WERnQUd3eU9RamJ0dTQKuhduy7Fu+X+WMQKJarpOGEa3JiNZYEN9
+            o3v3U7wUyDpqtoX1k5HvAfEiwlDyz2mjDmTbGXQkMxTxyy70KjGvtA==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-08-05T03:46:11Z"
+    mac: ENC[AES256_GCM,data:MZCQ01LuedrqemOaTus+fxbqY0j8eIGQHIqEWtUDQu8PhmHNHNgSESVF+R8nS7jBeUwhdvxYH1IgacZJWGmbedPRXFJK9QYIQ4mDSMLMpeOpMF4RIeMganDQkyH/thZOi8OOHX0Q7squ19RexF/Yi47rE7GqjewNxsF8kpDl2uA=,iv:CmEfLCM4LWz/f51u7corzYjqG9UF5DMyZnDPNZOahhU=,tag:t1pNkVIBfz1fGZav2L2G8Q==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.9.0
