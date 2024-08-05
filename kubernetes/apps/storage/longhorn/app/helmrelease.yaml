@@ -15,11 +15,13 @@ spec:
       version: 1.6.*
   install:
     crds: Create
+    disableWait: true
   interval: 1m0s
   releaseName: longhorn
   targetNamespace: longhorn-system
   upgrade:
     crds: CreateReplace
+    disableWait: true
   # values:
   #   defaultSettings:
   #     backupTarget: 's3://longhorn-backup@world/longhorn'
