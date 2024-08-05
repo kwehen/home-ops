@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: network
+  name: networking
   labels:
     needs-vault: 'true'
     pod-security.kubernetes.io/enforce: 'privileged'
