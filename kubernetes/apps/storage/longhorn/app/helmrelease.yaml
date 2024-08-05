@@ -12,6 +12,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: longhorn
+        namespace: flux-system
       version: 1.6.*
   install:
     crds: Create
