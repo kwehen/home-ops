@@ -23,7 +23,8 @@ spec:
   upgrade:
     crds: CreateReplace
     disableWait: true
-  # values:
-  #   defaultSettings:
-  #     backupTarget: 's3://longhorn-backup@world/longhorn'
-  #     backupTargetCredentialSecret: minio-backup
+  values:
+    defaultSettings:
+      storageReservedPercentageForDefaultDisk: 15
+      # backupTarget: 's3://longhorn-backup@world/longhorn'
+      # backupTargetCredentialSecret: minio-backup
