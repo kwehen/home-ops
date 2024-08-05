@@ -14,9 +14,10 @@ spec:
         name: metallb
         namespace: flux-system
       version: 0.14.*
-      crds: Create
+  install:
+    crds: Create
   interval: 1m0s
   releaseName: metallb
-  targetNamespace: networking
+  targetNamespace: metallb-system
   upgrade:
     crds: CreateReplace
