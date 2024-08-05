@@ -9,4 +9,4 @@ Thumbs.db
 kubeconfig
 talosconfig
 *.agekey
-longhorn.agkey
+longhorn.agekey
