@@ -7,6 +7,6 @@ resources:
   - ./namespace.yaml
   
   # Post Flux-Kustomizations
-  # - ./traefik/ks.yaml
-  # - ./traefik/externalsecret.yaml
+  - ./traefik/ks.yaml
+  - ./traefik/externalsecret.yaml
   - ./metallb/ks.yaml
