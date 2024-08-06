@@ -11,4 +11,4 @@ spec:
     - labels:
         job: traefik
       targets:
-        - traefik.traefik.svc.cluster.local:9100
+        - traefik.networking.svc.cluster.local:9100
