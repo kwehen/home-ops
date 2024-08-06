@@ -27,4 +27,5 @@ spec:
       retries: 3
   values:
     extraEnv:
-      VAULT_SKIP_VERIFY=true
+      - name: VAULT_SKIP_VERIFY
+        value: "true"
