@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Secret
 metadata:
     name: vault-token
-    namespace: kube-system
+    namespace: external-secrets
 data:
     token: ENC[AES256_GCM,data:CEhBG6nLB5V+8KquskEbo0ry15KRYd9SY5nMhdEyDE00BQxI/T4JUQ==,iv:jlTLKtK4UkNhq11e1dx8uSDjac6WGfJN1HFN4lwIqkY=,tag:B9+p0/GVWLqo8uFkYDnf8g==,type:str]
 sops:
