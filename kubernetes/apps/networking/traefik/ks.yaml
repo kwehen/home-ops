@@ -16,7 +16,7 @@ spec:
   prune: true
   sourceRef:
     kind: GitRepository
-    name: flux-system
+    name: home-operations
   wait: true
   interval: 1m
   retryInterval: 1m
@@ -41,7 +41,7 @@ spec:
 #   prune: true
 #   sourceRef:
 #     kind: GitRepository
-#     name: flux-system
+#     name: home-operations
 #   wait: true
 #   interval: 30m
 #   retryInterval: 1m
@@ -72,7 +72,7 @@ spec:
 #   prune: true
 #   sourceRef:
 #     kind: GitRepository
-#     name: flux-system
+#     name: home-operations
 #   wait: true
 #   interval: 1m
 #   retryInterval: 1m
@@ -101,7 +101,7 @@ spec:
   prune: true
   sourceRef:
     kind: GitRepository
-    name: flux-system
+    name: home-operations
   wait: true
   interval: 1m
   retryInterval: 1m
@@ -124,7 +124,7 @@ spec:
   prune: true
   sourceRef:
     kind: GitRepository
-    name: flux-system
+    name: home-operations
   wait: true
   interval: 1m
   retryInterval: 1m
