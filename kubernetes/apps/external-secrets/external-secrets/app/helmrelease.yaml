@@ -25,6 +25,3 @@ spec:
     remediation:
       strategy: rollback
       retries: 3
-  dependsOn:
-    - name: vault-connect
-      namespace: external-secrets
