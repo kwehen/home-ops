@@ -1,0 +1,34 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: cert-manager
+  namespace: flux-system
+spec:
+  chart:
+    spec:
+      chart: cert-manager
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: cert-manager
+        namespace: flux-system
+      version: 1.15.*
+  install:
+    crds: Create
+  interval: 1m0s
+  releaseName: cert-manager
+  targetNamespace: cert-manager
+  upgrade:
+    crds: CreateReplace
+  values:
+    extraArgs:
+    - --dns01-recursive-nameservers=1.1.1.1:53,9.9.9.9:53
+    - --dns01-recursive-nameservers-only
+    installCRDs: true
+    podDNSPolicy: None
+    podDnsConfig:
+      nameservers:
+      - 1.1.1.1
+      - 9.9.9.9
+    replicaCount: 3

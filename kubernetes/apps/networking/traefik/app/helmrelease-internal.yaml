@@ -22,6 +22,10 @@ spec:
   targetNamespace: networking
   upgrade:
     crds: CreateReplace
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
   values:
     additionalArguments:
     - --serversTransport.insecureSkipVerify=true
@@ -67,5 +71,5 @@ spec:
       labels: {}
       loadBalancerSourceRanges: []
       spec:
-        loadBalancerIP: 10.0.4.70
+        loadBalancerIP: ${TRAEFIK_INTERNAL_IP}
       type: LoadBalancer
