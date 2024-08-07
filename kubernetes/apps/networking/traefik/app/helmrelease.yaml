@@ -71,5 +71,5 @@ spec:
       labels: {}
       loadBalancerSourceRanges: []
       spec:
-        loadBalancerIP: ${TRAEFIK_EXTERNAL_IP}
+        loadBalancerIP: "${TRAEFIK_EXTERNAL_IP}"
       type: LoadBalancer
