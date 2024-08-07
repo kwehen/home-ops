@@ -22,6 +22,29 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
+  name: cert-manager-secrets
+  namespace: flux-system
+spec:
+  targetNamespace: cert-manager
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: "cert-manager-secrets"
+  dependsOn:
+    - name: cert-manager
+    - name: external-secrets
+  path: ./kubernetes/apps/cert-manager/cert-manager/secrets
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: home-operations
+  wait: true
+  interval: 30m
+  retryInterval: 1m
+  timeout: 5m
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
   name: cert-manager-issuers
   namespace: flux-system
 spec:
@@ -32,6 +55,7 @@ spec:
   dependsOn:
     - name: cert-manager
     - name: external-secrets
+    - name: cert-manager-secrets
   path: ./kubernetes/apps/cert-manager/cert-manager/issuers
   prune: true
   sourceRef:
