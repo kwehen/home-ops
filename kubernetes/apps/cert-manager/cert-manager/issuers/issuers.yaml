@@ -36,7 +36,7 @@ spec:
           cloudflare:
             email: "${SECRET_ACME_EMAIL}"
             apiTokenSecretRef:
-              name: cloudflare-token-secret
+              name: cloudflare-token-external
               key: cloudflare-token
         selector:
           dnsZones:
