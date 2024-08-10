@@ -28,6 +28,14 @@ spec:
       strategy: rollback
       retries: 3
   values:
+    ingress:
+      enabled: true
+      ingressClassName: traefik-internal
+      host: longhorn.home.${INTERNAL_DOMAIN}
+      tls: true
+      secureBackends: true
+      tlsSecret: longhorn-tls
+      path: /
     defaultSettings:
       storageReservedPercentageForDefaultDisk: 15
       backupTarget: 's3://longhorn-backup@world/longhorn'
