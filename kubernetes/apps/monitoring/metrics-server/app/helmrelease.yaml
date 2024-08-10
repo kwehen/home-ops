@@ -1,0 +1,29 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: metrics-server
+  namespace: flux-system
+spec:
+  chart:
+    spec:
+      chart: metrics-server
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: metrics-server
+      version: 3.12.*
+  install:
+    crds: Create
+    timeout: 7m
+  interval: 1m0s
+  timeout: 7m
+  releaseName: metrics-server
+  targetNamespace: monitoring
+  upgrade:
+    crds: CreateReplace
+    timeout: 7m
+  values:
+      args:
+        - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
+        - --kubelet-insecure-tls
