@@ -1,5 +1,12 @@
 ---
 creation_rules:
+  - path_regex: talos/.+\.secret(\.sops)?\.ya?ml
+    input_type: yaml
+    encrypted_regex: ^(token|crt|key|id|secret|secretboxEncryptionSecret|ca)$
+    mac_only_encrypted: true
+    key_groups:
+    age: >-
+      age1s4kd2ctw6kvh58hr90gj3t6lx3fvaqgsvp0mtrk9c6wc5slmrprs092rua
   - path_regex: '.*'
     encrypted_regex: "^(data|stringData)$"
     age: >-
