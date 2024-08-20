@@ -36,8 +36,8 @@ spec:
       secureBackends: true
       tlsSecret: longhorn-tls
       path: /
-      annotations:
-        traefik.ingress.kubernetes.io/router.middlewares: networking-ipwhitelist@@kubernetescrd
+      # annotations:
+      #   traefik.ingress.kubernetes.io/router.middlewares: networking-ipwhitelist@@kubernetescrd
     defaultSettings:
       storageReservedPercentageForDefaultDisk: 15
       backupTarget: 's3://longhorn-backup@world/longhorn'
