@@ -59,9 +59,10 @@ spec:
           - host: &host tools.${EXTERNAL_DOMAIN}
             paths:
               - path: /
+                pathType: Prefix
                 service:
                   name: app
-                  port: http
+                  port: 80
         tls:
           - hosts: [*host]
             secretName: "it-tools-tls"
