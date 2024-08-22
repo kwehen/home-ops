@@ -64,4 +64,4 @@ spec:
                   port: http
         tls:
           - hosts: [*host]
-            secretName: "$tools-{EXTERNAL_DOMAIN}-tls"
+            secretName: "$it-tools-tls"
