@@ -53,8 +53,8 @@ spec:
     ingress:
       app:
         className: traefik-external
-        annotations:
-          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+        # annotations:
+        #   traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         hosts:
           - host: &host tools.${EXTERNAL_DOMAIN}
             paths:
