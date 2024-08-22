@@ -46,7 +46,7 @@ spec:
                 memory: 128Mi
     service:
       app:
-        # controller: *app
+        controller: *app
         ports:
           http:
             port: 80
@@ -60,7 +60,7 @@ spec:
             paths:
               - path: /
                 service:
-                  identifier: app
+                  name: app
                   port: http
         tls:
           - hosts: [*host]
