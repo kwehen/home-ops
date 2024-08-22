@@ -61,7 +61,7 @@ spec:
               - path: /
                 pathType: Prefix
                 service:
-                  name: app
+                  name: it-tools
                   port: 80
         tls:
           - hosts: [*host]
