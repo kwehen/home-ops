@@ -1,14 +1,14 @@
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: it-tools-tls 
-  namespace: longhorn-system
-spec:
-  secretName: it-tools-tls
-  issuerRef:
-    name: letsencrypt-production-external
-    kind: ClusterIssuer
-  commonName: "tools.${EXTERNAL_DOMAIN}"
-  dnsNames:
-  - "tools.${EXTERNAL_DOMAIN}"
+# ---
+# apiVersion: cert-manager.io/v1
+# kind: Certificate
+# metadata:
+#   name: it-tools-tls 
+#   namespace: longhorn-system
+# spec:
+#   secretName: it-tools-tls
+#   issuerRef:
+#     name: letsencrypt-production-external
+#     kind: ClusterIssuer
+#   commonName: "tools.${EXTERNAL_DOMAIN}"
+#   dnsNames:
+#   - "tools.${EXTERNAL_DOMAIN}"
