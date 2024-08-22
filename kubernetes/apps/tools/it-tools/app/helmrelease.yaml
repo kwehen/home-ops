@@ -64,4 +64,4 @@ spec:
                   port: http
         tls:
           - hosts: [*host]
-            secretName: "$it-tools-tls"
+            secretName: "it-tools-tls"
