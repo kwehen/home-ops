@@ -25,28 +25,20 @@ spec:
   values:
     controllers:
       it-tools:
-        # annotations:
-        #   reloader.stakater.com/auto: "true"
         containers:
           app:
             image:
               repository: ghcr.io/corentinth/it-tools
-              tag: 2023.12.21-5ed3693
+              tag: 2024.5.13-a0bc346@sha256:c191615f23eb6a18b8faca4dba15fc11caefea250ce3a8e29d249757544092eb
             env:
               TZ: ${TIMEZONE}
-            probes:
-              liveness:
-                enabled: false
-              readiness:
-                enabled: false
             resources:
               requests:
-                cpu: 50m
-              limits:
-                memory: 128Mi
+                cpu: 5m
+                memory: 50Mi
     service:
       app:
-        controller: *app
+        controller: it-tools
         ports:
           http:
             port: 80
@@ -59,10 +51,9 @@ spec:
           - host: &host tools.${EXTERNAL_DOMAIN}
             paths:
               - path: /
-                pathType: Prefix
                 service:
-                  name: it-tools
-                  port: 80
+                  identifier: app
+                  port: http
         tls:
           - hosts: [*host]
             secretName: "it-tools-tls"
