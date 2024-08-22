@@ -5,7 +5,7 @@ metadata:
   name: it-tools-tls 
   namespace: longhorn-system
 spec:
-  secretName: tools.${EXTERNAL_DOMAIN}
+  secretName: tools-${EXTERNAL_DOMAIN}-tls
   issuerRef:
     name: letsencrypt-production-external
     kind: ClusterIssuer
