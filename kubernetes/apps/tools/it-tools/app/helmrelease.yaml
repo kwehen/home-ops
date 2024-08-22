@@ -1,59 +1,67 @@
----
-# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2.json
-apiVersion: helm.toolkit.fluxcd.io/v2
-kind: HelmRelease
-metadata:
-  name: &app it-tools
-spec:
-  interval: 30m
-  chart:
-    spec:
-      chart: app-template
-      version: 3.3.2
-      sourceRef:
-        kind: HelmRepository
-        name: bjw-s
-        namespace: flux-system
-  install:
-    remediation:
-      retries: 3
-  upgrade:
-    cleanupOnFail: true
-    remediation:
-      strategy: rollback
-      retries: 3
-  values:
-    controllers:
-      it-tools:
-        containers:
-          app:
-            image:
-              repository: ghcr.io/corentinth/it-tools
-              tag: 2024.5.13-a0bc346@sha256:c191615f23eb6a18b8faca4dba15fc11caefea250ce3a8e29d249757544092eb
-            env:
-              TZ: ${TIMEZONE}
-            resources:
-              requests:
-                cpu: 5m
-                memory: 50Mi
-    service:
-      app:
-        controller: it-tools
-        ports:
-          http:
-            port: 80
-    ingress:
-      app:
-        className: traefik-external
-        annotations:
-          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-        hosts:
-          - host: &host tools.${EXTERNAL_DOMAIN}
-            paths:
-              - path: /
-                service:
-                  name: it-tools
-                  port: 80
-        tls:
-          - hosts: [*host]
-            secretName: "it-tools-tls"
+# ---
+# # yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2.json
+# apiVersion: helm.toolkit.fluxcd.io/v2
+# kind: HelmRelease
+# metadata:
+#   name: &app it-tools
+# spec:
+#   interval: 30m
+#   chart:
+#     spec:
+#       chart: app-template
+#       version: 3.3.2
+#       sourceRef:
+#         kind: HelmRepository
+#         name: bjw-s
+#         namespace: flux-system
+#   install:
+#     remediation:
+#       retries: 3
+#   upgrade:
+#     cleanupOnFail: true
+#     remediation:
+#       strategy: rollback
+#       retries: 3
+#   values:
+#     controllers:
+#       it-tools:
+#         annotations:
+#           reloader.stakater.com/auto: "true"
+#         containers:
+#           app:
+#             image:
+#               repository: ghcr.io/corentinth/it-tools
+#               tag: 2023.12.21-5ed3693
+#             env:
+#               TZ: ${TIMEZONE}
+#             probes:
+#               liveness:
+#                 enabled: false
+#               readiness:
+#                 enabled: false
+#             resources:
+#               requests:
+#                 cpu: 10m
+#               limits:
+#                 memory: 32Mi
+#     service:
+#       app:
+#         controller: *app
+#         ports:
+#           http:
+#             port: 80
+#     ingress:
+#       app:
+#         className: traefik-external
+#         # annotations:
+#         #   traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+#         hosts:
+#           - host: &host tools.${EXTERNAL_DOMAIN}
+#             paths:
+#               - path: /
+#                 service:
+#                   identifier: app
+#                   port: http
+#         tls:
+#           - hosts: [*host]
+#             secretName: "$tools-tls"
