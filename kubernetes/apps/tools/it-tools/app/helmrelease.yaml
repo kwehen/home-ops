@@ -53,8 +53,7 @@ spec:
               - path: /
                 service:
                   name: it-tools
-                  port:
-                    number: 80
+                  port: 80
         tls:
           - hosts: [*host]
             secretName: "it-tools-tls"
