@@ -14,6 +14,6 @@ spec:
       services:
         - name: it-tools
           port: 80
-          namespace: longhorn-tools
+          namespace: tools
   tls:
     secretName: it-tools-tls
