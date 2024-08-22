@@ -12,3 +12,4 @@ resources:
   - metallb.yaml
   - prometheus-grafana.yaml
   - traefik.yaml
+  - bjw-s.yaml
