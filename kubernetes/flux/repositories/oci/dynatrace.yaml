@@ -6,4 +6,4 @@ metadata:
   namespace: flux-system
 spec:
   interval: 24h
-  url: oci://public.ecr.aws/dynatrace/dynatrace-operator
+  url: oci://public.ecr.aws/dynatrace
