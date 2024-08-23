@@ -13,3 +13,4 @@ resources:
   - prometheus-grafana.yaml
   - traefik.yaml
   - bjw-s.yaml
+  - fluent-bit.yaml

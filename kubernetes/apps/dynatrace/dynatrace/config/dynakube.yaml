@@ -1,0 +1,26 @@
+---
+apiVersion: dynatrace.com/v1beta2
+kind: DynaKube
+metadata:
+  name: longhorn-talos
+  namespace: dynatrace
+  annotations:
+    feature.dynatrace.com/k8s-app-enabled: "true"
+spec:
+  apiUrl: 
+  metadataEnrichment:
+    enabled: true
+  oneAgent:
+    applicationMonitoring:
+      useCSIDriver: true
+  activeGate:
+    capabilities:
+      - kubernetes-monitoring
+      - routing
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 500m
+        memory: 1Gi
