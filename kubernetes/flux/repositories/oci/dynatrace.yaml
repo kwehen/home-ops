@@ -7,3 +7,5 @@ metadata:
 spec:
   interval: 24h
   url: oci://public.ecr.aws/dynatrace/dynatrace-operator
+  ref:
+    tag: 1.2.2
