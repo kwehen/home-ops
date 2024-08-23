@@ -1,0 +1,14 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: ytmp3-tls 
+  namespace: longhorn-system
+spec:
+  secretName: ytmp3-tls
+  issuerRef:
+    name: letsencrypt-production-external
+    kind: ClusterIssuer
+  commonName: "ytmp3.${EXTERNAL_DOMAIN}"
+  dnsNames:
+  - "ytmp3.${EXTERNAL_DOMAIN}"
