@@ -168,7 +168,6 @@ spec:
       - name: DT_INGEST_HOST
         value: ${DT_URL}
       - name: NODE_IP
-        value: "null"
         valueFrom:
           fieldRef:
             apiVersion: v1
