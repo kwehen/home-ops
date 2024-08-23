@@ -26,20 +26,15 @@ spec:
       strategy: rollback
       retries: 3
   values:
-
     openShift:
       enabled: false
-
     securityContext:
       capabilities:
         drop:
         - ALL
       readOnlyRootFilesystem: true
-      
-
     rbac:
       nodeAccess: true
-
     config:
       service: |
         [SERVICE]
@@ -54,7 +49,6 @@ spec:
             multiline.parser cri
             Mem_Buf_Limit 15MB
             Skip_Long_Lines On
-
       filters: |
         [FILTER]
             Name kubernetes
@@ -69,37 +63,30 @@ spec:
             Kubelet_Host ${NODE_IP}
             tls.verify Off
             Buffer_Size 0
-
-        
-        
         [FILTER]
             Name nest
             Match kube.*
             Operation lift
             Nested_under kubernetes
             Add_prefix kubernetes.
-
         [FILTER]
             name nest
             match kube.*
             operation lift
             nested_under kubernetes.annotations
             add_prefix kubernetes.annotations.
-
         [FILTER]
             Name nest
             Match kube.*
             Operation nest
             Nest_under dt.metadata
             Wildcard kubernetes.annotations.metadata.dynatrace.com/*
-
         [FILTER]
             Name nest
             Match kube.*
             Operation lift
             Nested_under dt.metadata
             Remove_prefix kubernetes.annotations.metadata.dynatrace.com/
-
         [FILTER]
             Name modify
             Match kube.*
@@ -115,7 +102,6 @@ spec:
             Add dt.kubernetes.cluster.name ${K8S_CLUSTER_NAME}
             Add dt.kubernetes.cluster.id ${K8S_CLUSTER_UID}
             Remove_wildcard kubernetes.
-
       outputs: |
         [OUTPUT]
             name http
@@ -131,7 +117,6 @@ spec:
             json_date_key timestamp
             tls On
             tls.verify Off
-
     daemonSetVolumes:
       - hostPath:
           path: /var/lib/fluent-bit/
@@ -142,7 +127,6 @@ spec:
       - hostPath:
           path: /var/log/pods
         name: pods
-
     daemonSetVolumeMounts:
       - mountPath: /fluent-bit/tail
         name: positions
@@ -152,17 +136,14 @@ spec:
       - mountPath: /var/log/pods
         name: pods
         readOnly: true
-
     podAnnotations:
       dynatrace.com/inject: "false"
       #metrics.dynatrace.com/path: "/api/v1/metrics/prometheus"
       #metrics.dynatrace.com/port: "2020"
       #metrics.dynatrace.com/scrape: "true"
-
     envWithTpl:
       - name: K8S_CLUSTER_UID
         value: '{{ (lookup "v1" "Namespace" "" "kube-system").metadata.uid }}'
-
     env:
       - name: K8S_CLUSTER_NAME
         value: ${FLUENT_CLUSTER_NAME}
