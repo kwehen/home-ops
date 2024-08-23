@@ -67,6 +67,9 @@ spec:
             globalMounts:
               - path: "/config"
           output:
-            existingClaim: ytpm3-config
+            type: persistentVolumeClaim
+            size: 2Gi
+            storageClass: longhorn
+            accessMode: ReadWriteOnce
             globalMounts:
               - path: "/downloads"
