@@ -41,6 +41,9 @@ spec:
       nodeAccess: true
 
     config:
+      service: |
+        [SERVICE]
+            Log_Level debug
       inputs: |
         [INPUT]
             Name tail
