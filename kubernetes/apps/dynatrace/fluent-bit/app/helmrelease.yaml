@@ -144,6 +144,9 @@ spec:
     envWithTpl:
       - name: K8S_CLUSTER_UID
         value: '{{ (lookup "v1" "Namespace" "" "kube-system").metadata.uid }}'
+    tolerations:
+      - operator: Exists
+        effect: NoSchedule
     env:
       - name: K8S_CLUSTER_NAME
         value: ${FLUENT_CLUSTER_NAME}
@@ -151,8 +154,8 @@ spec:
         value: ${DT_INGEST_TOKEN}
       - name: DT_INGEST_HOST
         value: ${DT_URL}
-      # - name: NODE_IP
-      #   valueFrom:
-      #     fieldRef:
-      #       apiVersion: v1
-      #       fieldPath: status.hostIP
+      - name: NODE_IP
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: status.hostIP
