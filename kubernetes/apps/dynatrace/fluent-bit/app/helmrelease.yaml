@@ -151,8 +151,8 @@ spec:
         value: ${DT_INGEST_TOKEN}
       - name: DT_INGEST_HOST
         value: ${DT_URL}
-      - name: NODE_IP
-        valueFrom:
-          fieldRef:
-            apiVersion: v1
-            fieldPath: status.hostIP
+      # - name: NODE_IP
+      #   valueFrom:
+      #     fieldRef:
+      #       apiVersion: v1
+      #       fieldPath: status.hostIP
