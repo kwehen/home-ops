@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./it-tools/ks.yaml
+  - ./ytmp3/ks.yaml
