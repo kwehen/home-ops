@@ -67,6 +67,6 @@ spec:
             globalMounts:
               - path: "/config"
           output:
-            existingClaim: ytpm3-output
+            existingClaim: ytpm3-config
             globalMounts:
               - path: "/downloads"
