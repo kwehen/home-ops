@@ -17,6 +17,8 @@ spec:
     capabilities:
       - kubernetes-monitoring
       - routing
+      - metrics-ingest
+      - dynatrace-api
     resources:
       requests:
         cpu: 100m
@@ -24,3 +26,4 @@ spec:
       limits:
         cpu: 500m
         memory: 1Gi
+    group: "Enterprise"
