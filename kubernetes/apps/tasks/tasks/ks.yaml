@@ -6,7 +6,7 @@ metadata:
   name: tasks
   namespace: flux-system
 spec:
-  targetNamespace: tools
+  targetNamespace: tasks
   path: ./kubernetes/apps/tasks/tasks/app
   prune: true
   sourceRef:
@@ -30,7 +30,7 @@ metadata:
   name: tasks-config
   namespace: flux-system
 spec:
-  targetNamespace: tools
+  targetNamespace: tasks
   # dependsOn:
   #   - name: tasks
   path: ./kubernetes/apps/tasks/tasks/config
