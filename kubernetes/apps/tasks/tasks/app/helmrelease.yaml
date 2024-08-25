@@ -5,7 +5,7 @@ kind: HelmRelease
 metadata:
   name: &app tasks
 spec:
-  interval: 15m
+  interval: 1m
   chart:
     spec:
       chart: app-template
