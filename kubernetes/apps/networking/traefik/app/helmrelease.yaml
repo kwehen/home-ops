@@ -73,3 +73,6 @@ spec:
       spec:
         loadBalancerIP: "${TRAEFIK_EXTERNAL_IP}"
       type: LoadBalancer
+    logs:
+      general:
+        level: DEBUG
