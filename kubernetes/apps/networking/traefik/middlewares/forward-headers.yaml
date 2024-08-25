@@ -1,0 +1,9 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: forward-headers
+  namespace: networking   # You can adjust the namespace as per your setup
+spec:
+  headers:
+    customRequestHeaders:
+      X-Forwarded-Host: "true"

@@ -9,13 +9,16 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`status.${EXTERNAL_DOMAIN}`) && PathPrefix(`/status`)
+    - match: Host(`status.${EXTERNAL_DOMAIN}`)
       kind: Rule
+      middlewares:
+        - name: forward-headers
+          namespace: networking
       services:
         - name: uptime
           port: 3001
           namespace: tools
-    - match: Host(`status.${EXTERNAL_DOMAIN}`)
+    - match: Host(`status.home.${EXTERNAL_DOMAIN}`)
       kind: Rule
       middlewares:
         - name: ipwhitelist

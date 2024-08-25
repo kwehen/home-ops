@@ -12,3 +12,4 @@ spec:
   commonName: "status.${EXTERNAL_DOMAIN}"
   dnsNames:
   - "status.${EXTERNAL_DOMAIN}"
+  - "status.home.${EXTERNAL_DOMAIN}"
