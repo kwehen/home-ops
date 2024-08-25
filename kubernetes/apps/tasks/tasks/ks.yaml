@@ -31,8 +31,8 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: tools
-  dependsOn:
-    - name: tasks
+  # dependsOn:
+  #   - name: tasks
   path: ./kubernetes/apps/tasks/tasks/config
   prune: true
   sourceRef:
