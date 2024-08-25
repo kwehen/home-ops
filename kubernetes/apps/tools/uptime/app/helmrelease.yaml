@@ -42,12 +42,12 @@ spec:
               limits:
                 memory: 512Mi
             probes:
-              liveness:
-                enabled: true
-              readiness:
-                enabled: true
-              startup:
-                enabled: true
+              # liveness:
+              #   enabled: true
+              # readiness:
+              #   enabled: true
+              # startup:
+              #   enabled: true
 
     service:
       app:
