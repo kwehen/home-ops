@@ -32,7 +32,7 @@ metadata:
 spec:
   targetNamespace: tools
   dependsOn:
-    - name: uptime
+    - name: tasks
   path: ./kubernetes/apps/tasks/tasks/config
   prune: true
   sourceRef:
