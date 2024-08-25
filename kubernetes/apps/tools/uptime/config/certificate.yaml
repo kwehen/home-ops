@@ -1,0 +1,14 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: uptime-tls 
+  namespace: tools
+spec:
+  secretName: uptime-tls
+  issuerRef:
+    name: letsencrypt-production-external
+    kind: ClusterIssuer
+  commonName: "status.${EXTERNAL_DOMAIN}"
+  dnsNames:
+  - "status.${EXTERNAL_DOMAIN}"
