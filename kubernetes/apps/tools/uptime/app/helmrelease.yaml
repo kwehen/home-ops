@@ -42,10 +42,10 @@ spec:
               limits:
                 memory: 150Mi
             probes:
-              liveness:
-                enabled: true
-              readiness:
-                enabled: true
+              # liveness:
+              #   enabled: true
+              # readiness:
+              #   enabled: true
               startup:
                 enabled: true
 
