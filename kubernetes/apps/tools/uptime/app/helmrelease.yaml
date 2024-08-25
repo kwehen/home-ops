@@ -38,14 +38,14 @@ spec:
             resources:
               requests:
                 cpu: 10m
-                memory: 50Mi
+                memory: 64Mi
               limits:
-                memory: 150Mi
+                memory: 512Mi
             probes:
-              # liveness:
-              #   enabled: true
-              # readiness:
-              #   enabled: true
+              liveness:
+                enabled: true
+              readiness:
+                enabled: true
               startup:
                 enabled: true
 
