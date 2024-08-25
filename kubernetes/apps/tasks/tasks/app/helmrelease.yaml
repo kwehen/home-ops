@@ -23,7 +23,7 @@ spec:
       remediateLastFailure: true
   values:
     controllers:
-      uptime:
+      tasks:
         containers:
           app:
             envFrom:
