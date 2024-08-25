@@ -41,7 +41,7 @@ spec:
                 memory: 64Mi
               limits:
                 memory: 512Mi
-            probes:
+            # probes:
               # liveness:
               #   enabled: true
               # readiness:
