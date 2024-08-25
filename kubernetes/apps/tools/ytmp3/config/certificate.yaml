@@ -3,7 +3,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: ytmp3-tls 
-  namespace: longhorn-system
+  namespace: tools
 spec:
   secretName: ytmp3-tls
   issuerRef:
