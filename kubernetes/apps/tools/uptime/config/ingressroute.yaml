@@ -18,11 +18,12 @@ spec:
         - name: uptime
           port: 3001
           namespace: tools
+          passHostHeader: true
     - match: Host(`status.home.${EXTERNAL_DOMAIN}`)
       kind: Rule
-      # middlewares:
-      #   - name: ipwhitelist
-      #     namespace: networking
+      middlewares:
+        - name: ipwhitelist
+          namespace: networking
       services:
         - name: uptime
           port: 3001
