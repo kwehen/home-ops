@@ -29,7 +29,7 @@ spec:
   values:
     additionalArguments:
     - --serversTransport.insecureSkipVerify=true
-    - --log.level=INFO
+    - --log.level=DEBUG
     deployment:
       additionalContainers: []
       annotations: {}
@@ -73,6 +73,6 @@ spec:
       spec:
         loadBalancerIP: "${TRAEFIK_EXTERNAL_IP}"
       type: LoadBalancer
-    logs:
-      general:
-        level: DEBUG
+    # logs:
+    #   general:
+    #     level: DEBUG
