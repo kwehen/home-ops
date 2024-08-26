@@ -20,9 +20,9 @@ spec:
           namespace: tools
     - match: Host(`status.home.${EXTERNAL_DOMAIN}`)
       kind: Rule
-      middlewares:
-        - name: ipwhitelist
-          namespace: networking
+      # middlewares:
+      #   - name: ipwhitelist
+      #     namespace: networking
       services:
         - name: uptime
           port: 3001
