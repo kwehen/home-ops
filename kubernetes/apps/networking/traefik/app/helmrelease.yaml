@@ -42,7 +42,7 @@ spec:
     - --global.checknewversion=false
     ingressRoute:
       dashboard:
-        enabled: false
+        enabled: true
     ports:
       web:
         redirectTo:
