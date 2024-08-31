@@ -14,3 +14,4 @@ resources:
   - traefik.yaml
   - bjw-s.yaml
   - fluent-bit.yaml
+  - nextcloud.yaml
