@@ -2,13 +2,13 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: tasks-tls 
-  namespace: tasks
+  name: external-default-tls
+  namespace: networking
 spec:
-  secretName: tasks-tls
+  secretName: external-default-tls
   issuerRef:
     name: letsencrypt-production-external
     kind: ClusterIssuer
-  commonName: "tasks.${EXTERNAL_DOMAIN}"
   dnsNames:
-  - "tasks.${EXTERNAL_DOMAIN}"
+  - "${EXTERNAL_DOMAIN}"
+  - "*.${EXTERNAL_DOMAIN}"

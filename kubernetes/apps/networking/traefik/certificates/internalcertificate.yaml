@@ -1,0 +1,14 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: internal-default-tls
+  namespace: networking
+spec:
+  secretName: internal-default-tls
+  issuerRef:
+    name: letsencrypt-production-internal
+    kind: ClusterIssuer
+  dnsNames:
+  - "${INTERNAL_DOMAIN}"
+  - "*.${INTERNAL_DOMAIN}"

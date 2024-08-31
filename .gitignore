@@ -10,3 +10,4 @@ kubeconfig
 talosconfig
 *.agekey
 longhorn.agekey
+secret.json
