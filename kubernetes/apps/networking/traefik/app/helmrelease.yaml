@@ -62,10 +62,6 @@ spec:
         enabled: true
         publishedService:
           enabled: false
-    tlsStore:
-      default:
-        defaultCertificate:
-          secretName: internal-default-tls
     rbac:
       enabled: true
     service:
