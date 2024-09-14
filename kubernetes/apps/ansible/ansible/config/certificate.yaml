@@ -1,0 +1,14 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: awx-tls
+  namespace: awx
+spec:
+  secretName: awx-tls
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+  commonName: "ansible.home.{INTERNAL_DOMAIN"
+  dnsNames:
+  - "ansible.home.{INTERNAL_DOMAIN}"
