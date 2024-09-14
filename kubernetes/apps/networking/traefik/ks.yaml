@@ -20,7 +20,7 @@ spec:
   wait: true
   interval: 1m
   retryInterval: 1m
-  timeout: 5m
+  timeout: 10m
 
 # ---
 # apiVersion: kustomize.toolkit.fluxcd.io/v1
