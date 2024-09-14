@@ -9,8 +9,9 @@ spec:
   ingress_type: ingress
   ingress_tls_secret: awx-tls
   ingress_class_name: traefik-internal
-  hostname: ansible.home.{INTERNAL_DOMAIN}
+  hostname: ansible.home.${INTERNAL_DOMAIN}
   garbage_collect_secrets: true
+  no_log: false
   
   web_resource_requirements:
     requests:
