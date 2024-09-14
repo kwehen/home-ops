@@ -9,6 +9,6 @@ spec:
   issuerRef:
     name: letsencrypt-production-internal
     kind: ClusterIssuer
-  commonName: "ansible.home.{INTERNAL_DOMAIN"
+  commonName: "ansible.home.{INTERNAL_DOMAIN}"
   dnsNames:
   - "ansible.home.{INTERNAL_DOMAIN}"
