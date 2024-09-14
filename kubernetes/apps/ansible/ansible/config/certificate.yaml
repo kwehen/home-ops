@@ -7,7 +7,7 @@ metadata:
 spec:
   secretName: awx-tls
   issuerRef:
-    name: letsencrypt-production
+    name: letsencrypt-production-internal
     kind: ClusterIssuer
   commonName: "ansible.home.{INTERNAL_DOMAIN"
   dnsNames:
