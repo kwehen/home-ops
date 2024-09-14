@@ -11,4 +11,4 @@ spec:
     kind: ClusterIssuer
   commonName: "ansible.home.${INTERNAL_DOMAIN}"
   dnsNames:
-  - "ansible.home.{INTERNAL_DOMAIN}"
+  - "ansible.home.${INTERNAL_DOMAIN}"
