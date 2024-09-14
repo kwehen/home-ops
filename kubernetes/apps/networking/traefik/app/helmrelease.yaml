@@ -73,6 +73,10 @@ spec:
       spec:
         loadBalancerIP: "${TRAEFIK_EXTERNAL_IP}"
       type: LoadBalancer
+    tlsStore:
+      default:
+        defaultCertificate:
+          secretName: external-default-tls
     # logs:
     #   general:
     #     level: DEBUG
