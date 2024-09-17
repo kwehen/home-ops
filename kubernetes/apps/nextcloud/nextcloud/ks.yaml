@@ -1,58 +1,58 @@
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: &app nextcloud
-  namespace: flux-system
-  # labels: 
-    # substitution.flux.home.arpa/disabled: "true" #don't do a sub here so we can bring in secret values
-spec:
-  targetNamespace: nextcloud
-  commonMetadata:
-    labels:
-      app.kubernetes.io/name: *app
-  dependsOn:
-    - name: nextcloud-config
-  path: ./kubernetes/apps/nextcloud/nextcloud/app
-  prune: true
-  sourceRef:
-    kind: GitRepository
-    name: home-operations
-  wait: true
-  interval: 30m
-  retryInterval: 5m
-  timeout: 15m
-  postBuild:
-    substituteFrom:
-      - kind: Secret
-        name: cluster-secrets
+# ---
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
+# metadata:
+#   name: &app nextcloud
+#   namespace: flux-system
+#   # labels: 
+#     # substitution.flux.home.arpa/disabled: "true" #don't do a sub here so we can bring in secret values
+# spec:
+#   targetNamespace: nextcloud
+#   commonMetadata:
+#     labels:
+#       app.kubernetes.io/name: *app
+#   dependsOn:
+#     - name: nextcloud-config
+#   path: ./kubernetes/apps/nextcloud/nextcloud/app
+#   prune: true
+#   sourceRef:
+#     kind: GitRepository
+#     name: home-operations
+#   wait: true
+#   interval: 30m
+#   retryInterval: 5m
+#   timeout: 15m
+#   postBuild:
+#     substituteFrom:
+#       - kind: Secret
+#         name: cluster-secrets
 
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: &app nextcloud-config
-  namespace: flux-system
-  # labels: 
-    # substitution.flux.home.arpa/disabled: "true" #don't do a sub here so we can bring in secret values
-spec:
-  targetNamespace: nextcloud
-  commonMetadata:
-    labels:
-      app.kubernetes.io/name: *app
-  # dependsOn:
-  #   # - name: traefik
-  #   # - name: longhorn
-  path: ./kubernetes/apps/nextcloud/nextcloud/config
-  prune: true
-  sourceRef:
-    kind: GitRepository
-    name: home-operations
-  wait: true
-  interval: 30m
-  retryInterval: 1m
-  timeout: 15m
-  postBuild:
-    substituteFrom:
-      - kind: Secret
-        name: cluster-secrets
+# ---
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
+# metadata:
+#   name: &app nextcloud-config
+#   namespace: flux-system
+#   # labels: 
+#     # substitution.flux.home.arpa/disabled: "true" #don't do a sub here so we can bring in secret values
+# spec:
+#   targetNamespace: nextcloud
+#   commonMetadata:
+#     labels:
+#       app.kubernetes.io/name: *app
+#   # dependsOn:
+#   #   # - name: traefik
+#   #   # - name: longhorn
+#   path: ./kubernetes/apps/nextcloud/nextcloud/config
+#   prune: true
+#   sourceRef:
+#     kind: GitRepository
+#     name: home-operations
+#   wait: true
+#   interval: 30m
+#   retryInterval: 1m
+#   timeout: 15m
+#   postBuild:
+#     substituteFrom:
+#       - kind: Secret
+#         name: cluster-secrets
