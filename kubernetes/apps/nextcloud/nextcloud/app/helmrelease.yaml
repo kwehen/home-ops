@@ -1,0 +1,131 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: nextcloud
+  namespace: flux-system
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://nextcloud.github.io/helm/
+      chart: nextcloud
+      version: 5.5.*
+      sourceRef:
+        kind: HelmRepository
+        name: nextcloud
+        namespace: flux-system
+      interval: 5m
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+      remediateLastFailure: true
+    cleanupOnFail: true
+  dependsOn:
+    - name: longhorn
+  values:
+    image:
+      flavor: fpm-alpine
+    nginx:
+      enabled: true
+
+    env:
+      TZ: ${TIMEZONE}
+      # PHP_MEMORY_LIMIT: 256M
+
+    # podSecurityContext:
+
+    #   supplementalGroups:
+    #     - 100
+
+    livenessProbe:
+      enabled: false
+    readinessProbe:
+      enabled: false
+
+    persistence:
+      enabled: true
+      storageClass: longhorn
+      nextcloudData:
+        enabled: true
+        storageClass: longhorn
+        size: 1Ti
+
+    ingress:
+      enabled: true
+      className: "traefik-external"
+      annotations:
+        cert-manager.io/cluster-issuer: "letsencrypt-production-external"
+        traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+        traefik.ingress.kubernetes.io/router.middlewares: |
+          networking-cloudflare-only@kubernetescrd,
+          networking-request-limit@kubernetescrd
+      tls:
+        - hosts:
+            - "nextcloud.${EXTERNAL_DOMAIN}"
+          secretName: "nextcloud-tls"
+
+    nextcloud:
+      host: nextcloud.${EXTERNAL_DOMAIN}
+
+      existingSecret:
+        enabled: true
+        secretName: nextcloud
+        usernameKey: admin_user
+        passwordKey: admin_password
+
+      configs:
+        proxy.config.php: |-
+          <?php
+          $CONFIG = array (
+            'trusted_proxies' => array(
+              '127.0.0.1',         // Loopback address (localhost)
+              '10.0.0.0/8',        // RFC1918 - Class A private network range
+              '172.16.0.0/12',     // RFC1918 - Class B private network range
+              '192.168.0.0/16',    // RFC1918 - Class C private network range
+            ),
+            'forwarded_for_headers' => array('HTTP_X_FORWARDED_FOR'),
+          );
+    internalDatabase:
+      enabled: false
+
+    externalDatabase:
+      enabled: true
+      type: postgresql
+      host: nextcloud-postgresql
+      database: nextcloud
+      user: nextcloud
+      # password: set by valuesFrom
+
+    cronjob:
+      enabled: true
+      failedJobsHistoryLimit: 1
+      successfulJobsHistoryLimit: 1
+      curlInsecure:
+
+    postgresql:
+      enabled: true
+      postgresqlUsername: nextcloud
+      # postgresqlPassword: set by valuesFrom
+      postgresqlDatabase: nextcloud
+      primary:
+        persistence:
+          enabled: true
+        # existingClaim: nextcloud-postgresql-config-v1
+    redis:
+      enabled: false
+  valuesFrom:
+    - kind: Secret
+      name: nextcloud
+      valuesKey: postgresql_password
+      targetPath: postgresql.postgresqlPassword
+      optional: false
+    - kind: Secret
+      name: nextcloud
+      valuesKey: postgresql_password
+      targetPath: externalDatabase.password
+      optional: false
