@@ -40,9 +40,9 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  dependsOn:
-    # - name: traefik
-    # - name: longhorn
+  # dependsOn:
+  #   # - name: traefik
+  #   # - name: longhorn
   path: ./kubernetes/apps/nextcloud/nextcloud/app
   prune: true
   sourceRef:
