@@ -32,7 +32,7 @@ spec:
       flavor: fpm-alpine
     nginx:
       enabled: true
-
+    replicaCount: 2
     env:
       TZ: ${TIMEZONE}
       # PHP_MEMORY_LIMIT: 256M
