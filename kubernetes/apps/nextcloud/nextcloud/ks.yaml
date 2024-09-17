@@ -42,7 +42,7 @@ spec:
       app.kubernetes.io/name: *app
   dependsOn:
     # - name: traefik
-    - name: longhorn
+    # - name: longhorn
   path: ./kubernetes/apps/nextcloud/nextcloud/app
   prune: true
   sourceRef:
