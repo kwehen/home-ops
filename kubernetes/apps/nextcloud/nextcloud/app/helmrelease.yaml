@@ -42,11 +42,6 @@ spec:
     #   supplementalGroups:
     #     - 100
 
-    livenessProbe:
-      enabled: false
-    readinessProbe:
-      enabled: false
-
     persistence:
       enabled: true
       storageClass: longhorn
@@ -118,6 +113,15 @@ spec:
         # existingClaim: nextcloud-postgresql-config-v1
     redis:
       enabled: false
+      
+    startupProbe:
+      enabled: true
+      initialDelaySeconds: 10
+      periodSeconds: 20
+      timeoutSeconds: 5
+      failureThreshold: 30
+      successThreshold: 1
+
   valuesFrom:
     - kind: Secret
       name: nextcloud
