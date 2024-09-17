@@ -47,6 +47,7 @@ spec:
       accessMode: ReadWriteMany
       storageClass: longhorn
       nextcloudData:
+        accessMode: ReadWriteMany
         enabled: true
         storageClass: longhorn
         size: 500Gi
