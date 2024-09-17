@@ -11,8 +11,8 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  # dependsOn:
-  #   - name: traefik
+  dependsOn:
+    - name: nextcloud-config
   path: ./kubernetes/apps/nextcloud/nextcloud/app
   prune: true
   sourceRef:
