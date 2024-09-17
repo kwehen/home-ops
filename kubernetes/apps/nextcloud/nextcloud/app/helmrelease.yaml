@@ -86,6 +86,11 @@ spec:
               '172.16.0.0/12',     // RFC1918 - Class B private network range
               '192.168.0.0/16',    // RFC1918 - Class C private network range
             ),
+            'trusted_domains' =>
+            array(
+               0 => 'nextcloud.${EXTERNAL_DOMAIN}',
+               2 => 'localhost',
+            ),
             'forwarded_for_headers' => array('HTTP_X_FORWARDED_FOR'),
           );
     internalDatabase:
