@@ -32,7 +32,7 @@ spec:
       flavor: fpm-alpine
     nginx:
       enabled: true
-    replicaCount: 1
+    replicaCount: 2
     env:
       TZ: ${TIMEZONE}
       # PHP_MEMORY_LIMIT: 256M
@@ -66,7 +66,10 @@ spec:
       #   - hosts:
       #       - "nextcloud.${EXTERNAL_DOMAIN}"
       #     secretName: "nextcloud-tls"
-
+    service:
+      annotations:
+        traefik.ingress.kubernetes.io/service.sticky.cookie: "true"
+        
     nextcloud:
       host: nextcloud.${EXTERNAL_DOMAIN}
 
