@@ -20,7 +20,7 @@ spec:
     name: home-operations
   wait: true
   interval: 30m
-  retryInterval: 1m
+  retryInterval: 5m
   timeout: 15m
   postBuild:
     substituteFrom:

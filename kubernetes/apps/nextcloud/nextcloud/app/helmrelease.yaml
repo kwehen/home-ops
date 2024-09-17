@@ -48,7 +48,7 @@ spec:
       nextcloudData:
         enabled: true
         storageClass: longhorn
-        size: 1Ti
+        size: 500Gi
 
     ingress:
       enabled: true
@@ -113,7 +113,7 @@ spec:
         # existingClaim: nextcloud-postgresql-config-v1
     redis:
       enabled: false
-      
+
     startupProbe:
       enabled: true
       initialDelaySeconds: 10
