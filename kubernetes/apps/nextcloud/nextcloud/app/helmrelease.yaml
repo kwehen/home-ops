@@ -112,7 +112,9 @@ spec:
           enabled: true
         # existingClaim: nextcloud-postgresql-config-v1
     redis:
-      enabled: false
+      enabled: true
+      auth:
+        enabled: false
 
     startupProbe:
       enabled: true
