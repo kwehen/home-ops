@@ -120,12 +120,13 @@ spec:
         enabled: false
 
     startupProbe:
-      enabled: false
-      # initialDelaySeconds: 30
-      # periodSeconds: 20
-      # timeoutSeconds: 10
-      # failureThreshold: 60
-      # successThreshold: 1
+      enabled: true
+      initialDelaySeconds: 60
+      periodSeconds: 30
+      timeoutSeconds: 10
+      failureThreshold: 10
+      successThreshold: 1
+
 
   valuesFrom:
     - kind: Secret
