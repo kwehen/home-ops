@@ -43,7 +43,7 @@ spec:
   # dependsOn:
   #   # - name: traefik
   #   # - name: longhorn
-  path: ./kubernetes/apps/nextcloud/nextcloud/app
+  path: ./kubernetes/apps/nextcloud/nextcloud/config
   prune: true
   sourceRef:
     kind: GitRepository
