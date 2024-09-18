@@ -1,0 +1,9 @@
+---
+- name: Ping Hosts
+  hosts: Enterprise
+  # gather_facts: no
+
+  tasks:
+    - name: Include ping task
+      ansible.builtin.include_role:
+        name: ping

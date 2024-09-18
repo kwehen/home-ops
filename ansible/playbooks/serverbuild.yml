@@ -1,0 +1,8 @@
+---
+- name: Initialize Server
+  hosts: fresh-install
+
+  tasks:
+    - name: Include server build tasks
+      ansible.builtin.include_role:
+        name: build-server
