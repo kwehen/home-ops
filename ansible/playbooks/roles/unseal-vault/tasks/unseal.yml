@@ -1,0 +1,4 @@
+- name: Execute Unseal Script
+  ansible.builtin.shell:
+    cmd: bash unseal.sh
+    chdir: unsealvault/

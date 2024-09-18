@@ -1,0 +1,8 @@
+---
+- name: Unseal Vault
+  hosts: vault
+
+  tasks:
+    - name: Include unseal role
+      ansible.builtin.include_role:
+        name: unseal-vault
