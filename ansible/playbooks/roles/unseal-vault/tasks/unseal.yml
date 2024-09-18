@@ -2,11 +2,13 @@
   ansible.builtin.yum:
     name: vault
     state: latest
+  become: true
 
 - name: Restart service vault, in all cases
   ansible.builtin.systemd_service:
     name: vault.service
     state: restarted
+  become: true
 
 - name: Execute Unseal Script
   ansible.builtin.shell:
