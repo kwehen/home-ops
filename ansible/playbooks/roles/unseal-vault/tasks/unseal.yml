@@ -3,12 +3,14 @@
     name: vault
     state: latest
   become: true
+  become_user: root
 
 - name: Restart service vault, in all cases
   ansible.builtin.systemd_service:
     name: vault.service
     state: restarted
   become: true
+  become_user: root
 
 - name: Execute Unseal Script
   ansible.builtin.shell:
