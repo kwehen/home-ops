@@ -1,3 +1,13 @@
+- name: Install the latest version of vault
+  ansible.builtin.yum:
+    name: vault
+    state: latest
+
+- name: Restart service vault, in all cases
+  ansible.builtin.systemd_service:
+    name: vault.service
+    state: restarted
+
 - name: Execute Unseal Script
   ansible.builtin.shell:
     cmd: bash unseal.sh
