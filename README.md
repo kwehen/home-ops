@@ -7,3 +7,4 @@ A collection of code, yaml, notes, and more which run my "Enterprise" at home. I
 I'll add more stuff as this goes, but for now:
 - kubernetes - Kubernetes Cluster
 - talos - basic configuration for Talos Linux
+- ansible - Ansible playbooks for home use
