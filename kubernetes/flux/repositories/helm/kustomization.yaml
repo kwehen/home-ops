@@ -15,3 +15,4 @@ resources:
   - bjw-s.yaml
   - fluent-bit.yaml
   - nextcloud.yaml
+  - keda.yaml
