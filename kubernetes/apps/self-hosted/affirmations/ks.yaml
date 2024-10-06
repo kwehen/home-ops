@@ -3,12 +3,12 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: tasks
+  name: affirmations
   namespace: flux-system
 spec:
-  targetNamespace: tasks
-  dependsOn:
-    - name: tasks-config
+  targetNamespace: self-hosted
+  # dependsOn:
+  #   - name: affirmations-config
   path: ./kubernetes/apps/self-hosted/affirmations/app
   prune: true
   sourceRef:
@@ -27,10 +27,10 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: tasks-config
+  name: affirmations-config
   namespace: flux-system
 spec:
-  targetNamespace: tasks
+  targetNamespace: self-hosted
   # dependsOn:
   #   - name: tasks
   path: ./kubernetes/apps/self-hosted/affirmations/config
@@ -46,5 +46,5 @@ spec:
     substituteFrom:
       - kind: Secret
         name: cluster-secrets
-      - kind: ConfigMap
-        name: cluster-settings
+      # - kind: ConfigMap
+      #   name: cluster-settings
