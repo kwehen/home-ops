@@ -32,7 +32,7 @@ spec:
               - secretRef:
                   name: affirmations
             image:
-              repository: registry.home.${INTERNAL_DOMAIN}/affirmations/backend:latest
+              repository: registry.home.${INTERNAL_DOMAIN}/affirmations/backend
               tag: latest
             ports:
               - name: http
@@ -55,7 +55,7 @@ spec:
         containers:
           app:
             image:
-              repository: registry.home.${INTERNAL_DOMAIN}/affirmations/frontend:latest
+              repository: registry.home.${INTERNAL_DOMAIN}/affirmations/frontend
               tag: latest
             ports:
               - name: http
