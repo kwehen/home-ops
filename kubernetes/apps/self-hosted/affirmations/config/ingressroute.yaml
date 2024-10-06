@@ -12,7 +12,7 @@ spec:
     - match: Host(`affirmations.${EXTERNAL_DOMAIN}`)
       kind: Rule
       services:
-        - name: frontend
+        - name: affirmations-frontend
           port: 80
           namespace: self-hosted
   tls:
