@@ -16,3 +16,4 @@ resources:
   - fluent-bit.yaml
   - nextcloud.yaml
   - keda.yaml
+  - external-dns.yaml
