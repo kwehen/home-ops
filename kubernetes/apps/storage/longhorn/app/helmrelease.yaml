@@ -44,3 +44,4 @@ spec:
       backupTarget: 's3://longhorn-backup@world/longhorn'
       backupTargetCredentialSecret: minio-backup
       storageOverProvisioningPercentage: 200
+      defaultClassReplicaCount: 2
