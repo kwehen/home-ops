@@ -43,3 +43,4 @@ spec:
       storageReservedPercentageForDefaultDisk: 15
       backupTarget: 's3://longhorn-backup@world/longhorn'
       backupTargetCredentialSecret: minio-backup
+      storageOverProvisioningPercentage: 200
