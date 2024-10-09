@@ -61,6 +61,6 @@ spec:
       config:
         existingClaim: uptime
         advancedMounts:
-          main:
+          uptime:
             app:
               - path: /app/data
