@@ -66,8 +66,6 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: traefik-certificates
-  dependsOn:
-    - name: traefik
   path: ./kubernetes/apps/networking/traefik/certificates
   prune: true
   sourceRef:
