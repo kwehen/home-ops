@@ -16,6 +16,8 @@ spec:
       version: 28.3.*
   install:
     crds: Create
+    remediation:
+      retries: 3
     # createNamespace: true
   interval: 1m0s
   releaseName: traefik
