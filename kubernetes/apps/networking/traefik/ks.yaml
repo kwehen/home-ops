@@ -66,6 +66,10 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: traefik-certificates
+  dependsOn:
+    - name: metallb
+    - name: external-secrets
+    - name: cert-manager
   path: ./kubernetes/apps/networking/traefik/certificates
   prune: true
   sourceRef:
