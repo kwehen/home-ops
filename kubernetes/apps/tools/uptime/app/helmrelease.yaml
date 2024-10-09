@@ -59,9 +59,8 @@ spec:
 
     persistence:
       config:
-        type: persistentVolumeClaim
-        size: 1Gi
-        storageClass: longhorn
-        accessMode: ReadWriteOnce
-        globalMounts:
-          - path: /app/data
+        existingClaim: uptime
+        advancedMounts:
+          main:
+            app:
+              - path: /app/data
