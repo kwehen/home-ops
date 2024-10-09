@@ -8,6 +8,5 @@ resources:
   
   # Post Flux-Kustomizations
   - ./traefik/ks.yaml
-  - ./traefik/externalsecret.yaml
   - ./metallb/ks.yaml
   - ./cloudflare-ddns/ks.yaml
