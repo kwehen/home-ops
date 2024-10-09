@@ -115,25 +115,25 @@ spec:
   retryInterval: 1m
   timeout: 5m
 
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: &app traefik-metrics
-  namespace: flux-system
-spec:
-  targetNamespace: networking
-  commonMetadata:
-    labels:
-      app.kubernetes.io/name: traefik-metrics
-  dependsOn:
-    - name: traefik
-  path: ./kubernetes/apps/networking/traefik/metrics
-  prune: true
-  sourceRef:
-    kind: GitRepository
-    name: home-operations
-  wait: true
-  interval: 1m
-  retryInterval: 1m
-  timeout: 5m
+# ---
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
+# metadata:
+#   name: &app traefik-metrics
+#   namespace: flux-system
+# spec:
+#   targetNamespace: networking
+#   commonMetadata:
+#     labels:
+#       app.kubernetes.io/name: traefik-metrics
+#   dependsOn:
+#     - name: traefik
+#   path: ./kubernetes/apps/networking/traefik/metrics
+#   prune: true
+#   sourceRef:
+#     kind: GitRepository
+#     name: home-operations
+#   wait: true
+#   interval: 1m
+#   retryInterval: 1m
+#   timeout: 5m
