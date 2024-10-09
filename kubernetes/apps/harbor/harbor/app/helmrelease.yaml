@@ -48,15 +48,11 @@ spec:
           existingClaim: harbor-registry
         jobservice:
           jobLog:
-            storageClass: longhorn
-            size: 1Gi
+            existingClaim: harbor-jobservice
         database:
-          storageClass: longhorn
-          size: 1Gi
+          existingClaim: harbor-database
         redis:
-          storageClass: longhorn
-          size: 1Gi
+          existingClaim: harbor-redis
         trivy:
-          storageClass: longhorn
-          size: 5Gi
+          existingClaim: harbor-
     existingSecretAdminPassword: harbor-admin-password
