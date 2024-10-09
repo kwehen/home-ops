@@ -54,5 +54,5 @@ spec:
         redis:
           existingClaim: harbor-redis
         trivy:
-          existingClaim: harbor-
+          existingClaim: harbor-trivy
     existingSecretAdminPassword: harbor-admin-password
