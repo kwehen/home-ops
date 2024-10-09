@@ -13,6 +13,7 @@ spec:
       app.kubernetes.io/name: *app
   dependsOn:
     - name: nextcloud-config
+    - name: longhorn
   path: ./kubernetes/apps/nextcloud/nextcloud/app
   prune: true
   sourceRef:
@@ -40,8 +41,9 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  # dependsOn:
-  #   # - name: traefik
+  dependsOn:
+    - name: traefik
+    - name: external-secrets
   #   # - name: longhorn
   path: ./kubernetes/apps/nextcloud/nextcloud/config
   prune: true

@@ -43,14 +43,16 @@ spec:
     #     - 100
 
     persistence:
+      existingClaim: nextcloud-data
       enabled: true
-      accessMode: ReadWriteMany
-      storageClass: longhorn
+      # accessMode: ReadWriteMany
+      # storageClass: longhorn
       nextcloudData:
-        accessMode: ReadWriteMany
+      #   accessMode: ReadWriteMany
         enabled: true
-        storageClass: longhorn
-        size: 500Gi
+        existingClaim: nextcloud
+      #   storageClass: longhorn
+      #   size: 500Gi
     resources:
       limits:
         cpu: 4000m
@@ -128,7 +130,7 @@ spec:
       primary:
         persistence:
           enabled: true
-        # existingClaim: nextcloud-postgresql-config-v1
+        existingClaim: nextcloud-postgresql
     redis:
       enabled: true
       auth:
