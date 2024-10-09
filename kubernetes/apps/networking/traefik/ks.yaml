@@ -19,8 +19,8 @@ spec:
     name: home-operations
   wait: true
   interval: 1m
-  retryInterval: 1m
-  timeout: 10m
+  # retryInterval: 1m
+  timeout: 20m
 
 # ---
 # apiVersion: kustomize.toolkit.fluxcd.io/v1
@@ -77,8 +77,8 @@ spec:
     name: home-operations
   wait: true
   interval: 1m
-  retryInterval: 1m
-  timeout: 5m
+  # retryInterval: 1m
+  timeout: 20m
   postBuild:
     substituteFrom:
       - kind: Secret
