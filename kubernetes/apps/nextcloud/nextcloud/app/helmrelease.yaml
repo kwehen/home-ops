@@ -38,7 +38,7 @@ spec:
           memory: 500Mi
         limits:
           cpu: 2000m
-          memory: 2Gi
+          memory: 8Gi
     replicaCount: 1
     env:
       TZ: ${TIMEZONE}
@@ -63,7 +63,7 @@ spec:
     resources:
       limits:
         cpu: 2000m
-        memory: 4Gi
+        memory: 8Gi
       requests:
         cpu: 200m
         memory: 1Gi
