@@ -130,7 +130,7 @@ spec:
       primary:
         persistence:
           enabled: true
-        existingClaim: nextcloud-postgres
+          existingClaim: nextcloud-postgres
     redis:
       enabled: true
       auth:
