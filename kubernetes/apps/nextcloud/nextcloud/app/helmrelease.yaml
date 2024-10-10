@@ -32,6 +32,13 @@ spec:
       flavor: fpm-alpine
     nginx:
       enabled: true
+      resources:
+        requests:
+          cpu: 500m
+          memory: 500Mi
+        limits:
+          cpu: 2000m
+          memory: 2Gi
     replicaCount: 1
     env:
       TZ: ${TIMEZONE}
@@ -121,6 +128,13 @@ spec:
       failedJobsHistoryLimit: 1
       successfulJobsHistoryLimit: 1
       curlInsecure:
+      resources:
+        requests:
+          cpu: 5m
+          memory: 10Mi
+        limits:
+          cpu: 50m
+          memory: 50Mi
 
     postgresql:
       enabled: true
