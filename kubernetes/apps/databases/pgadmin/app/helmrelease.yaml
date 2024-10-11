@@ -101,15 +101,3 @@ spec:
         size: 1Gi
         globalMounts:
           - path: /var/lib/pgadmin
-      server-json:
-        type: configMap
-        name: pgadmin-configmap
-        globalMounts:
-          - path: /pgadmin4/servers.json
-            subPath: servers.json
-      local-config:
-        type: secret
-        name: pgadmin-secret
-        globalMounts:
-          - path: /pgadmin4/config_local.py
-            subPath: config_local.py
