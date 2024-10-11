@@ -25,3 +25,30 @@ spec:
     substituteFrom:
       - kind: Secret
         name: cluster-secrets
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: &app pgadmin-config
+  namespace: flux-system
+spec:
+  targetNamespace: databases
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
+  dependsOn:
+    - name: traefik
+    - name: longhorn
+  path: ./kubernetes/apps/databases/pgadmin/config
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: home-operations
+  wait: true
+  interval: 30m
+  retryInterval: 1m
+  timeout: 5m
+  postBuild:
+    substituteFrom:
+      - kind: Secret
+        name: cluster-secrets
