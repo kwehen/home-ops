@@ -145,6 +145,10 @@ spec:
       postgresqlUsername: nextcloud
       # postgresqlPassword: set by valuesFrom
       postgresqlDatabase: nextcloud
+      existingSecret: "nextcloud"
+      # Names of keys in existing secret to use for PostgreSQL credentials
+      secretKeys:
+        adminPasswordKey: "postgresql_password"
       primary:
         persistence:
           enabled: true
