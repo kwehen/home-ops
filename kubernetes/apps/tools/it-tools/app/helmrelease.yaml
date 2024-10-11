@@ -30,8 +30,8 @@ spec:
         containers:
           app:
             image:
-              repository: ghcr.io/corentinth/it-tools
-              tag: 2024.5.10-33e5294
+              repository: ghcr.io/bjw-s-labs/it-tools
+              tag: latest
             env:
               TZ: ${TIMEZONE}
             probes:
