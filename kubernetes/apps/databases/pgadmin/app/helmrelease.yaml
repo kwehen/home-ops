@@ -84,7 +84,7 @@ spec:
           traefik.ingress.kubernetes.io/router.middlewares: networking-ipwhitelist@kubernetescrd
           cert-manager.io/cluster-issuer: letsencrypt-production-internal
         hosts:
-          - host: &host "pgadmin.home.{INTERNAL_DOMAIN}"
+          - host: &host "pgadmin.home.${INTERNAL_DOMAIN}"
             paths:
               - path: /
                 service:
