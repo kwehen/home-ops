@@ -43,7 +43,7 @@ spec:
         compression: bzip2
         maxParallel: 8
       destinationPath: s3://cnpg/v16
-      endpointURL: ${S3_BACKUP_URL}
+      endpointURL: https://${S3_BACKUP_URL}
       serverName: &currentCluster enterprise-postgres-v1
       s3Credentials:
         accessKeyId:
