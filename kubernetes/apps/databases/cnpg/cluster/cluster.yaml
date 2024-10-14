@@ -15,9 +15,12 @@ spec:
   superuserSecret:
     name: cnpg-secret
   enableSuperuserAccess: true
-  # bootstrap:
-    # recovery:
-    #   source: &previousCluster postgres-v25
+  bootstrap:
+    initdb:
+      database: app
+      owner: app
+      secret:
+        name: cnpg-secret
   postgresql:
     parameters:
       max_connections: "600"
