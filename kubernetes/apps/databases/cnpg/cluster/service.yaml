@@ -7,7 +7,6 @@ metadata:
     metallb.universe.tf/loadBalancerIPs: 10.0.4.100
 spec:
   type: LoadBalancer
-  externalTrafficPolicy: Local
   ports:
     - name: postgres
       port: 5432
