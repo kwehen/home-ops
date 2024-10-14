@@ -40,6 +40,8 @@ spec:
         className: traefik-internal
         annotations:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          cert-manager.io/cluster-issuer: letsencrypt-production-internal
+          traefik.ingress.kubernetes.io/router.middlewares: networking-ipwhitelist@kubernetescrd
     externalURL: https://registry.home.${INTERNAL_DOMAIN}
     persistence:
       enabled: true
