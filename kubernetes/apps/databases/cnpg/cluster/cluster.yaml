@@ -1,0 +1,71 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.ok8.sh/postgresql.cnpg.io/cluster_v1.json
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: enterprise-postgres
+  namespace: databases
+spec:
+  instances: 3
+  imageName: ghcr.io/cloudnative-pg/postgresql:16.4-36
+  primaryUpdateStrategy: unsupervised
+  storage:
+    size: 15Gi
+    storageClass: longhorn
+  superuserSecret:
+    name: cnpg-secret
+  enableSuperuserAccess: true
+  # bootstrap:
+    # recovery:
+    #   source: &previousCluster postgres-v25
+  postgresql:
+    parameters:
+      max_connections: "600"
+      shared_buffers: 512MB
+  nodeMaintenanceWindow:
+    inProgress: false
+    reusePVC: true
+  resources:
+    requests:
+      cpu: 50m
+      memory: 256Mi
+    limits:
+      memory: 640Mi
+  # monitoring:
+  #   enablePodMonitor: true
+  backup:
+    retentionPolicy: 30d
+    barmanObjectStore:
+      wal:
+        compression: bzip2
+        maxParallel: 8
+      destinationPath: s3://cnpg@world/v16
+      endpointURL: ${S3_BACKUP_URL}
+      serverName: &currentCluster enterprise-postgres-v1
+      s3Credentials:
+        accessKeyId:
+          name: cnpg-secret
+          key: AWS_ACCESS_KEY_ID
+        secretAccessKey:
+          name: cnpg-secret
+          key: AWS_SECRET_ACCESS_KEY
+  # Note: externalClusters is needed when recovering from an existing cnpg cluster
+  # externalClusters:
+  #   - name: *previousCluster
+  #     barmanObjectStore:
+  #       serverName: *previousCluster
+  #       wal:
+  #         compression: bzip2
+  #         maxParallel: 8
+  #       destinationPath: s3://cnpg@world/v16
+  #       endpointURL: ${S3_BACKUP_URL}
+  #       s3Credentials:
+  #         accessKeyId:
+  #           name: cnpg-secret
+  #           key: AWS_ACCESS_KEY_ID
+  #         secretAccessKey:
+  #           name: cnpg-secret
+  #           key: AWS_SECRET_ACCESS_KEY
+  affinity:
+    nodeSelector:
+      beta.kubernetes.io/arch: amd64
