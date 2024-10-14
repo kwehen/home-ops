@@ -21,7 +21,7 @@ spec:
   postgresql:
     parameters:
       max_connections: "600"
-      shared_buffers: 512MB
+      shared_buffers: 256MB
   nodeMaintenanceWindow:
     inProgress: false
     reusePVC: true
