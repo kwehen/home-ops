@@ -17,3 +17,4 @@ resources:
   - nextcloud.yaml
   - keda.yaml
   - external-dns.yaml
+  - cnpg.yaml
