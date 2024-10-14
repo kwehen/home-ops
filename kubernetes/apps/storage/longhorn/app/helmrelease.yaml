@@ -39,6 +39,7 @@ spec:
       annotations:
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         traefik.ingress.kubernetes.io/router.middlewares: networking-ipwhitelist@kubernetescrd
+        cert-manager.io/cluster-issuer: letsencrypt-production-internal
     defaultSettings:
       storageReservedPercentageForDefaultDisk: 15
       backupTarget: 's3://longhorn-backup@world/longhorn'
