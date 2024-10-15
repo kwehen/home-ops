@@ -71,11 +71,11 @@ spec:
       ingress:
         main:
           enabled: true
-          className: traefik-external
+          className: traefik
           annotations:
             cert-manager.io/cluster-issuer: letsencrypt-production-external
             traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-            kubernetes.io/ingress.class: traefik-external
+            kubernetes.io/ingress.class: traefik
             traefik.ingress.kubernetes.io/router.middlewares: |
               networking-cloudflare-only@kubernetescrd,
               networking-request-limit@kubernetescrd
