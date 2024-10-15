@@ -18,3 +18,4 @@ resources:
   - keda.yaml
   - external-dns.yaml
   - cnpg.yaml
+  - immich.yaml
