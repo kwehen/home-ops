@@ -25,6 +25,8 @@ spec:
     parameters:
       max_connections: "600"
       shared_buffers: 256MB
+    shared_preload_libraries:
+      - "vectors.so"
   nodeMaintenanceWindow:
     inProgress: false
     reusePVC: true
