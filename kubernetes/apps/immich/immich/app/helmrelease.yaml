@@ -14,7 +14,12 @@ spec:
         name: immich
         namespace: flux-system
       interval: 1m
+  install:
+    crds: Create
+    remediation:
+      retries: 3
   upgrade:
+    crds: CreateReplace
     remediation:
       retries: 3
   values:
