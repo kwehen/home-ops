@@ -12,6 +12,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: immich
+        namespace: flux-system
       interval: 1m
   upgrade:
     remediation:
