@@ -1,0 +1,100 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: immich
+  namespace: flux-system
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: immich
+      version: 0.8.1
+      sourceRef:
+        kind: HelmRepository
+        name: immich
+      interval: 1m
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    postgres:
+      enabled: false
+    redis:
+      enabled: true
+
+    immich:
+      metrics:
+        enabled: true
+      persistence:
+        library:
+          existingClaim: photo-library
+
+    env:
+      DB_HOSTNAME:
+        valueFrom:
+          secretKeyRef:
+            name: immich-secret
+            key: HOSTNAME
+      DB_USERNAME:
+        valueFrom:
+          secretKeyRef:
+            name: immich-secret
+            key: USER
+      DB_PASSWORD:
+        valueFrom:
+          secretKeyRef:
+            name: immich-secret
+            key: PASSWORD
+      DB_DATABASE_NAME:
+        valueFrom:
+          secretKeyRef:
+            name: immich-secret
+            key: DATABASE_NAME
+      LOG_LEVEL: verbose
+      TZ: ${TIMEZONE}
+
+    image:
+      # renovate: datasource=github-releases depName=immich-app/immich
+      tag: "v1.117.0"
+
+    server:
+      resources:
+        requests:
+          cpu: 500m
+          memory: 2048M
+      ingress:
+        main:
+          enabled: true
+          annotations:
+            cert-manager.io/cluster-issuer: letsencrypt-production-external
+            traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+            kubernetes.io/ingress.class: traefik-external
+            traefik.ingress.kubernetes.io/router.middlewares: |
+              networking-cloudflare-only@kubernetescrd,
+              networking-request-limit@kubernetescrd
+          hosts:
+            - host: photos.${EXTERNAL_DOMAIN}
+              paths:
+                - path: /
+                  pathType: Prefix
+          tls:
+            - hosts:
+                - photos.${EXTERNAL_DOMAIN}
+              secretName: immich-tls
+
+    machine-learning:
+      resources:
+        requests:
+          cpu: 500m
+          memory: 2048M
+      persistence:
+        cache:
+          type: pvc
+          existingClaim: immich-machine-learning-cache
+      probes:
+        liveness:
+          spec:
+            initialDelaySeconds: 120
+        readiness:
+          spec:
+            initialDelaySeconds: 120
