@@ -40,22 +40,22 @@ spec:
         valueFrom:
           secretKeyRef:
             name: immich-secret
-            key: HOSTNAME
+            key: DB_HOSTNAME
       DB_USERNAME:
         valueFrom:
           secretKeyRef:
             name: immich-secret
-            key: USER
+            key: DB_USERNAME
       DB_PASSWORD:
         valueFrom:
           secretKeyRef:
             name: immich-secret
-            key: PASSWORD
+            key: DB_PASSWORD
       DB_DATABASE_NAME:
         valueFrom:
           secretKeyRef:
             name: immich-secret
-            key: DATABASE_NAME
+            key: DB_DATABASE_NAME
       LOG_LEVEL: verbose
       TZ: ${TIMEZONE}
 
