@@ -128,7 +128,9 @@ spec:
                   identifier: app
                   port: http
         tls:
-          - hosts: [*host]
+          - hosts:
+              - *host
+            secretName: paperless-tls
 
     persistence:
       data:
