@@ -76,7 +76,7 @@ spec:
           traefik.ingress.kubernetes.io/router.middlewares: networking-ipwhitelist@kubernetescrd
           cert-manager.io/cluster-issuer: letsencrypt-production-internal
         hosts:
-          - host: &host 'reddit.home.${INTERNAL_DOMAIN}'
+          - host: reddit.home.${INTERNAL_DOMAIN}
             paths:
               - path: /
                 pathType: Prefix
@@ -84,6 +84,6 @@ spec:
                   identifier: main
                   port: http
         tls:
-          - hosts: [*host]
+          - hosts: ["reddit.home.${INTERNAL_DOMAIN}"]
 
     fullNameOverride: *app
