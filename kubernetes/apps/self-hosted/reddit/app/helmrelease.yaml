@@ -85,5 +85,6 @@ spec:
                   port: http
         tls:
           - hosts: ["reddit.home.${INTERNAL_DOMAIN}"]
+            secretName: reddit-tls
 
     fullNameOverride: *app
