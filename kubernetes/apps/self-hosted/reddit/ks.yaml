@@ -3,13 +3,12 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: paperless
+  name: reddit
   namespace: flux-system
 spec:
   targetNamespace: self-hosted
   dependsOn:
     - name: external-secrets
-    - name: longhorn
   path: ./kubernetes/apps/self-hosted/reddit/app
   prune: true
   sourceRef:
