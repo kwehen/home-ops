@@ -25,5 +25,5 @@ spec:
         memory: 128Mi
       limits:
         cpu: 500m
-        memory: 1Gi
+        memory: 1.5Gi
     group: "Enterprise"
