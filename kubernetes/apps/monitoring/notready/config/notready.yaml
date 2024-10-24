@@ -57,7 +57,7 @@ spec:
               KUBECTL="/opt/bitnami/kubectl/bin/kubectl"
 
               # Get only nodes which are not drained yet
-              NOT_READY_NODES=$($KUBECTL get nodes | grep -p 'NotReady(?!,SchedulingDisabled)' | awk '{print $1}' | xargs echo)
+              NOT_READY_NODES=$($KUBECTL get nodes | grep -p 'NotReady(?:,SchedulingDisabled)?' | awk '{print $1}' | xargs echo)
               # Get only nodes which are still drained
               READY_NODES=$($KUBECTL get nodes | grep '\sReady,SchedulingDisabled' | awk '{print $1}' | xargs echo)
 
