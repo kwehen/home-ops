@@ -7,8 +7,8 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: self-hosted
-  # dependsOn:
-  #   - name: affirmations-config
+  dependsOn:
+    - name: harbor
   path: ./kubernetes/apps/self-hosted/affirmations/app
   prune: true
   sourceRef:

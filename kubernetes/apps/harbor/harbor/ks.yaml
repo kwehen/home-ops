@@ -38,8 +38,7 @@ spec:
     labels:
       app.kubernetes.io/name: *app
   dependsOn:
-    - name: traefik
-    - name: longhorn
+    - name: external-secrets
   path: ./kubernetes/apps/harbor/harbor/config
   prune: true
   sourceRef:
