@@ -7,7 +7,14 @@ metadata:
 spec:
   service_type: ClusterIP
   ingress_type: ingress
-  ingress_tls_secret: awx-tls
+  ingress_annotations: |
+    traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+    traefik.ingress.kubernetes.io/router.middlewares: networking-ipwhitelist@kubernetescrd
+    cert-manager.io/cluster-issuer: letsencrypt-production-internal
+  ingress_hosts:
+    - hostname: ansible.home.${INTERNAL_DOMAIN}
+      tls_secret: awx-tls
+  # ingress_tls_secret: awx-tls
   ingress_class_name: traefik-internal
   hostname: ansible.home.${INTERNAL_DOMAIN}
   garbage_collect_secrets: true
@@ -34,4 +41,7 @@ spec:
     limits:
       cpu: 500m
       memory: 2G
-  projects_existing_claim: 'awx-postgres'
+  postgres_configuration_secret: postgres-secret
+  # postgres_data_volume_init: true
+
+# ref: https://github.com/ansible/awx-operator/blob/devel/roles/installer/defaults/main.yml
