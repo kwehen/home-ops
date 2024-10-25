@@ -46,4 +46,3 @@ spec:
       backupTargetCredentialSecret: minio-backup
       storageOverProvisioningPercentage: 200
       defaultClassReplicaCount: 2
-      engineReplicaTimeout: 30
