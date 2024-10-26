@@ -7,4 +7,4 @@ resources:
   - ./namespace.yaml
   
   # Post Flux-Kustomizations
-  - ./immich/ks.yaml
+  # - ./immich/ks.yaml

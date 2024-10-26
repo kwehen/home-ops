@@ -7,6 +7,6 @@ resources:
   - ./namespace.yaml
   # Flux-Kustomizations
   - ./metrics-server/ks.yaml
-  - ./keda/ks.yaml
+  # - ./keda/ks.yaml
   # - ./notready/ks.yaml
   # - ./kube-prom-stack/ks.yaml
