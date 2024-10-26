@@ -11,3 +11,6 @@ talosconfig
 *.agekey
 longhorn.agekey
 secret.json
+terraform/*
+!terraform/main.tf
+!terraform/provider.tf
