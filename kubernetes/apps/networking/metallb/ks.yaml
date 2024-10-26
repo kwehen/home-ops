@@ -30,8 +30,8 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  dependsOn:
-    - name: metallb
+  # dependsOn:
+  #   - name: metallb
   path: ./kubernetes/apps/networking/metallb/config
   prune: true
   sourceRef:
