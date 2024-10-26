@@ -7,6 +7,6 @@ resources:
   - ./namespace.yaml
   
   # Post Flux-Kustomizations
-  - ./traefik/ks.yaml
-  - ./metallb/ks.yaml
-  - ./cloudflare-ddns/ks.yaml
+  # - ./traefik/ks.yaml
+  # - ./metallb/ks.yaml
+  # - ./cloudflare-ddns/ks.yaml
