@@ -8,5 +8,5 @@ resources:
   
   # Post Flux-Kustomizations
   # - ./affirmations/ks.yaml
-  # - ./paperless/ks.yaml
+  - ./paperless/ks.yaml
   - ./reddit/ks.yaml

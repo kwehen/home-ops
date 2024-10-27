@@ -12,6 +12,7 @@ resource "proxmox_vm_qemu" "control_plane_nodes" {
   cores    = 2
   cpu      = "host"
   vm_state = "stopped"
+  scsihw = "virtio-scsi-single"
 
   network {
     model    = "virtio"
@@ -63,6 +64,7 @@ resource "proxmox_vm_qemu" "longhorn_worker_nodes" {
   cores    = each.value.cores
   cpu      = "host"
   vm_state = "stopped"
+  scsihw = "virtio-scsi-single"
 
   network {
     model    = "virtio"

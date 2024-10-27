@@ -95,9 +95,7 @@ spec:
            hosts:
              - *host
     persistence:
-      config:
-        storageClass: longhorn
-        accessMode: ReadWriteOnce
-        size: 1Gi
+      data:
+        existingClaim: pgadmin
         globalMounts:
           - path: /var/lib/pgadmin
