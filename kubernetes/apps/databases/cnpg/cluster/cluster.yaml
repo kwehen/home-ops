@@ -60,7 +60,7 @@ spec:
           compression: bzip2
           maxParallel: 8
         destinationPath: s3://cnpg/v16
-        endpointURL: ${S3_BACKUP_URL}
+        endpointURL: https://api.${S3_BACKUP_URL}
         s3Credentials:
           accessKeyId:
             name: cnpg-secret
