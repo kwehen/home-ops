@@ -17,7 +17,7 @@ spec:
   enableSuperuserAccess: true
   bootstrap:
     recovery:
-      source: &previous-cluster enterprise-postgres-v1
+      source: &previousCluster enterprise-postgres-v1
   postgresql:
     parameters:
       max_connections: "600"
