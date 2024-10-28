@@ -7,6 +7,6 @@ resources:
   - ./namespace.yaml
   
   # Post Flux-Kustomizations
-  # - ./affirmations/ks.yaml
+  - ./affirmations/ks.yaml
   - ./paperless/ks.yaml
   - ./reddit/ks.yaml
