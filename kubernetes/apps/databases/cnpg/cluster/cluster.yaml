@@ -15,12 +15,9 @@ spec:
   superuserSecret:
     name: cnpg-secret
   enableSuperuserAccess: true
-  # bootstrap:
-  #   initdb:
-  #     database: app
-  #     owner: app
-  #     secret:
-  #       name: cnpg-secret
+  bootstrap:
+    recovery:
+      source: &previous-cluster enterprise-postgres-v1
   postgresql:
     parameters:
       max_connections: "600"
@@ -46,7 +43,7 @@ spec:
         maxParallel: 8
       destinationPath: s3://cnpg/v16
       endpointURL: https://api.${S3_BACKUP_URL}
-      serverName: &currentCluster enterprise-postgres-v1
+      serverName: &currentCluster enterprise-postgres-v2
       s3Credentials:
         accessKeyId:
           name: cnpg-secret
@@ -55,22 +52,22 @@ spec:
           name: cnpg-secret
           key: AWS_SECRET_ACCESS_KEY
   # Note: externalClusters is needed when recovering from an existing cnpg cluster
-  # externalClusters:
-  #   - name: *previousCluster
-  #     barmanObjectStore:
-  #       serverName: *previousCluster
-  #       wal:
-  #         compression: bzip2
-  #         maxParallel: 8
-  #       destinationPath: s3://cnpg@world/v16
-  #       endpointURL: ${S3_BACKUP_URL}
-  #       s3Credentials:
-  #         accessKeyId:
-  #           name: cnpg-secret
-  #           key: AWS_ACCESS_KEY_ID
-  #         secretAccessKey:
-  #           name: cnpg-secret
-  #           key: AWS_SECRET_ACCESS_KEY
+  externalClusters:
+    - name: *previousCluster
+      barmanObjectStore:
+        serverName: *previousCluster
+        wal:
+          compression: bzip2
+          maxParallel: 8
+        destinationPath: s3://cnpg/v16
+        endpointURL: ${S3_BACKUP_URL}
+        s3Credentials:
+          accessKeyId:
+            name: cnpg-secret
+            key: AWS_ACCESS_KEY_ID
+          secretAccessKey:
+            name: cnpg-secret
+            key: AWS_SECRET_ACCESS_KEY
   affinity:
     nodeSelector:
       beta.kubernetes.io/arch: amd64
