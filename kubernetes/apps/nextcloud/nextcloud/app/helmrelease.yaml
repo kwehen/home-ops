@@ -37,7 +37,6 @@ spec:
           cpu: 500m
           memory: 500Mi
         limits:
-          cpu: 2000m
           memory: 8Gi
     replicaCount: 1
     env:
@@ -137,7 +136,6 @@ spec:
           cpu: 5m
           memory: 10Mi
         limits:
-          cpu: 50m
           memory: 50Mi
 
     postgresql:

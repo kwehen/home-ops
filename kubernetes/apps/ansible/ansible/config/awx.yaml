@@ -25,21 +25,18 @@ spec:
       cpu: 100m
       memory: .5G
     limits:
-      cpu: 500m 
       memory: 2G
   task_resource_requirements:
     requests:
       cpu: 125m
       memory: .5G
     limits:
-      cpu: 500m
       memory: 2G
   ee_resource_requirements:
     requests:
       cpu: 125m
       memory: .5G
     limits:
-      cpu: 500m
       memory: 2G
   postgres_configuration_secret: postgres-secret
   # postgres_data_volume_init: true
