@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-affirmations-frontend-only
+  namespace: self-hosted
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: affirmations
+      app.kubernetes.io/component: backend
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: affirmations
+              app.kubernetes.io/component: frontend
+  egress:
+    - to:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: affirmations
+              app.kubernetes.io/component: frontend
