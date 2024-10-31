@@ -19,3 +19,4 @@ resources:
   - external-dns.yaml
   - cnpg.yaml
   - immich.yaml
+  - actions.yaml
