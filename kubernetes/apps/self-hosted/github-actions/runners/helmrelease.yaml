@@ -22,9 +22,6 @@ spec:
     remediation:
       strategy: rollback
       retries: 3
-  dependsOn:
-    - name: actions-runner-controller
-      namespace: self-hosted
   valuesFrom:
     - targetPath: github-actions-secret.github_app_id
       kind: Secret
