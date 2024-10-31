@@ -10,4 +10,4 @@ resources:
   - ./affirmations/ks.yaml
   - ./paperless/ks.yaml
   - ./reddit/ks.yaml
-  - ./actions/ks.yaml
+  - ./github-actions/ks.yaml
