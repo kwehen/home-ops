@@ -9,6 +9,8 @@ spec:
   targetNamespace: ansible
   path: ./kubernetes/apps/ansible/ansible/app
   prune: true
+  dependsOn:
+    - name: cloudnative-pg-cluster
   sourceRef:
     kind: GitRepository
     name: home-operations

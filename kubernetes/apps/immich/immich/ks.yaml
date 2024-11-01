@@ -9,6 +9,7 @@ spec:
   targetNamespace: immich
   dependsOn:
     - name: immich-config
+    - name: cloudnative-pg-cluster
   path: ./kubernetes/apps/immich/immich/app
   prune: true
   sourceRef:
