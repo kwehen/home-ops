@@ -45,6 +45,9 @@ spec:
     externalURL: https://registry.home.${INTERNAL_DOMAIN}
     database:
       external:
+        host: enterprise-postgres-rw.databases.svc.cluster.local
+        port: "5432"
+        username: harbor
         existingSecret: harbor-postgres
     persistence:
       enabled: true
