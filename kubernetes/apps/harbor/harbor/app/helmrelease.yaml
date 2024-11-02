@@ -44,6 +44,7 @@ spec:
           traefik.ingress.kubernetes.io/router.middlewares: networking-ipwhitelist@kubernetescrd
     externalURL: https://registry.home.${INTERNAL_DOMAIN}
     database:
+      type: external
       external:
         host: enterprise-postgres-rw.databases.svc.cluster.local
         port: "5432"
