@@ -48,6 +48,7 @@ spec:
         host: enterprise-postgres-rw.databases.svc.cluster.local
         port: "5432"
         username: harbor
+        coreDatabase: registry
         existingSecret: harbor-postgres
     persistence:
       enabled: true
@@ -57,8 +58,8 @@ spec:
         jobservice:
           jobLog:
             existingClaim: harbor-jobservice
-        # database:
-        #   existingClaim: harbor-database
+        database:
+          existingClaim: harbor-database
         redis:
           existingClaim: harbor-redis
         trivy:
