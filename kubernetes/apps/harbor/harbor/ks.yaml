@@ -12,6 +12,8 @@ spec:
   dependsOn:
     - name: traefik
     - name: longhorn
+    - name: harbor-config
+    - name: cloudnative-pg-cluster
   path: ./kubernetes/apps/harbor/harbor/app
   prune: true
   sourceRef:

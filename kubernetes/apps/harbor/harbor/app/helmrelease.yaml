@@ -43,6 +43,9 @@ spec:
           cert-manager.io/cluster-issuer: letsencrypt-production-internal
           traefik.ingress.kubernetes.io/router.middlewares: networking-ipwhitelist@kubernetescrd
     externalURL: https://registry.home.${INTERNAL_DOMAIN}
+    database:
+      external:
+        existingSecret: harbor-postgres
     persistence:
       enabled: true
       persistentVolumeClaim:
@@ -51,8 +54,8 @@ spec:
         jobservice:
           jobLog:
             existingClaim: harbor-jobservice
-        database:
-          existingClaim: harbor-database
+        # database:
+        #   existingClaim: harbor-database
         redis:
           existingClaim: harbor-redis
         trivy:
