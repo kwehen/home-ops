@@ -30,7 +30,7 @@ spec:
               TZ: ${TIMEZONE}
             image:
               repository: louislam/uptime-kuma
-              tag: 1.23.13@sha256:96510915e6be539b76bcba2e6873591c67aca8a6075ff09f5b4723ae47f333fc
+              tag: 1.23.15
             ports:
               - name: http
                 containerPort: 3001
