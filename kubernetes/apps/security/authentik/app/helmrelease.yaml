@@ -76,7 +76,6 @@ spec:
         hosts:
           - &host login.${EXTERNAL_DOMAIN}
         tls:
-          - secretName: authentik-tls
           - hosts:
               - *host
     worker:
