@@ -78,6 +78,7 @@ spec:
         tls:
           - hosts:
               - *host
+            secretName: authentik-tls
     worker:
       autoscaling:
         enabled: true
