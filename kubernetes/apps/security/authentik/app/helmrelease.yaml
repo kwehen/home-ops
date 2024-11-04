@@ -39,17 +39,17 @@ spec:
           valueFrom:
             secretKeyRef:
               name: authentik-postgres
-              key: DATABASE_NAME
+              key: AUTHENTIK_POSTGRESQL__NAME
         - name: AUTHENTIK_POSTGRESQL__USER
           valueFrom:
             secretKeyRef:
               name: authentik-postgres
-              key: POSTGRES_USER
+              key: AUTHENTIK_POSTGRESQL__NAME
         - name: AUTHENTIK_POSTGRESQL__PASSWORD
           valueFrom:
             secretKeyRef:
               name: authentik-postgres
-              key: POSTGRES_PASSWORD
+              key: AUTHENTIK_POSTGRESQL__NAME
     authentik:
       redis:
           enabled: true
