@@ -10,6 +10,10 @@ spec:
     labels:
       app.kubernetes.io/name: *app
   path: ./kubernetes/apps/security/authentik/app
+  dependsOn:
+    - name: external-secrets
+    - name: longhorn
+    - name: traefik
   prune: true
   sourceRef:
     kind: GitRepository
