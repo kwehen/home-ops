@@ -6,11 +6,11 @@
     
       schedule: 
         - cron: "0 1 * * *" 
-      push: 
-        branches: ["main"]
-        paths:
-          - .github/renovate.json
-          - .github/renovate/**.json
+    #   push: 
+    #     branches: ["main"]
+    #     paths:
+    #       - .github/renovate.json
+    #       - .github/renovate/**.json
     
     concurrency: 
       group: ${{ github.workflow }}-${{ github.event.number || github.ref }}
