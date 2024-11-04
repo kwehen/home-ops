@@ -35,6 +35,11 @@ spec:
             secretKeyRef:
               name: authentik-postgres
               key: HOST
+        - name: HOST
+          valueFrom:
+            secretKeyRef:
+              name: authentik-postgres
+              key: HOST
         - name: AUTHENTIK_POSTGRESQL__NAME
           valueFrom:
             secretKeyRef:
