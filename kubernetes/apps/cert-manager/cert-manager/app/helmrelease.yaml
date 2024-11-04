@@ -13,7 +13,7 @@ spec:
         kind: HelmRepository
         name: cert-manager
         namespace: flux-system
-      version: 1.15.*
+      version: 1.16.*
   install:
     crds: Create
   interval: 1m0s
