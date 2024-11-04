@@ -29,3 +29,20 @@ spec:
     extraEnv:
       - name: VAULT_SKIP_VERIFY
         value: "true"
+    image:
+      repository: ghcr.io/external-secrets/external-secrets
+    serviceMonitor:
+      enabled: true
+      interval: 1m
+    certController:
+      image:
+        repository: ghcr.io/external-secrets/external-secrets
+      serviceMonitor:
+        enabled: true
+        interval: 1m
+    webhook:
+      image:
+        repository: ghcr.io/external-secrets/external-secrets
+      serviceMonitor:
+        enabled: true
+        interval: 1m
