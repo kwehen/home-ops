@@ -1,0 +1,3 @@
+---
+- name: Include Unseal Tasks
+  ansible.builtin.include_tasks: update.yml

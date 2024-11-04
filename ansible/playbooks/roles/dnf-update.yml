@@ -1,0 +1,9 @@
+---
+- name: DNF Update Hosts
+  hosts: Enterprise
+  # gather_facts: no
+
+  tasks:
+    - name: Include unseal role
+      ansible.builtin.include_role:
+        name: dnf-update
