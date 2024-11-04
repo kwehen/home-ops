@@ -61,6 +61,12 @@ spec:
       #   prometheus:
       #     serviceMonitor:
       #       enabled: true
+      resources:
+        requests:
+          cpu: 30m
+          memory: 400Mi
+        limits:
+          memory: 800Mi
       ingress:
         enabled: true
         ingressClassName: traefik
@@ -78,3 +84,9 @@ spec:
       autoscaling:
         enabled: true
         minReplicas: 2
+      resources:
+        requests:
+          cpu: 30m
+          memory: 300Mi
+        limits:
+          memory: 800Mi
