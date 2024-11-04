@@ -1,6 +1,6 @@
 ---
 - name: DNF Update Hosts
-  hosts: Enterprise
+  hosts: rocky
   # gather_facts: no
 
   tasks:
