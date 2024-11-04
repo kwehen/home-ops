@@ -5,9 +5,3 @@
 
 - name: Unconditionally reboot the machine with all defaults
   ansible.builtin.reboot:
-
-- name: Rebooting
-  reboot:
-    post_reboot_delay: 60
-  throttle: 1
-  when: reboot_required.rc == 1
