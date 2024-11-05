@@ -38,7 +38,7 @@ spec:
     labels:
       app.kubernetes.io/name: *app
   dependsOn:
-    - name: dragonfly
+    - name: dragonfly-operator
     - name: external-secrets
   path: ./kubernetes/apps/databases/dragonfly/cluster
   prune: true
