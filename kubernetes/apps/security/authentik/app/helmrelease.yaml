@@ -41,7 +41,7 @@ spec:
         password: ""
     authentik:
       redis:
-          enabled: true
+        host: dragonfly.databases.svc.cluster.local
     server:
       # autoscaling:
       #   enabled: true
