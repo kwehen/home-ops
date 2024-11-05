@@ -54,9 +54,9 @@ spec:
       redis:
           enabled: true
     server:
-      autoscaling:
-        enabled: true
-        minReplicas: 2
+      # autoscaling:
+      #   enabled: true
+      #   minReplicas: 2
       # metrics:
       #   prometheus:
       #     serviceMonitor:
@@ -81,9 +81,9 @@ spec:
               - *host
             secretName: authentik-tls
     worker:
-      autoscaling:
-        enabled: true
-        minReplicas: 2
+      # autoscaling:
+      #   enabled: true
+      #   minReplicas: 2
       resources:
         requests:
           cpu: 30m
