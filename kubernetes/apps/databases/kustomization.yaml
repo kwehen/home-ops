@@ -9,3 +9,4 @@ resources:
   # Post Flux-Kustomizations
   - ./pgadmin/ks.yaml
   - ./cnpg/ks.yaml
+  - ./dragonfly/ks.yaml
