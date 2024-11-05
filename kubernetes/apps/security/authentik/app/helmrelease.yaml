@@ -36,6 +36,9 @@ spec:
           "0":
             host: enterprise-postgres-rw.databases.svc.cluster.local
             port: 5432
+      redis:
+        host: "{{ .Release.Name }}-redis-master"
+        password: ""
     authentik:
       redis:
           enabled: true
