@@ -1,9 +1,9 @@
 # Home Enterprise Operations == A Bunch of YAML
 <div align="center">
 
-<img src="./docs/assets/home-ops-logo.png" align="center" width="144px" height="144px"/>
+<img src="./docs/assets/logo.jpg" align="center" width="288px" height="288px" style="border-radius: 15px;"/>
 
-Just a YAML monorepo that I run all of my Kubernetes stuff with.
+### Just a YAML monorepo that I run all of my Kubernetes stuff with.
 </div>
 
 ## ☁️ Why?
