@@ -25,8 +25,6 @@ spec:
   values:
     postgres:
       enabled: false
-    redis:
-      enabled: true
 
     immich:
       # metrics:
@@ -36,6 +34,7 @@ spec:
           existingClaim: photo-library
 
     env:
+      REDIS_HOSTNAME: dragonfly.databases.svc.cluster.local
       DB_HOSTNAME:
         valueFrom:
           secretKeyRef:
