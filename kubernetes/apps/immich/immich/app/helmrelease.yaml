@@ -32,11 +32,9 @@ spec:
       persistence:
         library:
           existingClaim: photo-library
-
+    redis:
+      enabled: true
     env:
-      REDIS_HOSTNAME: dragonfly.databases.svc.cluster.local
-      REDIS_PORT: "6379"
-      REDIS_DBINDEX: "1"
       DB_HOSTNAME:
         valueFrom:
           secretKeyRef:
