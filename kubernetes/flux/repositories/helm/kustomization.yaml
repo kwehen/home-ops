@@ -21,3 +21,4 @@ resources:
   - immich.yaml
   - actions-runner-controller.yaml
   - authentik.yaml
+  - open-webui.yaml

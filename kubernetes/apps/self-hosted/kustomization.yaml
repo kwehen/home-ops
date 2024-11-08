@@ -11,3 +11,4 @@ resources:
   - ./paperless/ks.yaml
   - ./reddit/ks.yaml
   - ./github-actions/ks.yaml
+  - ./open-webui/ks.yaml
