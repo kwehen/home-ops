@@ -35,7 +35,9 @@ spec:
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-production-external
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-
+        traefik.ingress.kubernetes.io/router.middlewares: |
+          networking-cloudflare-only@kubernetescrd,
+          networking-request-limit@kubernetescrd
       host: &host "chat.${EXTERNAL_DOMAIN}"
       tls: true
 
