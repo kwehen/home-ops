@@ -31,7 +31,7 @@ spec:
     ollamaUrls: ["http://ollama.${EXTERNAL_DOMAIN}:11434"]
     ingress:
       enabled: true
-      class: traefik-external
+      class: traefik
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-production-external
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
