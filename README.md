@@ -7,7 +7,7 @@
 </div>
 
 ## ☁️ Why?
-At some point I got sick of running `docker container stop 454HIHER74N && docker container rm 454HIHER74N`. Eventually I set an alias for `docker compose up -d`. Creating a **<ins>VM</ins>** to put 25 loose containers on it stopped being sensical to me. I don't even remeber what's running on this thing?! 
+At some point I got sick of running `docker container stop 454HIHER74N && docker container rm 454HIHER74N`. Eventually I set an alias for `docker compose up -d`. Creating a **<ins>VM</ins>** to put 25 loose containers on it stopped being sensical to me. I don't even remember what's running on this thing?! 
 
 "This term keeps getting thrown around...kubus? Kambanets? Confucious?"
 
