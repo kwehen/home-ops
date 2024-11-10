@@ -42,6 +42,8 @@ spec:
     authentik:
       redis:
         host: dragonfly.databases.svc.cluster.local
+      email:
+        use_tls: true
     server:
       # autoscaling:
       #   enabled: true
@@ -96,3 +98,23 @@ spec:
       name: *secret
       valuesKey: AUTHENTIK_POSTGRESQL__NAME
       targetPath: authentik.postgresql.name
+    - kind: Secret
+      name: *secret
+      valuesKey: HOST
+      targetPath: authentik.email.host
+    - kind: Secret
+      name: *secret
+      valuesKey: FROM
+      targetPath: authentik.email.from
+    - kind: Secret
+      name: *secret
+      valuesKey: USERNAME
+      targetPath: authentik.email.username
+    - kind: Secret
+      name: *secret
+      valuesKey: PASSWORD
+      targetPath: authentik.email.password
+    - kind: Secret
+      name: *secret
+      valuesKey: PORT
+      targetPath: authentik.email.port
