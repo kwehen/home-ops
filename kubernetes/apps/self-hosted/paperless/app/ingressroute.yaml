@@ -1,0 +1,36 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: paperless-ingressroute
+  namespace: self-hosted
+  annotations: 
+    kubernetes.io/ingress.class: traefik-external
+    cert-manager.io/cluster-issuer: letsencrypt-production-external
+    traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`documents.${EXTERNAL_DOMAIN}`)
+      kind: Rule
+      middlewares:
+        - name: cloudflare-only
+          namespace: networking
+        - name: request-limit
+          namespace: networking
+      services:
+        - name: paperless-app
+          port: 8000
+          namespace: self-hosted
+    - match: Host(`documents.${EXTERNAL_DOMAIN}`) && PathPrefix(`/admin`)
+      kind: Rule
+      middlewares:
+        - name: ipwhitelist
+          namespace: networking
+      services:
+        - name: paperless-app
+          port: 8000
+          namespace: self-hosted
+  tls:
+    secretName: paperless-tls
+
