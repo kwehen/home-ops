@@ -22,6 +22,7 @@ spec:
         - name: paperless-app
           port: 8000
           namespace: self-hosted
+          passHostHeader: true
     - match: Host(`documents.${EXTERNAL_DOMAIN}`) && PathPrefix(`/admin`)
       kind: Rule
       middlewares:
@@ -31,6 +32,7 @@ spec:
         - name: paperless-app
           port: 8000
           namespace: self-hosted
+          passHostHeader: true
   tls:
     secretName: paperless-tls
 
