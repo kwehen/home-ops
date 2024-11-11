@@ -1,7 +1,7 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: paperless-ingressroute
+  name: paperless-ingressroute-public
   namespace: self-hosted
   annotations: 
     kubernetes.io/ingress.class: traefik-external
@@ -11,7 +11,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`documents.${EXTERNAL_DOMAIN}`)
+    - match: Host(`documents.kamaufoundation.com`) && !PathPrefix(`/admin`)
       kind: Rule
       priority: 20
       middlewares:
@@ -24,8 +24,23 @@ spec:
           port: 8000
           namespace: self-hosted
           passHostHeader: true
-    - match: Host(`documents.${EXTERNAL_DOMAIN}`) && PathPrefix(`/admin/`)
-      priority: 10   
+  tls:
+    secretName: paperless-tls
+
+---
+
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: paperless-ingressroute-admin
+  namespace: self-hosted
+  annotations: 
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`documents.kamaufoundation.com`) && PathPrefix(`/admin`)
       kind: Rule
       middlewares:
         - name: ipwhitelist
@@ -37,4 +52,3 @@ spec:
           passHostHeader: true
   tls:
     secretName: paperless-tls
-
