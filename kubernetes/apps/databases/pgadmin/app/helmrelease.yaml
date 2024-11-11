@@ -99,3 +99,12 @@ spec:
         existingClaim: pgadmin
         globalMounts:
           - path: /var/lib/pgadmin
+      oauth:
+        enabled: true
+        type: secret
+        name: pgadmin-oauth
+        advancedMounts:
+          pgadmin:
+            app:
+              - path: /pgadmin4/config_local.py
+                subPath: config_local.py

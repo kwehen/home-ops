@@ -26,9 +26,7 @@ spec:
           passHostHeader: true
   tls:
     secretName: paperless-tls
-
 ---
-
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
