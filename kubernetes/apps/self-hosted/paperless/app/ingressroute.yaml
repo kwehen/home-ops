@@ -13,6 +13,7 @@ spec:
   routes:
     - match: Host(`documents.${EXTERNAL_DOMAIN}`)
       kind: Rule
+      priority: 20
       middlewares:
         - name: cloudflare-only
           namespace: networking
@@ -24,6 +25,7 @@ spec:
           namespace: self-hosted
           passHostHeader: true
     - match: Host(`documents.${EXTERNAL_DOMAIN}`) && PathPrefix(`/admin/`)
+      priority: 10   
       kind: Rule
       middlewares:
         - name: ipwhitelist
