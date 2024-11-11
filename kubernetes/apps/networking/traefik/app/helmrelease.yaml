@@ -128,7 +128,7 @@ spec:
       loadBalancerSourceRanges: []
       spec:
         loadBalancerIP: "${TRAEFIK_EXTERNAL_IP}"
-        # externalTrafficPolicy: local
+        externalTrafficPolicy: Local
       type: LoadBalancer
     tlsStore:
       default:
