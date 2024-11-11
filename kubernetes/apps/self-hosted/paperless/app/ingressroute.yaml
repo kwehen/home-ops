@@ -23,7 +23,7 @@ spec:
           port: 8000
           namespace: self-hosted
           passHostHeader: true
-    - match: Host(`documents.${EXTERNAL_DOMAIN}`) && PathPrefix(`/admin`)
+    - match: Host(`documents.${EXTERNAL_DOMAIN}`) && PathPrefix(`/admin/`)
       kind: Rule
       middlewares:
         - name: ipwhitelist
