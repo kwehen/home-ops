@@ -68,12 +68,14 @@ spec:
                   secretKeyRef:
                     name: paperless-secret
                     key: PAPERLESS_ADMIN_PASSWORD
+              # OAUTH Configuration
               PAPERLESS_APPS: allauth.socialaccount.providers.openid_connect
               PAPERLESS_SOCIALACCOUNT_PROVIDERS:
                 valueFrom:
                   secretKeyRef:
                     name: paperless-secret
                     key: PAPERLESS_OATH
+              PAPERLESS_DISABLE_REGULAR_LOGIN: "true"
             probes:
               liveness:
                 enabled: true
@@ -115,28 +117,6 @@ spec:
         ports:
           http:
             port: 6379
-
-    # ingress:
-    #   app:
-    #     className: "traefik"
-    #     annotations:
-    #       cert-manager.io/cluster-issuer: letsencrypt-production-external
-    #       traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-    #       kubernetes.io/ingress.class: traefik
-    #       traefik.ingress.kubernetes.io/router.middlewares: |
-    #         networking-cloudflare-only@kubernetescrd,
-    #         networking-request-limit@kubernetescrd
-    #     hosts:
-    #       - host: &host documents.${EXTERNAL_DOMAIN}
-    #         paths:
-    #           - path: /
-    #             service:
-    #               identifier: app
-    #               port: http
-    #     tls:
-    #       - hosts:
-    #           - *host
-    #         secretName: paperless-tls
 
     persistence:
       data:
