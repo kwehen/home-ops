@@ -64,7 +64,7 @@ spec:
           kubernetes.io/ingress.class: traefik
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
           cert-manager.io/cluster-issuer: letsencrypt-production-external
-          traefik.ingress.kubernetes.io/router.middlewares: networking-ipwhitelist@kubernetescrd
+          traefik.ingress.kubernetes.io/router.middlewares: networking-cloudflare-only@kubernetescrd
         hosts:
           - &host login.${EXTERNAL_DOMAIN}
         tls:
