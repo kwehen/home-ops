@@ -47,7 +47,7 @@ spec:
       GF_DATE_FORMATS_FULL_DATE: "DD.MM.YYYY hh:mm:ss"
       GF_SECURITY_ALLOW_EMBEDDING: true
       GF_SECURITY_COOKIE_SAMESITE: grafana
-      GF_SERVER_ROOT_URL: https://grafana.${INTERNAL_DOMAIN}
+      GF_SERVER_ROOT_URL: https://grafana.home.${INTERNAL_DOMAIN}
     envFromSecrets:
       - name: grafana-oauth
     grafana.ini:
