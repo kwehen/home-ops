@@ -63,7 +63,7 @@ spec:
         enabled: true
         name: Authentik
         icon: signin
-        scopes: "openid profile email groups"
+        scopes: "openid profile email"
         empty_scopes: false
         login_attribute_path: user
         groups_attribute_path: groups
