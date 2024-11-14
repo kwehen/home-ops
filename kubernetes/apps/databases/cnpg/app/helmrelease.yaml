@@ -31,10 +31,10 @@ spec:
     # config:
     #   data:
     #     INHERITED_ANNOTATIONS: kyverno.io/ignore
-    # monitoring:
-    #   podMonitorEnabled: false
-    #   grafanaDashboard:
-    #     create: true
+    monitoring:
+      podMonitorEnabled: true
+      grafanaDashboard:
+        create: true
     resources:
       requests:
         cpu: 15m

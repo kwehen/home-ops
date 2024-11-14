@@ -6,3 +6,4 @@ resources:
   - ./cluster.yaml
   - ./backup.yaml
   - ./service.yaml
+  - ./prometheusrule.yaml
