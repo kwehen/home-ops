@@ -42,8 +42,8 @@ spec:
     globalArguments:
     - --global.sendanonymoususage=false
     - --global.checknewversion=false
-    - "--metrics.prometheus=true"
-    - "--metrics.prometheus.entryPoint=metrics"
+    - --metrics.prometheus=true
+    - --metrics.prometheus.entryPoint=metrics
     ingressRoute:
       dashboard:
         enabled: true
@@ -142,6 +142,8 @@ spec:
         enabled: true
         entryPoint: metrics
         service:
+          enabled: true
+        serviceMonitor:
           enabled: true
     tlsStore:
       default:
