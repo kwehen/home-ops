@@ -1,0 +1,205 @@
+---
+# yaml-language-server: $schema=https://kube-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app kube-prometheus-stack
+spec:
+  interval: 30m
+  timeout: 15m
+  chart:
+    spec:
+      chart: kube-prometheus-stack
+      version: 66.1.1
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community
+        namespace: flux-system
+  install:
+    crds: Skip
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    crds: Skip
+    remediation:
+      strategy: rollback
+      retries: 3
+  values:
+    crds:
+      enabled: false
+    alertmanager:
+      config:
+        global:
+          resolve_timeout: 5m
+        inhibit_rules:
+          - equal:
+              - namespace
+              - alertname
+            source_match:
+              severity: critical
+            target_match_re:
+              severity: warning|info
+          - equal:
+              - namespace
+              - alertname
+            source_match:
+              severity: warning
+            target_match_re:
+              severity: info
+        receivers:
+          - name: "null"
+          - name: discord
+            discord_configs:
+              - webhook_url: ${DISCORD_WEBHOOK_URL}
+                title: |-
+                  [{{ .Status | toUpper }}:{{ if eq .Status "firing" }}{{ .Alerts.Firing | len }}{{ else }}{{ .Alerts.Resolved | len }}{{ end }}]
+                message: |-
+                  {{- range .Alerts }}
+                    **{{ .Labels.alertname }} {{ if ne .Labels.severity "" }}({{ .Labels.severity | title }}){{ end }} **
+                    {{- if ne .Annotations.description "" }}
+                      **Description:** {{ .Annotations.description }}
+                    {{- else if ne .Annotations.summary "" }}
+                      **Summary:** {{ .Annotations.summary }}
+                    {{- else if ne .Annotations.message "" }}
+                      **Message:** {{ .Annotations.message }}
+                    {{- else }}
+                      **Description:** N/A
+                    {{- end }}
+                  {{- end }}
+        route:
+          group_by:
+            - alertname
+          group_interval: 5m
+          group_wait: 30s
+          receiver: discord
+          repeat_interval: 12h
+          routes:
+            - match:
+                severity: critical
+              receiver: discord
+      ingress:
+        enabled: true
+        pathType: Prefix
+        ingressClassName: traefik-internal
+        annotations:
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: networking-ipwhitelist@kubernetescrd
+          cert-manager.io/cluster-issuer: letsencrypt-production-internal
+        hosts:
+          - alertmanager.home.${INTERNAL_DOMAIN}
+        tls: 
+        - secretName: alertmanager-tls
+          hosts:
+          - alertmanager.home.${INTERNAL_DOMAIN}
+      alertmanagerSpec:
+        replicas: 2
+        storage:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: longhorn
+              resources:
+                requests:
+                  storage: 1Gi
+    grafana:
+      enabled: false
+      forceDeployDashboards: true
+      sidecar:
+        dashboards:
+          annotations:
+            grafana_folder: Kubernetes
+          multicluster:
+            etcd:
+              enabled: true
+    kubeApiServer:
+      enabled: true
+    kubelet:
+      enabled: true
+    kubeControllerManager:
+      enabled: true
+      endpoints: &cp
+        - 10.0.4.5
+        - 10.0.4.6
+        - 10.0.4.7
+    kubeEtcd:
+      enabled: true
+      endpoints: *cp
+    kubeScheduler:
+      enabled: true
+      endpoints: *cp
+    kubeProxy:
+      enabled: false
+    kubeStateMetrics:
+      enabled: true
+    kube-state-metrics:
+      fullnameOverride: kube-state-metrics
+      metricLabelsAllowlist:
+        - pods=[*]
+        - deployments=[*]
+        - persistentvolumeclaims=[*]
+      prometheus:
+        monitor:
+          enabled: true
+          relabelings:
+            - action: replace
+              regex: (.*)
+              replacement: $1
+              sourceLabels: ["__meta_kubernetes_pod_node_name"]
+              targetLabel: kubernetes_node
+    nodeExporter:
+      enabled: true
+    prometheus-node-exporter:
+      fullnameOverride: node-exporter
+      prometheus:
+        monitor:
+          enabled: true
+          relabelings:
+            - action: replace
+              regex: (.*)
+              replacement: $1
+              sourceLabels: ["__meta_kubernetes_pod_node_name"]
+              targetLabel: kubernetes_node
+    prometheus:
+      ingress:
+        enabled: true
+        ingressClassName: traefik-internal
+        annotations:
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: networking-ipwhitelist@kubernetescrd
+          cert-manager.io/cluster-issuer: letsencrypt-production-internal
+        pathType: Prefix
+        hosts:
+          - prometheus.home.${INTERNAL_DOMAIN}
+        tls: 
+        - secretName: prometheus-tls
+          hosts:
+          - prometheus.home.${INTERNAL_DOMAIN}
+      prometheusSpec:
+        scrapeInterval: 1m # Must match interval in Grafana Helm chart
+        enableAdminAPI: true
+        enableFeatures:
+          - auto-gomemlimit
+          - memory-snapshot-on-shutdown
+          - new-service-discovery-manager
+        resources:
+          requests:
+            cpu: 100m
+          limits:
+            memory: 2Gi
+        replicaExternalLabelName: __replica__
+        ruleSelectorNilUsesHelmValues: false
+        serviceMonitorSelectorNilUsesHelmValues: false
+        podMonitorSelectorNilUsesHelmValues: false
+        probeSelectorNilUsesHelmValues: false
+        scrapeConfigSelectorNilUsesHelmValues: false
+        retention: 14d
+        retentionSize: 70GB
+        replicas: 2
+        storageSpec:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: longhorn
+              resources:
+                requests:
+                  storage: 50Gi
+    cleanPrometheusOperatorObjectNames: true
