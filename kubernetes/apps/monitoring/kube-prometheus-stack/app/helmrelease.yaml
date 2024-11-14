@@ -74,8 +74,14 @@ spec:
           repeat_interval: 12h
           routes:
             - match:
+                alertname: Watchdog
+              receiver: "null"
+            - match:
                 severity: critical
               receiver: discord
+            - match:
+                alertname: InfoInhibitor
+              receiver: "null"
       ingress:
         enabled: true
         pathType: Prefix
