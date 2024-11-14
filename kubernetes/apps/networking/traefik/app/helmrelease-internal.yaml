@@ -42,8 +42,6 @@ spec:
     globalArguments:
     - --global.sendanonymoususage=false
     - --global.checknewversion=false
-    - --metrics.prometheus=true
-    - --metrics.prometheus.entryPoint=metrics
     ingressRoute:
       dashboard:
         enabled: false
