@@ -130,6 +130,12 @@ spec:
         loadBalancerIP: "${TRAEFIK_EXTERNAL_IP}"
         externalTrafficPolicy: Local
       type: LoadBalancer
+    metrics:
+      prometheus:
+        enabled: true
+        entryPoint: metrics
+        service:
+          enabled: true
     tlsStore:
       default:
         defaultCertificate:
