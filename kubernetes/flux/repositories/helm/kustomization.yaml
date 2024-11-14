@@ -22,3 +22,4 @@ resources:
   - actions-runner-controller.yaml
   - authentik.yaml
   - open-webui.yaml
+  - grafana.yaml
