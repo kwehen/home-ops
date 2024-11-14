@@ -64,6 +64,12 @@ spec:
         enabled: true
         publishedService:
           enabled: false
+    metrics:
+      prometheus:
+        enabled: true
+        entryPoint: metrics
+        service:
+          enabled: true
     # tlsStore:
     #   default:
     #     defaultCertificate:
