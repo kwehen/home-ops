@@ -32,7 +32,7 @@ spec:
     # Use an existing secret for the admin user.
     # admin:
     #   ## Name of the secret. Can be templated.
-    #   existingSecret: grafana-admin
+    #   existingSecret: grafana-ouath
     #   userKey: GRAFANA_ADMIN_USERNAME
     #   passwordKey: GRAFANA_ADMIN_PASSWORD
     env:
