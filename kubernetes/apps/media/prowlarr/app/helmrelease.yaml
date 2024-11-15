@@ -1,0 +1,89 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app prowlarr
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 3.5.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
+  values:
+    controllers:
+      prowlarr:
+        labels:
+          postgres: "true"
+        containers:
+          app:
+            image:
+              repository: ghcr.io/joryirving/prowlarr-develop
+              tag: 1.26.0.4833@sha256:f286f67c848ceb735e145b85af2bc24bbc88fb75487dce5c5d592387449dfb35
+            env:
+              TZ: ${TIMEZONE}
+              PROWLARR__APP__INSTANCENAME: Prowlarr
+              PROWLARR__APP__THEME: dark
+              PROWLARR__AUTH__METHOD: External
+              PROWLARR__AUTH__REQUIRED: DisabledForLocalAddresses
+              PROWLARR__LOG__DBENABLED: "False"
+              PROWLARR__LOG__LEVEL: info
+              PROWLARR__SERVER__PORT: &port 80
+              PROWLARR__UPDATE__BRANCH: develop
+            envFrom:
+            - secretRef:
+                name: prowlarr-secret
+            resources:
+              requests:
+                cpu: 100m
+              limits:
+                memory: 1Gi
+    defaultPodOptions:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 3002
+        runAsGroup: 3002
+        fsGroup: 3003
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile: { type: RuntimeDefault }
+    service:
+      app:
+        controller: *app
+        ports:
+          http:
+            port: *port
+    ingress:
+      app:
+        className: internal
+        annotations:
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: networking-ipwhitelist@kubernetescrd
+          cert-manager.io/cluster-issuer: letsencrypt-production-internal
+        hosts:
+        - host: prowlarr.home.${INTERNAL_DOMAIN}
+          paths:
+          - path: /
+            pathType: Prefix
+            service:
+              identifier: app
+              port: http
+        tls:
+          - hosts:
+              - *host
+            secretName: prowlarr-tls
+    persistence:
+      config:
+        type: emptyDir
+      tmp:
+        type: emptyDir
