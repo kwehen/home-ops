@@ -99,7 +99,7 @@ spec:
           traefik.ingress.kubernetes.io/router.middlewares: networking-ipwhitelist@kubernetescrd
           cert-manager.io/cluster-issuer: letsencrypt-production-internal
         hosts:
-          - host: qbit.home.${INTERNAL_DOMAIN}
+          - host: &host qbit.home.${INTERNAL_DOMAIN}
             paths:
               - path: /
                 service:
