@@ -122,7 +122,7 @@ spec:
         server: ${NFS_SERVER_IP}
         path: ${NFS_POOL_PATH}/media
         globalMounts:
-          - path: /media/
+          - path: /media
             subPath: torrents
       tmp:
         type: emptyDir
