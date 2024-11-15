@@ -93,6 +93,6 @@ spec:
       data:
         type: nfs
         server: ${NFS_SERVER_IP}
-        path: ${NFS_POOL_PATH}/books
+        path: ${NFS_POOL_PATH}/media
         globalMounts:
         - path: /data
