@@ -61,6 +61,12 @@ spec:
                 memory: 1Gi
               limits:
                 memory: 8Gi
+        pod:
+          securityContext:
+            runAsUser: 3002
+            runAsGroup: 3003
+            fsGroup: 3003
+            fsGroupChangePolicy: OnRootMismatch
     defaultPodOptions:
       terminationGracePeriodSeconds: 120
       affinity:
