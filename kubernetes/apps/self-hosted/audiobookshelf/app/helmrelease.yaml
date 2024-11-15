@@ -77,7 +77,7 @@ spec:
           traefik.ingress.kubernetes.io/router.middlewares: cloudflare-only@kubernetescrd
           cert-manager.io/cluster-issuer: letsencrypt-production-external
         hosts:
-          - host: &host audiobooks.${EXTERNAL_DOMAIN}"
+          - host: &host audiobooks.${EXTERNAL_DOMAIN}
             paths:
               - path: /
                 pathType: Prefix
