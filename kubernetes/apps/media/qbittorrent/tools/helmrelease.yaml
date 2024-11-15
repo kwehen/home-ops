@@ -39,7 +39,7 @@ spec:
             args: [
               "reannounce",
               "--process-seeding",
-              "--server", "qbittorrent.$(POD_NAMESPACE).svc.cluster.local",
+              "--server", "qbittorrent.media.svc.cluster.local",
               "--port", "80"
             ]
             securityContext:
