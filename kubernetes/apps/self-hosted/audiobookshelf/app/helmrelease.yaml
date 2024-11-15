@@ -1,0 +1,108 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: audiobookshelf
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 3.5.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
+  values:
+    controllers:
+      audiobookshelf:
+        containers:
+          app:
+            image:
+              repository: ghcr.io/advplyr/audiobookshelf
+              tag: 2.16.2
+            env:
+              TZ: ${TIMEZONE}
+              AUDIOBOOKSHELF_UID: 3002
+              AUDIOBOOKSHELF_GID: 3003
+              CONFIG_PATH: /config
+              METADATA_PATH: /config/metadata
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /healthcheck
+                    port: &port 80
+                  initialDelaySeconds: 30
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
+              startup:
+                enabled: false
+            resources:
+              requests:
+                cpu: 11m
+              limits:
+                memory: 1Gi
+        pod:
+          securityContext:
+            runAsUser: 3002
+            runAsGroup: 3003
+            fsGroup: 3003
+            fsGroupChangePolicy: OnRootMismatch
+    service:
+      app:
+        controller: audiobookshelf
+        ports:
+          http:
+            port: *port
+    ingress:
+      app:
+        enabled: true
+        className: traefik
+        annotations:
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: cloudflare-only@kubernetescrd
+          cert-manager.io/cluster-issuer: letsencrypt-production-external
+        hosts:
+          - host: &host audiobooks.${EXTERNAL_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+                service:
+                  identifier: app
+                  port: http
+        tls:
+          - hosts:
+              - *host
+            secretName: audiobooks-tls
+    persistence:
+      config:
+        type: persistentVolumeClaim
+        size: 1Gi
+        storageClass: longhorn
+        accessMode: ReadWriteOnce
+        globalMounts:
+          - path: "/config"
+      media:
+        type: nfs
+        server: ${NFS_SERVER_IP}
+        path: ${NFS_POOL_PATH}/books
+        globalMounts:
+          - path: /audiobooks
+      cache:
+        globalMounts:
+          - path: /.npm
+        type: emptyDir
