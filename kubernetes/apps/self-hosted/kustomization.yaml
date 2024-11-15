@@ -12,3 +12,4 @@ resources:
   - ./reddit/ks.yaml
   - ./github-actions/ks.yaml
   - ./open-webui/ks.yaml
+  - ./audiobookshelf/ks.yaml
