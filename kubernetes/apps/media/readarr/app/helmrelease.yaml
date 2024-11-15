@@ -68,14 +68,20 @@ spec:
       app:
         className: traefik-internal
         annotations:
-
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: networking-ipwhitelist@kubernetescrd
+          cert-manager.io/cluster-issuer: letsencrypt-production-internal
         hosts:
-        - host: readarr.home.$(INTERNAL_DOMAIN)
+        - host: &host readarr.home.${INTERNAL_DOMAIN}
           paths:
           - path: /
             service:
               identifier: app
               port: http
+        tls:
+          - hosts:
+              - *host
+            secretName: readarr-tls
     persistence:
       config:
         existingClaim: *app
