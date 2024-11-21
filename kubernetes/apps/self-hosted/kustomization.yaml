@@ -13,3 +13,4 @@ resources:
   - ./github-actions/ks.yaml
   - ./open-webui/ks.yaml
   - ./audiobookshelf/ks.yaml
+  - ./weatherbot/ks.yaml
