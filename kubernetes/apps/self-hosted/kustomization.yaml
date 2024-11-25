@@ -14,3 +14,4 @@ resources:
   - ./open-webui/ks.yaml
   - ./audiobookshelf/ks.yaml
   - ./weatherbot/ks.yaml
+  - ./excalidraw/ks.yaml
