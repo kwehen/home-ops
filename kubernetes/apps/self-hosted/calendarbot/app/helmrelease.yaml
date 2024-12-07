@@ -28,7 +28,7 @@ spec:
           app:
             image:
               repository: registry.home.${INTERNAL_DOMAIN}/calendar/calendar
-              tag: 0.0.0
+              tag: latest
             envFrom:
             - secretRef:
                 name: calendarbot-secret
@@ -39,7 +39,7 @@ spec:
                 enabled: false
             resources:
               requests:
-                cpu: 10m
-                memory: 16Mi
+                cpu: 50m
+                memory: 32Mi
               limits:
                 memory: 128Mi
