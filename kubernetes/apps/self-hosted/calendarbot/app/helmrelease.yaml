@@ -29,6 +29,7 @@ spec:
             image:
               repository: registry.home.${INTERNAL_DOMAIN}/calendar/calendar
               tag: 0.0.1
+            pullPolicy: IfNotPresent
             envFrom:
             - secretRef:
                 name: calendarbot-secret
