@@ -28,8 +28,8 @@ spec:
           app:
             image:
               repository: registry.home.${INTERNAL_DOMAIN}/calendar/calendar
-              tag: 0.0.1
-              pullPolicy: IfNotPresent
+              tag: 0.0.2
+              pullPolicy: Always
             envFrom:
             - secretRef:
                 name: calendarbot-secret
