@@ -1,0 +1,20 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: &app kubevirt-operator
+  namespace: flux-system
+spec:
+  targetNamespace: kubevirt
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
+  path: ./kubernetes/apps/kubevirt/kubevirt-operator/app
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: home-operations
+  wait: true
+  interval: 1m
+  retryInterval: 1m
+  timeout: 10m
