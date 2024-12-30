@@ -37,7 +37,7 @@ spec:
       volumes:
       - name: cdromiso
         persistentVolumeClaim:
-          claimName: rockyminimal
+          claimName: debianiso
       - name: harddrive
         persistentVolumeClaim:
           claimName: bluesky-hd
