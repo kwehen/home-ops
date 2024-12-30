@@ -1,0 +1,46 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  generation: 1
+  labels:
+    kubevirt.io/os: linux
+  name: bluesky
+spec:
+  running: true
+  template:
+    metadata:
+      labels:
+        kubevirt.io/domain: bluesky
+    spec:
+      domain:
+        cpu:
+          cores: 1
+        devices:
+          disks:
+          - bootOrder: 2
+            cdrom:
+              bus: sata
+            name: cdromiso
+          - disk:
+              bus: virtio
+            name: harddrive
+            bootOrder: 1
+          - cdrom:
+              bus: sata
+              readonly: true
+            name: virtio-drivers
+        machine:
+          type: q35
+        resources:
+          requests:
+            memory: 2048M
+      volumes:
+      - name: cdromiso
+        persistentVolumeClaim:
+          claimName: rockyminimal
+      - name: harddrive
+        persistentVolumeClaim:
+          claimName: bluesky-hd
+      - name:  virtio-drivers
+        containerDisk:
+          image: kubevirt/virtio-container-disk
