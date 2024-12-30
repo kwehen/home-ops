@@ -8,4 +8,4 @@ resources:
   # Flux-Kustomizations
   - ./kubevirt-operator/ks.yaml
   - ./cdi/ks.yaml
-  # - ./bluesky/ks.yaml
+  - ./bluesky/ks.yaml
