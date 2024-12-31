@@ -10,7 +10,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-  - host: ${INTERNAL_DOMAIN}
+  - host: bluesky.${INTERNAL_DOMAIN}
     http:
       paths:
       - backend:
