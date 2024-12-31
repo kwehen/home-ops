@@ -6,3 +6,4 @@ resources:
   - ./pvc.yaml
   - ./vm.yaml
   - ./svc.yaml
+  - ./ingress.yaml
