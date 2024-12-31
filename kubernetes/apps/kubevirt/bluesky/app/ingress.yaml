@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: bluesky
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+    traefik.ingress.kubernetes.io/router.middlewares: networking-cloudflare-only@kubernetescrd
+    cert-manager.io/cluster-issuer: letsencrypt-production-internal
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: bluesky.${INTERNAL_DOMAIN}
+    http:
+      paths:
+      - backend:
+          service:
+            name: bluesky
+            port:
+              number: 443
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - bluesky.${INTERNAL_DOMAIN}
+    secretName: bluesky-tls
