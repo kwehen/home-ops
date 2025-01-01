@@ -196,7 +196,7 @@ spec:
         podMonitorSelectorNilUsesHelmValues: false
         probeSelectorNilUsesHelmValues: false
         scrapeConfigSelectorNilUsesHelmValues: false
-        retention: 14d
+        retention: 7d
         retentionSize: 40GB
         replicas: 1
         storageSpec:
