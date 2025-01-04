@@ -68,7 +68,7 @@ spec:
               - path: "/config"
           output:
             type: persistentVolumeClaim
-            size: 4Gi
+            size: 8Gi
             storageClass: longhorn
             accessMode: ReadWriteOnce
             globalMounts:
