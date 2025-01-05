@@ -20,7 +20,7 @@ spec:
               number: 443
         path: /
         pathType: Prefix
-  tls:
-  - hosts:
-    - pds.${INTERNAL_DOMAIN}
-    secretName: bluesky-tls
+  # tls:
+  # - hosts:
+  #   - pds.${INTERNAL_DOMAIN}
+  #   secretName: bluesky-tls
