@@ -10,7 +10,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-  - host: bluesky.${INTERNAL_DOMAIN}
+  - host: pds.${INTERNAL_DOMAIN}
     http:
       paths:
       - backend:
@@ -22,5 +22,5 @@ spec:
         pathType: Prefix
   tls:
   - hosts:
-    - bluesky.${INTERNAL_DOMAIN}
+    - pds.${INTERNAL_DOMAIN}
     secretName: bluesky-tls
