@@ -91,7 +91,7 @@ spec:
         controller: *app
         type: LoadBalancer
         annotations:
-          metallb.universe.tf/loadBalancerIPs: 10.0.4.55 
+          metallb.io/loadBalancerIPs: 10.0.4.55 
         ports:
           bittorrent:
             enabled: true

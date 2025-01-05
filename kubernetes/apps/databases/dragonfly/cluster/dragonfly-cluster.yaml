@@ -28,7 +28,7 @@ spec:
   serviceSpec:
     type: LoadBalancer
     annotations:
-      metallb.universe.tf/loadBalancerIPs: 10.0.4.120
+      metallb.io/loadBalancerIPs: 10.0.4.120
   topologySpreadConstraints:
     - maxSkew: 1
       topologyKey: "kubernetes.io/hostname"
