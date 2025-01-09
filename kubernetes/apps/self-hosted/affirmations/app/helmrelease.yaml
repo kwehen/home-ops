@@ -84,7 +84,7 @@ spec:
         className: traefik
         annotations:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-          traefik.ingress.kubernetes.io/router.middlewares: networking-ipwhitelist@kubernetescrd
+          traefik.ingress.kubernetes.io/router.middlewares: networking-cloudflare-only@kubernetescrd
           cert-manager.io/cluster-issuer: letsencrypt-production-external
         hosts:
           - host: affirmations.${EXTERNAL_DOMAIN}
