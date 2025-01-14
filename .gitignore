@@ -1,5 +1,6 @@
 .private/
 .task/
+secrets.env
 *.secret.env
 *.secret.yaml
 *.key
