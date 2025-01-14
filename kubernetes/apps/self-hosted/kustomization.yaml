@@ -7,12 +7,12 @@ resources:
   - ./namespace.yaml
   
   # Post Flux-Kustomizations
-  - ./affirmations/ks.yaml
+  # - ./affirmations/ks.yaml
   - ./paperless/ks.yaml
   - ./reddit/ks.yaml
   - ./github-actions/ks.yaml
   - ./open-webui/ks.yaml
   - ./audiobookshelf/ks.yaml
-  - ./weatherbot/ks.yaml
+  # - ./weatherbot/ks.yaml
   - ./excalidraw/ks.yaml
-  - ./calendarbot/ks.yaml
+  # - ./calendarbot/ks.yaml
