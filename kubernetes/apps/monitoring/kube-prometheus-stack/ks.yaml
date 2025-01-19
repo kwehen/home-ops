@@ -15,6 +15,10 @@ spec:
   sourceRef:
     kind: GitRepository
     name: home-operations
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
   wait: true
   interval: 30m
   retryInterval: 1m
