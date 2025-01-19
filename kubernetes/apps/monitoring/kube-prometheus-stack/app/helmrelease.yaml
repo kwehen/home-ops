@@ -128,6 +128,16 @@ spec:
     kubeEtcd:
       enabled: true
       endpoints: *cp
+      service:
+        selector:
+          component: etcd
+      serviceMonitor:
+        scheme: https
+        insecureSkipVerify: false
+        serverName: "localhost"
+        caFile: "/etc/prometheus/secrets/etcd-client-cert/etcd-ca.crt"
+        certFile: "/etc/prometheus/secrets/etcd-client-cert/etcd-client.crt"
+        keyFile: "/etc/prometheus/secrets/etcd-client-cert/etcd-client-key.key"
     kubeScheduler:
       enabled: true
       endpoints: *cp
