@@ -180,6 +180,8 @@ spec:
           - prometheus.home.${INTERNAL_DOMAIN}
       prometheusSpec:
         scrapeInterval: 1m # Must match interval in Grafana Helm chart
+        secrets:
+          - etcd-client-cert
         enableAdminAPI: true
         enableFeatures:
           - auto-gomemlimit
