@@ -47,9 +47,11 @@ spec:
         enabled: false
     ports:
       web:
-        redirectTo:
-          port: websecure
-          priority: 10
+        redirections:
+          entrypoint:
+            to: websecure
+            scheme: https
+            permanent: true
       websecure:
         tls:
           enabled: true
