@@ -90,10 +90,7 @@ spec:
             secretName: audiobooks-tls
     persistence:
       config:
-        type: persistentVolumeClaim
-        size: 1Gi
-        storageClass: longhorn
-        accessMode: ReadWriteOnce
+        existingClaim: audiobooks-config
         globalMounts:
           - path: "/config"
       media:
