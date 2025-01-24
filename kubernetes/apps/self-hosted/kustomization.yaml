@@ -11,5 +11,5 @@ resources:
   - ./reddit/ks.yaml
   - ./github-actions/ks.yaml
   - ./open-webui/ks.yaml
-  - ./audiobookshelf/ks.yamls
+  - ./audiobookshelf/ks.yaml
   - ./excalidraw/ks.yaml
