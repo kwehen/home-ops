@@ -49,7 +49,7 @@ spec:
                 name: readarr-secret
             resources:
               requests:
-                cpu: 100m
+                cpu: 25m
               limits:
                 memory: 1Gi
     defaultPodOptions:
