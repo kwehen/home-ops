@@ -28,7 +28,7 @@ spec:
           app:
             image:
               repository: registry.home.${INTERNAL_DOMAIN}/calendar/calendar
-              tag: 0.0.13
+              tag: 0.0.14
               pullPolicy: Always
             envFrom:
             - secretRef:
