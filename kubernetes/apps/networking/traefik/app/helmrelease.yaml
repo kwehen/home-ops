@@ -13,7 +13,7 @@ spec:
         kind: HelmRepository
         name: traefik
         namespace: flux-system
-      version: 34.1.*
+      version: 34.2.*
   install:
     crds: Create
     remediation:
