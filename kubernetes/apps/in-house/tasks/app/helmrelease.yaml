@@ -26,6 +26,15 @@ spec:
   values:
     controllers:
       tasks:
+        initContainers:
+          init-db:
+            image:
+              repository: ghcr.io/kwehen/postgres-init
+              tag: latest
+              pullPolicy: IfNotPresent
+            envFrom:
+              - secretRef:
+                  name: tasks-postgres-init
         containers:
           app:
             envFrom:

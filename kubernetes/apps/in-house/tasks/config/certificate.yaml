@@ -3,7 +3,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: tasks-tls 
-  namespace: tasks
+  namespace: in-house
 spec:
   secretName: tasks-tls
   issuerRef:

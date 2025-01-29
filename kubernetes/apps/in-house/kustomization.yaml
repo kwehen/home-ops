@@ -10,3 +10,4 @@ resources:
   - ./calendarbot/ks.yaml
   - ./weatherbot/ks.yaml
   - ./affirmations/ks.yaml
+  - ./tasks/ks.yaml

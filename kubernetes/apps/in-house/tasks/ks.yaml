@@ -6,10 +6,10 @@ metadata:
   name: tasks
   namespace: flux-system
 spec:
-  targetNamespace: tasks
+  targetNamespace: in-house
   dependsOn:
     - name: tasks-config
-  path: ./kubernetes/apps/tasks/tasks/app
+  path: ./kubernetes/apps/in-house/tasks/app
   prune: true
   sourceRef:
     kind: GitRepository
@@ -18,12 +18,6 @@ spec:
   interval: 30m
   retryInterval: 1m
   timeout: 5m
-  # postBuild:
-  #   substituteFrom:
-  #     - kind: Secret
-  #       name: cluster-secrets
-  #     - kind: ConfigMap
-  #       name: cluster-settings
 ---
 # yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/kustomize.toolkit.fluxcd.io/kustomization_v1.json
 apiVersion: kustomize.toolkit.fluxcd.io/v1
@@ -32,10 +26,8 @@ metadata:
   name: tasks-config
   namespace: flux-system
 spec:
-  targetNamespace: tasks
-  # dependsOn:
-  #   - name: tasks
-  path: ./kubernetes/apps/tasks/tasks/config
+  targetNamespace: in-house
+  path: ./kubernetes/apps/in-house/tasks/config
   prune: true
   sourceRef:
     kind: GitRepository
