@@ -1,5 +1,5 @@
 - name: Uninstall OneAgent
-  ansible.builtin.shell: bash uninstall.sh
+  ansible.builtin.command: ./uninstall.sh
   args:
     executable: /bin/bash
     chdir: /opt/dynatrace/oneagent/agent
