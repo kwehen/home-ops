@@ -3,9 +3,9 @@
   hosts: Enterprise
 
   tasks:
-    - name: Include role
-      ansible.builtin.include_role:
-        name: reload-agent
+    # - name: Include role
+    #   ansible.builtin.include_role:
+    #     name: reload-agent
 
     - name: Import Dynatrace OneAgent role
       ansible.builtin.include_role:
