@@ -10,11 +10,12 @@ resource "proxmox_vm_qemu" "control_plane_nodes" {
   memory   = 8192
   sockets  = 1
   cores    = 2
-  cpu      = "host"
+  cpu_type = "host"
   vm_state = "stopped"
-  scsihw = "virtio-scsi-single"
+  scsihw   = "virtio-scsi-single"
 
   network {
+    id       = 0
     model    = "virtio"
     macaddr  = each.value.macaddr
     bridge   = "vmbr0"
@@ -62,11 +63,12 @@ resource "proxmox_vm_qemu" "longhorn_worker_nodes" {
   memory   = each.value.memory
   sockets  = 1
   cores    = each.value.cores
-  cpu      = "host"
+  cpu_type = "host"
   vm_state = "stopped"
-  scsihw = "virtio-scsi-single"
+  scsihw   = "virtio-scsi-single"
 
   network {
+    id       = 0
     model    = "virtio"
     macaddr  = each.value.macaddr
     bridge   = "vmbr0"

@@ -13,6 +13,8 @@ talosconfig
 longhorn.agekey
 secret.json
 terraform/*
+!terraform/kubeadm/main.tf
+!terraform/kubeadm/provider.tf
 !terraform/main.tf
 !terraform/provider.tf
 cluster-secrets.yaml
