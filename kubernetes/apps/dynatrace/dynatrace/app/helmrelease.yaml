@@ -6,14 +6,10 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  chart:
-    spec:
-      chart: dynatrace-operator
-      version: 1.4.0
-      sourceRef:
-        kind: HelmRepository
-        name: dynatrace
-        namespace: flux-system
+  chartRef:
+    kind: OCIRepository
+    name: dynatrace
+    namespace: flux-system
   install:
     crds: Create
     timeout: 7m
