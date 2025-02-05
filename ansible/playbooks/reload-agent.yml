@@ -2,16 +2,11 @@
 - name: Migrate OneAgents
   hosts: Enterprise
 
+  vars:
+    oneagent_environment_url: "{{ dynatrace_environment_url }}"
+    oneagent_paas_token: "{{ dynatrace_paas_token }}"
+    oneagent_install_args:
+      - "--set-monitoring-mode=fullstack"
   tasks:
-    # - name: Include role
-    #   ansible.builtin.include_role:
-    #     name: reload-agent
-
-    - name: Import Dynatrace OneAgent role
-      ansible.builtin.import_role:
+    - import_role:
         name: oneagent
-      vars:
-        oneagent_environment_url: "{{ dynatrace_environment_url }}"
-        oneagent_paas_token: "{{ dynatrace_paas_token }}"
-        oneagent_install_args:
-          - "--set-monitoring-mode=fullstack"
