@@ -1,0 +1,7 @@
+---
+- name: Include Agent Tasks
+  ansible.builtin.include_tasks: uninstall-agent.yml
+
+# - name: Include Agent Role
+#   ansible.builtin.include_role:
+#     name: dynatrace.oneagent
