@@ -9,7 +9,7 @@
 
     - name: Import Dynatrace OneAgent role
       ansible.builtin.import_role:
-        name: dynatrace.oneagent.oneagent
+        name: dynatrace.oneagent
       vars:
         dynatrace_environment_url: "{{ dynatrace_environment_url }}"
         dynatrace_paas_token: "{{ dynatrace_paas_token }}"
