@@ -2,5 +2,6 @@
   ansible.builtin.shell:
     cmd: bash uninstall.sh
     chdir: /opt/dynatrace/oneagent/agent
-  # become: true
-  # become_method: su
+  become: true
+  become_user: root
+  
