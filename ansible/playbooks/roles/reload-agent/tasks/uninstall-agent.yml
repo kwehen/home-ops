@@ -3,4 +3,4 @@
   args:
     chdir: /opt/dynatrace/oneagent/agent
   become: true
-  # become_user: root
+  become_user: root
