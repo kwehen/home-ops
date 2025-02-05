@@ -1,11 +1,21 @@
+# ---
+# apiVersion: source.toolkit.fluxcd.io/v1beta2
+# kind: OCIRepository
+# metadata:
+#   name: dynatrace
+#   namespace: flux-system
+# spec:
+#   interval: 24h
+#   url: oci://public.ecr.aws/dynatrace/dynatrace-operator
+#   ref:
+#     tag: v1.3.2
 ---
-apiVersion: source.toolkit.fluxcd.io/v1beta2
-kind: OCIRepository
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
 metadata:
   name: dynatrace
   namespace: flux-system
 spec:
+  type: "oci"
   interval: 24h
   url: oci://public.ecr.aws/dynatrace/dynatrace-operator
-  ref:
-    tag: v1.3.2
