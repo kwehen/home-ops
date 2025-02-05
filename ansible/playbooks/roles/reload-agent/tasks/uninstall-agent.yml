@@ -1,5 +1,5 @@
 - name: Uninstall OneAgent
-  ansible.builtin.command: sudo bash uninstall.sh
+  ansible.builtin.command: ./uninstall.sh
   args:
     chdir: /opt/dynatrace/oneagent/agent
   # become: true
