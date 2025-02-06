@@ -9,7 +9,7 @@ resource "proxmox_vm_qemu" "control_plane" {
   memory   = 6144
   sockets  = 1
   cores    = 1
-  cpu_type = "host"
+  cpu_type = "x86-64-v2-AES"
   vm_state = "stopped"
   scsihw   = "virtio-scsi-single"
 
@@ -54,7 +54,7 @@ resource "proxmox_vm_qemu" "worker" {
   memory   = 6144
   sockets  = 1
   cores    = 1
-  cpu_type = "host"
+  cpu_type = "x86-64-v2-AES"
   vm_state = "stopped"
   scsihw   = "virtio-scsi-single"
 
