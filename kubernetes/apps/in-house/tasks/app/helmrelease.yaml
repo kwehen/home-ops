@@ -80,7 +80,7 @@ spec:
               - path: /
                 pathType: Prefix
                 service:
-                  identifier: frontend
+                  identifier: app
                   port: http
         tls:
           - hosts: ["tasks.${EXTERNAL_DOMAIN}"]
