@@ -61,18 +61,18 @@ spec:
             port: 80
     ingress:
       app:
-        className: traefik-internal
+        className: traefik
         annotations:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-          traefik.ingress.kubernetes.io/router.middlewares: networking-ipwhitelist@kubernetescrd
-          cert-manager.io/cluster-issuer: letsencrypt-production-internal
+          traefik.ingress.kubernetes.io/router.middlewares: networking-cloudflare-only@kubernetescrd
+          cert-manager.io/cluster-issuer: letsencrypt-production-external
         hosts:
-          - host: draw.home.${INTERNAL_DOMAIN}
+          - host: draw.${EXTERNAL_DOMAIN}
             paths:
               - path: /
                 service:
                   identifier: app
                   port: http
         tls:
-          - hosts: ["draw.home.${INTERNAL_DOMAIN}"]
+          - hosts: ["draw.${EXTERNAL_DOMAIN}"]
             secretName: draw-tls
