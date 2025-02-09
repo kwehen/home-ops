@@ -34,7 +34,7 @@ spec:
         port: 5432
         read_replicas:
           "0":
-            host: enterprise-postgres-rw.databases.svc.cluster.local
+            host: enterprise-postgres-r.databases.svc.cluster.local
             port: 5432
       redis:
         host: "{{ .Release.Name }}-redis-master"
