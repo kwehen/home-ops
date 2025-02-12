@@ -8,7 +8,7 @@ spec:
     - ReadWriteMany
   resources:
     requests:
-      storage: 64Gi
+      storage: 32Gi
   storageClassName: longhorn
 ---
 apiVersion: v1
@@ -20,5 +20,5 @@ spec:
     - ReadWriteMany
   resources:
     requests:
-      storage: 64Gi
+      storage: 32Gi
   storageClassName: longhorn
