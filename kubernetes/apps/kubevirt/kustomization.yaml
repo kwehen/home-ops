@@ -9,3 +9,4 @@ resources:
   - ./kubevirt-operator/ks.yaml
   - ./cdi/ks.yaml
   # - ./bluesky/ks.yaml
+  - ./kubeadm/ks.yaml
