@@ -1,0 +1,96 @@
+---
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  generation: 1
+  labels:
+    kubevirt.io/os: linux
+  name: kubeadm-control-plane
+spec:
+  running: true
+  template:
+    metadata:
+      labels:
+        kubevirt.io/domain: kubeadm
+        nodename: kubeadm-worker
+    spec:
+      domain:
+        cpu:
+          cores: 1
+        devices:
+          disks:
+          - bootOrder: 2
+            cdrom:
+              bus: sata
+            name: cdromiso
+          - disk:
+              bus: virtio
+            name: harddrive
+            bootOrder: 1
+          - cdrom:
+              bus: sata
+              readonly: true
+            name: virtio-drivers
+        machine:
+          type: q35
+        resources:
+          requests:
+            memory: 2048M
+      volumes:
+      - name: cdromiso
+        persistentVolumeClaim:
+          claimName: debianiso
+      - name: harddrive
+        persistentVolumeClaim:
+          claimName: kubeadm-control-plane-hd
+      - name:  virtio-drivers
+        containerDisk:
+          image: kubevirt/virtio-container-disk
+---
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  generation: 1
+  labels:
+    kubevirt.io/os: linux
+  name: kubeadm-worker
+spec:
+  running: true
+  template:
+    metadata:
+      labels:
+        kubevirt.io/domain: kubeadm
+        nodename: kubeadm-worker
+    spec:
+      domain:
+        cpu:
+          cores: 1
+        devices:
+          disks:
+          - bootOrder: 2
+            cdrom:
+              bus: sata
+            name: cdromiso
+          - disk:
+              bus: virtio
+            name: harddrive
+            bootOrder: 1
+          - cdrom:
+              bus: sata
+              readonly: true
+            name: virtio-drivers
+        machine:
+          type: q35
+        resources:
+          requests:
+            memory: 2048M
+      volumes:
+      - name: cdromiso
+        persistentVolumeClaim:
+          claimName: debianiso
+      - name: harddrive
+        persistentVolumeClaim:
+          claimName: kubead-worker-hd
+      - name:  virtio-drivers
+        containerDisk:
+          image: kubevirt/virtio-container-disk

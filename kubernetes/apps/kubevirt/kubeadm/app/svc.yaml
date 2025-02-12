@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubeadm-control-plane
+spec:
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80
+  - name: https
+    port: 443
+    targetPort: 443
+  - name: kubectl
+    port: 6443
+    targetPort: 6443
+  - name: ssh
+    port: 22
+    targetPort: 22
+  selector:
+    kubevirt.io/domain: kubeadm
+    nodename: kubeadm-control-plane
+  type: LoadBalancer
+  loadBalancerIP: 10.0.4.80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubeadm-worker
+spec:
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80
+  - name: https
+    port: 443
+    targetPort: 443
+  - name: kubectl
+    port: 6443
+    targetPort: 6443
+  - name: ssh
+    port: 22
+    targetPort: 22
+  selector:
+    nodename: kubeadm-worker
+  type: LoadBalancer
+  loadBalancerIP: 10.0.4.81
