@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: kubeadm-control-plane-hd
+  name: kubeadm-worker-hd
 spec:
   accessModes:
     - ReadWriteMany
