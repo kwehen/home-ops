@@ -28,7 +28,8 @@ spec:
     ollama:
       enabled: false
     # -- A list of Ollama API endpoints. These can be added in lieu of automatically installing the Ollama Helm chart, or in addition to it.
-    ollamaUrls: ["http://ollama.${EXTERNAL_DOMAIN}:11434"]
+    # ollamaUrls: ["http://ollama.${EXTERNAL_DOMAIN}:11434"]
+    ollamaUrls: ["192.168.10.4:11434"]
     extraEnvVars:
       - name: ENABLE_LOGIN_FORM
         value: "false"
