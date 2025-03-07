@@ -7,9 +7,9 @@ resources:
   - ./namespace.yaml
   
   # Post Flux-Kustomizations
-  # - ./paperless/ks.yaml
+  - ./paperless/ks.yaml
   - ./reddit/ks.yaml
   - ./github-actions/ks.yaml
-  # - ./open-webui/ks.yaml
-  # - ./audiobookshelf/ks.yaml
+  - ./open-webui/ks.yaml
+  - ./audiobookshelf/ks.yaml
   - ./excalidraw/ks.yaml
