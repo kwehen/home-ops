@@ -88,7 +88,7 @@ resource "proxmox_vm_qemu" "longhorn_worker_nodes" {
       scsi0 {
         disk {
           storage = each.value.storage
-          size    = "500G"
+          size    = "625G"
           cache   = "writethrough"
         }
       }
