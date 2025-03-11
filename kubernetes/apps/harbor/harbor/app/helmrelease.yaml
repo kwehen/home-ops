@@ -58,13 +58,13 @@ spec:
       persistentVolumeClaim:
         registry:
           existingClaim: harbor-registry
-        jobservice:
-          jobLog:
-            existingClaim: harbor-jobservice
-        database:
-          existingClaim: harbor-database
-        redis:
-          existingClaim: harbor-redis
-        trivy:
-          existingClaim: harbor-trivy
+        # jobservice:
+        #   jobLog:
+        #     existingClaim: harbor-jobservice
+        # database:
+        #   existingClaim: harbor-database
+        # redis:
+        #   existingClaim: harbor-redis
+        # trivy:
+        #   existingClaim: harbor-trivy
     existingSecretAdminPassword: harbor-admin-password
