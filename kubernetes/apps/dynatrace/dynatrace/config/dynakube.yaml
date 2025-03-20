@@ -1,28 +1,42 @@
 ---
-apiVersion: dynatrace.com/v1beta2
+apiVersion: dynatrace.com/v1beta3
 kind: DynaKube
 metadata:
-  name: longhorn-talos
+  name: longhorn-talos-prod
   namespace: dynatrace
   annotations:
     feature.dynatrace.com/k8s-app-enabled: "true"
+# Link to api reference for further information: https://docs.dynatrace.com/docs/ingest-from/setup-on-k8s/reference/dynakube-parameters
 spec:
   apiUrl: ${DYNATRACE_TENANT_URL}
   metadataEnrichment:
     enabled: true
   oneAgent:
-    applicationMonitoring:
-      useCSIDriver: true
+    hostGroup: Enterprise
+    cloudNativeFullStack:
+      tolerations:
+        - effect: NoSchedule
+          key: node-role.kubernetes.io/master
+          operator: Exists
+        - effect: NoSchedule
+          key: node-role.kubernetes.io/control-plane
+          operator: Exists
   activeGate:
     capabilities:
-      - kubernetes-monitoring
       - routing
+      - kubernetes-monitoring
       - metrics-ingest
       - dynatrace-api
     resources:
       requests:
-        cpu: 50m
-        memory: 128Mi
+        cpu: 100m
+        memory: 1.5Gi
       limits:
         memory: 1.5Gi
-    group: "Enterprise"
+  templates:
+    extensionExecutionController:
+      imageRef:
+        repository: ${DYNATRACE_REPO_URL}
+        tag: latest
+  extensions: {}
+  logMonitoring: {}
