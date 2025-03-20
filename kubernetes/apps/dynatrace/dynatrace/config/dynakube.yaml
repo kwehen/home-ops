@@ -31,9 +31,4 @@ spec:
       imageRef:
         repository: ${DYNATRACE_REPO_URL}
         tag: latest
-    logMonitoring:
-      imageRef:
-        repository: public.ecr.aws/dynatrace/dynatrace-logmodule
-        tag: 1.311.32.20250319-185445
   extensions: {}
-  logMonitoring: {}
