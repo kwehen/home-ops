@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: harbor
-      version: 1.16.*
+      version: 1.16.1
       sourceRef:
         kind: HelmRepository
         name: harbor
@@ -58,13 +58,4 @@ spec:
       persistentVolumeClaim:
         registry:
           existingClaim: harbor-registry
-        # jobservice:
-        #   jobLog:
-        #     existingClaim: harbor-jobservice
-        # database:
-        #   existingClaim: harbor-database
-        # redis:
-        #   existingClaim: harbor-redis
-        # trivy:
-        #   existingClaim: harbor-trivy
     existingSecretAdminPassword: harbor-admin-password
