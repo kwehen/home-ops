@@ -33,7 +33,7 @@ spec:
       app.kubernetes.io/name: *app
   path: ./kubernetes/apps/dynatrace/dynatrace/config
   dependsOn:
-    - name: dynatrace
+    # - name: dynatrace
     - name: external-secrets
   prune: true
   sourceRef:
