@@ -6,8 +6,8 @@ metadata:
   name: enterprise-postgres
   namespace: databases
 spec:
-  instances: 2
-  imageName: ghcr.io/ahinko/postgres-extended:16.4.29
+  instances: 1
+  imageName: ghcr.io/ahinko/postgres-extended:16.6.29
   primaryUpdateStrategy: unsupervised
   startDelay: 300
   storage:
