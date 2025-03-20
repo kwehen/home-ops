@@ -7,4 +7,4 @@ resources:
   - ./namespace.yaml
   
   # Post Flux-Kustomizations
-  # - ./ansible/ks.yaml
+  - ./ansible/ks.yaml
