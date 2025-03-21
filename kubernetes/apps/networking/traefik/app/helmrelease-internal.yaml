@@ -39,6 +39,10 @@ spec:
       initContainers: []
       podAnnotations: {}
       replicas: 2
+    tracing:
+      otlp:
+        http:
+          endpoint: ${ACTIVEGATE_TRACES_URL}
     globalArguments:
     - --global.sendanonymoususage=false
     - --global.checknewversion=false
