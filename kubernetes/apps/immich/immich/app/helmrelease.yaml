@@ -94,6 +94,13 @@ spec:
             - hosts:
                 - photos.${EXTERNAL_DOMAIN}
               secretName: immich-tls
+      probes:
+        liveness:
+          spec:
+            initialDelaySeconds: 60
+        readiness:
+          spec:
+            initialDelaySeconds: 60
 
     machine-learning:
       resources:
