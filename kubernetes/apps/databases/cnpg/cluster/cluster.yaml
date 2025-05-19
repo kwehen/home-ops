@@ -18,7 +18,7 @@ spec:
   enableSuperuserAccess: true
   bootstrap:
     recovery:
-      source: &previousCluster enterprise-postgres-v13
+      source: &previousCluster enterprise-postgres-v14
   postgresql:
     parameters:
       max_connections: "600"
@@ -43,8 +43,8 @@ spec:
         compression: bzip2
         maxParallel: 8
       destinationPath: s3://cnpg/v16
-      endpointURL: https://api.${S3_BACKUP_URL}
-      serverName: &currentCluster enterprise-postgres-v14
+      endpointURL: https://${S3_BACKUP_API}
+      serverName: &currentCluster enterprise-postgres-v15
       s3Credentials:
         accessKeyId:
           name: cnpg-secret
@@ -61,7 +61,7 @@ spec:
           compression: bzip2
           maxParallel: 8
         destinationPath: s3://cnpg/v16
-        endpointURL: https://api.${S3_BACKUP_URL}
+        endpointURL: https://${S3_BACKUP_API}
         s3Credentials:
           accessKeyId:
             name: cnpg-secret
