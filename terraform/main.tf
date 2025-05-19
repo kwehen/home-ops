@@ -35,7 +35,7 @@ resource "proxmox_vm_qemu" "control_plane_nodes" {
       scsi0 {
         disk {
           storage = "local-lvm"
-          size    = "64G"
+          size    = "80G"
           cache   = "writethrough"
         }
       }
