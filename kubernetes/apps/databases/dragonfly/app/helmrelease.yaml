@@ -81,8 +81,7 @@ spec:
             port: *port
 
     serviceAccount:
-      create: true
-      name: *app
+      dragonfly-operator: {}
 
     # serviceMonitor:
     #   app:
