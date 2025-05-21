@@ -19,6 +19,8 @@ spec:
   values:
     controllers:
       dragonfly-operator:
+        serviceAccount:
+          identifier: *app
         containers:
           app:
             image:
