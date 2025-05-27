@@ -22,7 +22,7 @@ spec:
   postgresql:
     parameters:
       max_connections: "600"
-      shared_buffers: 256MB
+      shared_buffers: 512MB
     shared_preload_libraries:
       - "vectors.so"
   nodeMaintenanceWindow:
@@ -31,9 +31,9 @@ spec:
   resources:
     requests:
       cpu: 50m
-      memory: 1Gi
+      memory: 2Gi
     limits:
-      memory: 8Gi
+      memory: 10Gi
   monitoring:
     enablePodMonitor: true
   backup:
