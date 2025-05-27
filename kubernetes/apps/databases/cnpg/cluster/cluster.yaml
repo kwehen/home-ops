@@ -13,12 +13,15 @@ spec:
   storage:
     size: 15Gi
     storageClass: longhorn
+    pvcTemplate:
+      accessModes:
+        - ReadWriteMany
   superuserSecret:
     name: cnpg-secret
   enableSuperuserAccess: true
   bootstrap:
     recovery:
-      source: &previousCluster enterprise-postgres-v14
+      source: &previousCluster enterprise-postgres-v15
   postgresql:
     parameters:
       max_connections: "600"
@@ -44,7 +47,7 @@ spec:
         maxParallel: 8
       destinationPath: s3://cnpg/v16
       endpointURL: https://${S3_BACKUP_API}
-      serverName: &currentCluster enterprise-postgres-v15
+      serverName: &currentCluster enterprise-postgres-v16
       s3Credentials:
         accessKeyId:
           name: cnpg-secret
