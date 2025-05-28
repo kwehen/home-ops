@@ -5,5 +5,5 @@ resources:
   # Pre Flux-Kustomizations
   - ./namespace.yaml
   # Flux-Kustomizations
-  - ./dynatrace/ks.yaml
+  # - ./dynatrace/ks.yaml
   # - ./fluent-bit/ks.yaml
