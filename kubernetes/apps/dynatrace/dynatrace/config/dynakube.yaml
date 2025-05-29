@@ -2,7 +2,7 @@
 apiVersion: dynatrace.com/v1beta3
 kind: DynaKube
 metadata:
-  name: longhorn-talos-prod
+  name: talos-longhorn-cluster
   namespace: dynatrace
   annotations:
     feature.dynatrace.com/k8s-app-enabled: "true"
