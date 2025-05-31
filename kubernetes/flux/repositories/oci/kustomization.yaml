@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - ./dynatrace.yaml
   - ./apptemplate.yaml
+  - ./actions-runner-controller.yaml
