@@ -5,3 +5,4 @@ resources:
   - ./dynatrace.yaml
   - ./apptemplate.yaml
   - ./actions-runner-controller.yaml
+  - ./actions-runner-scale-set.yaml
