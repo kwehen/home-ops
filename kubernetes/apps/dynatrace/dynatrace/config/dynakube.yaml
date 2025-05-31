@@ -20,7 +20,6 @@ spec:
       - kubernetes-monitoring
       - metrics-ingest
       - dynatrace-api
-      - debugging
     resources:
       requests:
         cpu: 100m
