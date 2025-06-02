@@ -19,7 +19,6 @@ resources:
   - external-dns.yaml
   - cnpg.yaml
   - immich.yaml
-  - actions-runner-controller.yaml
   - authentik.yaml
   - open-webui.yaml
   - grafana.yaml
