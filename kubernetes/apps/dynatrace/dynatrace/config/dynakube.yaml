@@ -13,7 +13,14 @@ spec:
     enabled: true
   oneAgent:
     hostGroup: Enterprise
-    applicationMonitoring: {}
+    applicationMonitoring:
+      namespaceSelector:
+        matchExpressions:
+        - key: kubernetes.io/metadata.name
+          operator: NotIn
+          values:
+          - kube-system
+          - kubevirt
   activeGate:
     capabilities:
       - routing
