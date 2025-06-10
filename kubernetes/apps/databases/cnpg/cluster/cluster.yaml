@@ -11,7 +11,7 @@ spec:
   primaryUpdateStrategy: unsupervised
   startDelay: 300
   storage:
-    size: 15Gi
+    size: 30Gi
     storageClass: longhorn
     pvcTemplate:
       accessModes:
