@@ -13,6 +13,6 @@ jobs:
       - uses: plengauer/opentelemetry-github/actions/instrument/workflow@v5.21.0
         env:
           OTEL_EXPORTER_OTLP_ENDPOINT: ${{ secrets.OTEL_EXPORTER_OTLP_ENDPOINT }}
-          OTEL_EXPORTER_OTLP_HEADERS: ${{ secrets.OTEL_EXPORTER_OTLP_HEADERS }}
+          OTEL_EXPORTER_OTLP_HEADERS: "Authorization=Api-Token ${{ secrets.DYNATRACE_API_KEY }}"
     permissions:
       actions: read
