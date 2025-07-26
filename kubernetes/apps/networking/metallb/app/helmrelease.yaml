@@ -13,7 +13,7 @@ spec:
         kind: HelmRepository
         name: metallb
         namespace: flux-system
-      version: 0.15.*
+      version: 0.15.1
   install:
     crds: Create
   interval: 1m0s
