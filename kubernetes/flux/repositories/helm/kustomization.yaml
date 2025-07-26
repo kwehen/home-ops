@@ -12,7 +12,6 @@ resources:
   - metallb.yaml
   - prometheus-grafana.yaml
   - traefik.yaml
-  - bjw-s.yaml
   - fluent-bit.yaml
   - nextcloud.yaml
   - keda.yaml
