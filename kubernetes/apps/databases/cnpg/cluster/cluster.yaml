@@ -27,8 +27,8 @@ spec:
       max_connections: "1000"
       shared_buffers: 2GB
     shared_preload_libraries:
-      - "vchord.so"
       - "vectors.so"
+      - "vchord.so"
   nodeMaintenanceWindow:
     inProgress: false
     reusePVC: true
@@ -48,7 +48,7 @@ spec:
         maxParallel: 8
       destinationPath: s3://cnpg/v16
       endpointURL: https://${S3_BACKUP_API}
-      serverName: &currentCluster enterprise-postgres-v18
+      serverName: &currentCluster enterprise-postgres-v19
       s3Credentials:
         accessKeyId:
           name: cnpg-secret
