@@ -11,7 +11,7 @@ spec:
   primaryUpdateStrategy: unsupervised
   startDelay: 300
   storage:
-    size: 30Gi
+    size: 64Gi
     storageClass: longhorn
     pvcTemplate:
       accessModes:
@@ -25,7 +25,7 @@ spec:
   postgresql:
     parameters:
       max_connections: "600"
-      shared_buffers: 512MB
+      shared_buffers: 2GB
     shared_preload_libraries:
       - "vectors.so"
   nodeMaintenanceWindow:
