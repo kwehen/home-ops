@@ -21,10 +21,10 @@ spec:
   enableSuperuserAccess: true
   bootstrap:
     recovery:
-      source: &previousCluster enterprise-postgres-v15
+      source: &previousCluster enterprise-postgres-v16
   postgresql:
     parameters:
-      max_connections: "600"
+      max_connections: "1000"
       shared_buffers: 2GB
     shared_preload_libraries:
       - "vchord.so"
@@ -47,7 +47,7 @@ spec:
         maxParallel: 8
       destinationPath: s3://cnpg/v16
       endpointURL: https://${S3_BACKUP_API}
-      serverName: &currentCluster enterprise-postgres-v16
+      serverName: &currentCluster enterprise-postgres-v17
       s3Credentials:
         accessKeyId:
           name: cnpg-secret
