@@ -3,32 +3,32 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: enterprise-postgres
+  name: immich-postgres
   namespace: databases
 spec:
   instances: 3
-  imageName: ghcr.io/ahinko/postgres-extended:16.6.29
+  imageName: ghcr.io/immich-app/postgres:16-vectorchord0.4.2-pgvectors0.3.0
   primaryUpdateStrategy: unsupervised
   startDelay: 300
   storage:
-    size: 64Gi
+    size: 16Gi
     storageClass: longhorn
     pvcTemplate:
       accessModes:
         - ReadWriteMany
   superuserSecret:
-    name: cnpg-secret
+    name: immich-postgres
   enableSuperuserAccess: true
-  bootstrap:
-    recovery:
-      source: &previousCluster enterprise-postgres-v16
+  # bootstrap:
+  #   recovery:
+  #     source: &previousCluster enterprise-postgres-v16
   postgresql:
     parameters:
       max_connections: "1000"
       shared_buffers: 2GB
     # shared_preload_libraries:
     #   - "vectors.so"
-    #   # - "vchord.so"
+      # - "vchord.so"
   nodeMaintenanceWindow:
     inProgress: false
     reusePVC: true
@@ -46,33 +46,33 @@ spec:
       wal:
         compression: bzip2
         maxParallel: 8
-      destinationPath: s3://cnpg/v16
+      destinationPath: s3://immich-postgres/v16
       endpointURL: https://${S3_BACKUP_API}
-      serverName: &currentCluster enterprise-postgres-v21
+      serverName: &currentCluster immich-postgres-v1
       s3Credentials:
         accessKeyId:
-          name: cnpg-secret
+          name: immich-postgres
           key: AWS_ACCESS_KEY_ID
         secretAccessKey:
-          name: cnpg-secret
+          name: immich-postgres
           key: AWS_SECRET_ACCESS_KEY
   # Note: externalClusters is needed when recovering from an existing cnpg cluster
-  externalClusters:
-    - name: *previousCluster
-      barmanObjectStore:
-        serverName: *previousCluster
-        wal:
-          compression: bzip2
-          maxParallel: 8
-        destinationPath: s3://cnpg/v16
-        endpointURL: https://${S3_BACKUP_API}
-        s3Credentials:
-          accessKeyId:
-            name: cnpg-secret
-            key: AWS_ACCESS_KEY_ID
-          secretAccessKey:
-            name: cnpg-secret
-            key: AWS_SECRET_ACCESS_KEY
+  # externalClusters:
+  #   - name: *previousCluster
+  #     barmanObjectStore:
+  #       serverName: *previousCluster
+  #       wal:
+  #         compression: bzip2
+  #         maxParallel: 8
+  #       destinationPath: s3://cnpg/v16
+  #       endpointURL: https://${S3_BACKUP_API}
+  #       s3Credentials:
+  #         accessKeyId:
+  #           name: immich-postgres
+  #           key: AWS_ACCESS_KEY_ID
+  #         secretAccessKey:
+  #           name: immich-postgres
+  #           key: AWS_SECRET_ACCESS_KEY
   affinity:
     nodeSelector:
       beta.kubernetes.io/arch: amd64
