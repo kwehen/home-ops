@@ -11,7 +11,7 @@ spec:
   primaryUpdateStrategy: unsupervised
   startDelay: 300
   storage:
-    size: 64Gi
+    size: 30Gi
     storageClass: longhorn
     pvcTemplate:
       accessModes:
@@ -24,11 +24,10 @@ spec:
       source: &previousCluster enterprise-postgres-v16
   postgresql:
     parameters:
-      max_connections: "1000"
-      shared_buffers: 2GB
+      max_connections: "500"
+      shared_buffers: 512MB
     # shared_preload_libraries:
     #   - "vectors.so"
-    #   # - "vchord.so"
   nodeMaintenanceWindow:
     inProgress: false
     reusePVC: true
@@ -48,7 +47,7 @@ spec:
         maxParallel: 8
       destinationPath: s3://cnpg/v16
       endpointURL: https://${S3_BACKUP_API}
-      serverName: &currentCluster enterprise-postgres-v21
+      serverName: &currentCluster enterprise-postgres-v18
       s3Credentials:
         accessKeyId:
           name: cnpg-secret

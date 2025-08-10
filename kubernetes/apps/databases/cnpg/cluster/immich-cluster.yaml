@@ -26,9 +26,6 @@ spec:
     parameters:
       max_connections: "1000"
       shared_buffers: 2GB
-    # shared_preload_libraries:
-    #   - "vectors.so"
-      # - "vchord.so"
   nodeMaintenanceWindow:
     inProgress: false
     reusePVC: true
