@@ -15,3 +15,21 @@ spec:
   selector:
     cnpg.io/cluster: enterprise-postgres
     role: primary
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: immich-postgres-lb
+  annotations:
+    metallb.io/loadBalancerIPs: 10.0.4.150
+spec:
+  type: LoadBalancer
+  ports:
+    - name: postgres
+      port: 5432
+      protocol: TCP
+      targetPort: 5432
+  selector:
+    cnpg.io/cluster: immich-postgres
+    role: primary
+    

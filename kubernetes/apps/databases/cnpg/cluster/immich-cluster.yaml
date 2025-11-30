@@ -7,7 +7,7 @@ metadata:
   namespace: databases
 spec:
   instances: 3
-  imageName: ghcr.io/immich-app/postgres:16-vectorchord0.4.2-pgvectors0.3.0
+  imageName: ghcr.io/cloudnative-pg/postgresql:18.1-standard-trixie
   primaryUpdateStrategy: unsupervised
   startDelay: 300
   storage:
@@ -19,13 +19,12 @@ spec:
   superuserSecret:
     name: immich-postgres
   enableSuperuserAccess: true
-  # bootstrap:
-  #   recovery:
-  #     source: &previousCluster enterprise-postgres-v16
   postgresql:
     parameters:
       max_connections: "1000"
       shared_buffers: 2GB
+    shared_preload_libraries:
+      - "vchord.so"
   nodeMaintenanceWindow:
     inProgress: false
     reusePVC: true
@@ -43,7 +42,7 @@ spec:
       wal:
         compression: bzip2
         maxParallel: 8
-      destinationPath: s3://immich-postgres/v16
+      destinationPath: s3://immich-postgres/v18
       endpointURL: https://${S3_BACKUP_API}
       serverName: &currentCluster immich-postgres-v1
       s3Credentials:
@@ -70,9 +69,6 @@ spec:
   #         secretAccessKey:
   #           name: immich-postgres
   #           key: AWS_SECRET_ACCESS_KEY
-  affinity:
-    nodeSelector:
-      beta.kubernetes.io/arch: amd64
   topologySpreadConstraints:
     - maxSkew: 1
       topologyKey: kubernetes.io/hostname
