@@ -7,6 +7,6 @@ resources:
   - ./namespace.yaml
   # Flux-Kustomizations
   - ./kubevirt-operator/ks.yaml
-  - ./cdi/ks.yaml
+  # - ./cdi/ks.yaml
   # - ./bluesky/ks.yaml
   # - ./kubeadm/ks.yaml
