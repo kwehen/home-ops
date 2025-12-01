@@ -74,7 +74,7 @@ spec:
         allowExternalNameServices: true
         enabled: true
         publishedService:
-          enabled: false
+          enabled: true
     metrics:
       prometheus:
         enabled: true
