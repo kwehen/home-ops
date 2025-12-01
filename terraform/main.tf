@@ -7,9 +7,9 @@ resource "proxmox_vm_qemu" "control_plane_nodes" {
   target_node = each.value.target_node
 
   onboot   = false
-  memory   = 8192
+  memory   = 32768
   sockets  = 1
-  cores    = 2
+  cores    = 4
   cpu_type = "host"
   vm_state = "stopped"
   scsihw   = "virtio-scsi-single"
@@ -27,7 +27,7 @@ resource "proxmox_vm_qemu" "control_plane_nodes" {
     ide {
       ide2 {
         cdrom {
-          iso = "prox_iso:iso/metal-amd64.iso"
+          iso = "prox_iso:iso/nocloud-amd64.iso"
         }
       }
     }
@@ -36,6 +36,13 @@ resource "proxmox_vm_qemu" "control_plane_nodes" {
         disk {
           storage = "local-lvm"
           size    = "80G"
+          cache   = "writethrough"
+        }
+      }
+      scsi1 {
+        disk {
+          storage = each.value.storage
+          size    = "768G"
           cache   = "writethrough"
         }
       }
@@ -80,7 +87,7 @@ resource "proxmox_vm_qemu" "control_plane_nodes" {
 #     ide {
 #       ide2 {
 #         cdrom {
-#           iso = "prox_iso:iso/metal-amd64.iso"
+#           iso = "prox_iso:iso/nocloud-amd64.iso"
 #         }
 #       }
 #     }
