@@ -7,9 +7,8 @@ metadata:
   namespace: databases
 spec:
   instances: 3
-  imageName: ghcr.io/cloudnative-pg/postgresql:18.1-standard-trixie
+  imageName: ghcr.io/immich-app/postgres:18-vectorchord0.5.3
   primaryUpdateStrategy: unsupervised
-  startDelay: 300
   storage:
     size: 16Gi
     storageClass: longhorn
@@ -19,6 +18,12 @@ spec:
   superuserSecret:
     name: immich-postgres
   enableSuperuserAccess: true
+  bootstrap:
+    initdb:
+      database: immich
+      owner: immich
+      postInitSQL:
+        - CREATE EXTENSION IF NOT EXISTS vchord CASCADE;
   postgresql:
     parameters:
       max_connections: "1000"
