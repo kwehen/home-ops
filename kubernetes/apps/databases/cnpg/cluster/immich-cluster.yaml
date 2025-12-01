@@ -6,7 +6,7 @@ metadata:
   name: immich-postgres
   namespace: databases
 spec:
-  instances: 3
+  instances: 2
   imageName: ghcr.io/immich-app/postgres:18-vectorchord0.5.3
   primaryUpdateStrategy: unsupervised
   storage:
