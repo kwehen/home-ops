@@ -19,3 +19,5 @@ spec:
   values:
     crds:
       enabled: true
+    speaker:
+      ignoreExcludeLB: true 
