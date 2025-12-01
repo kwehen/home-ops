@@ -69,7 +69,7 @@ spec:
         className: traefik-internal
         annotations:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-          traefik.ingress.kubernetes.io/router.middlewares: networking-ipwhitelist@kubernetescrd
+          # traefik.ingress.kubernetes.io/router.middlewares: networking-ipwhitelist@kubernetescrd
           cert-manager.io/cluster-issuer: letsencrypt-production-internal
         hosts:
           - host: reddit.home.${INTERNAL_DOMAIN}
