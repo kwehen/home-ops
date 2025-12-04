@@ -21,7 +21,7 @@ kind: Service
 metadata:
   name: immich-postgres-lb
   annotations:
-    metallb.io/loadBalancerIPs: 10.0.4.150
+    metallb.io/loadBalancerIPs: 10.0.4.122
 spec:
   type: LoadBalancer
   ports:

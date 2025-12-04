@@ -24,9 +24,9 @@ spec:
   upgrade:
     crds: CreateReplace
     timeout: 7m
-  values:
-    # Configuration for Datadog operator
-    replicaCount: 2
-    image:
-      repository: gcr.io/datadoghq/datadog-operator
-      pullPolicy: IfNotPresent
+  # values:
+  #   # Configuration for Datadog operator
+  #   replicaCount: 2
+  #   image:
+  #     repository: gcr.io/datadoghq/datadog-operator
+  #     pullPolicy: IfNotPresent
