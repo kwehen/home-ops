@@ -45,7 +45,8 @@ spec:
         cert-manager.io/cluster-issuer: letsencrypt-production-internal
     defaultSettings:
       storageReservedPercentageForDefaultDisk: 15
-      backupTarget: 's3://longhorn-backup@world/longhorn'
-      backupTargetCredentialSecret: minio-backup
       storageOverProvisioningPercentage: 200
       defaultClassReplicaCount: 2
+    defaultBackupStore:
+      backupTarget: 's3://longhorn-backup@world/longhorn'
+      backupTargetCredentialSecret: minio-backup
