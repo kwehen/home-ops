@@ -55,8 +55,9 @@ spec:
 
     persistence:
       config:
-        existingClaim: uptime
-        advancedMounts:
-          uptime:
-            app:
-              - path: /app/data
+        enabled: true
+        type: persistentVolumeClaim
+        size: 32Gi
+        accessMode: ReadWriteOnce
+        globalMounts:
+          - path: /app/data
