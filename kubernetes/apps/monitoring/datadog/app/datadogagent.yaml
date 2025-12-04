@@ -11,9 +11,6 @@ spec:
         keyName: "api-key"
     clusterName: "talos-k8s"
   features:
-    apm:
-      instrumentation:
-        enabled: true
     logCollection:
       enabled: true
       containerCollectAll: true
