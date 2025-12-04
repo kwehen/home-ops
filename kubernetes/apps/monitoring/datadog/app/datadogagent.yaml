@@ -23,5 +23,5 @@ spec:
     logCollection:
       enabled: true
       containerCollectAll: true
-    systemProbe:
+    liveProcessCollection:
       enabled: false
