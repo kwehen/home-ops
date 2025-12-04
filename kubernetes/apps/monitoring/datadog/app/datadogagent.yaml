@@ -4,6 +4,8 @@ metadata:
   name: "datadog"
 spec:
   global:
+    kubelet:
+      tlsVerify: false
     site: "datadoghq.com"
     credentials:
       apiSecret:
