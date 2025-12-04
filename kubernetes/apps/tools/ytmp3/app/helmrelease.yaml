@@ -25,7 +25,7 @@ spec:
           app:
             image:
               repository: ghcr.io/alexta69/metube
-              tag: "2025-01-16"
+              tag: "2025.11.29"
             env:
               DOWNLOAD_DIR: "/downloads"
               STATE_DIR: "/config"
