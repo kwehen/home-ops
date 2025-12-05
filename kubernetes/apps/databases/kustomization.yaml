@@ -7,6 +7,6 @@ resources:
   - ./namespace.yaml
   
   # Post Flux-Kustomizations
-  # - ./pgadmin/ks.yaml
+  - ./pgadmin/ks.yaml
   - ./cnpg/ks.yaml
   - ./dragonfly/ks.yaml
