@@ -20,12 +20,12 @@ spec:
   superuserSecret:
     name: immich-postgres
   enableSuperuserAccess: true
-  # bootstrap:
-  #   initdb:
-  #     database: immich
-  #     owner: immich
-  #     postInitSQL:
-  #       - CREATE EXTENSION IF NOT EXISTS vchord CASCADE;
+  bootstrap:
+    initdb:
+      database: immich
+      owner: immich
+      postInitSQL:
+        - CREATE EXTENSION IF NOT EXISTS vchord CASCADE;
   postgresql:
     parameters:
       max_connections: "1000"
