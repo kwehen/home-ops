@@ -30,7 +30,7 @@ jobs:
         with:
           secrets_to_redact: '["${{ github.token }}","${{ secrets.BOT_APP_ID }}","${{ secrets.BOT_PRIVATE_KEY }}"]'
       - name: Generate Token
-        uses: actions/create-github-app-token@v1
+        uses: actions/create-github-app-token@v2
         id: app-token
         with:
           app-id: "${{ secrets.BOT_APP_ID }}"
