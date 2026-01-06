@@ -6,7 +6,7 @@ metadata:
   name: immich-postgres
   namespace: databases
 spec:
-  instances: 3
+  instances: 1
   imageName: ghcr.io/immich-app/postgres:18-vectorchord0.5.3
   postgresUID: 999
   postgresGID: 999
@@ -25,7 +25,8 @@ spec:
       database: immich
       owner: immich
       postInitSQL:
-        - CREATE EXTENSION IF NOT EXISTS vchord CASCADE;
+        - CREATE EXTENSION vchord CASCADE;
+        - CREATE EXTENSION earthdistance CASCADE;
   postgresql:
     parameters:
       max_connections: "1000"
@@ -43,39 +44,6 @@ spec:
       memory: 8Gi
   monitoring:
     enablePodMonitor: true
-  # backup:
-  #   retentionPolicy: 30d
-  #   barmanObjectStore:
-  #     wal:
-  #       compression: bzip2
-  #       maxParallel: 8
-  #     destinationPath: s3://immich-postgres/v18
-  #     endpointURL: https://${S3_BACKUP_API}
-  #     serverName: &currentCluster immich-postgres-v1
-  #     s3Credentials:
-  #       accessKeyId:
-  #         name: immich-postgres
-  #         key: AWS_ACCESS_KEY_ID
-  #       secretAccessKey:
-  #         name: immich-postgres
-  #         key: AWS_SECRET_ACCESS_KEY
-  # Note: externalClusters is needed when recovering from an existing cnpg cluster
-  # externalClusters:
-  #   - name: *previousCluster
-  #     barmanObjectStore:
-  #       serverName: *previousCluster
-  #       wal:
-  #         compression: bzip2
-  #         maxParallel: 8
-  #       destinationPath: s3://cnpg/v16
-  #       endpointURL: https://${S3_BACKUP_API}
-  #       s3Credentials:
-  #         accessKeyId:
-  #           name: immich-postgres
-  #           key: AWS_ACCESS_KEY_ID
-  #         secretAccessKey:
-  #           name: immich-postgres
-  #           key: AWS_SECRET_ACCESS_KEY
   topologySpreadConstraints:
     - maxSkew: 1
       topologyKey: kubernetes.io/hostname
