@@ -1,0 +1,20 @@
+apiVersion: barmancloud.cnpg.io/v1
+kind: ObjectStore
+metadata:
+  name: enterprise-backup
+spec:
+  configuration:
+    barmanObjectStore:
+      wal:
+        compression: bzip2
+        maxParallel: 8
+      destinationPath: s3://cnpg/v17
+      endpointURL: https://${S3_BACKUP_API}
+      serverName: &currentCluster enterprise-postgres-v1
+      s3Credentials:
+        accessKeyId:
+          name: cnpg-secret
+          key: AWS_ACCESS_KEY_ID
+        secretAccessKey:
+          name: cnpg-secret
+          key: AWS_SECRET_ACCESS_KEY

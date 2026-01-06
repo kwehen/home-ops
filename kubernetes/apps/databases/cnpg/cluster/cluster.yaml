@@ -39,22 +39,6 @@ spec:
       memory: 10Gi
   monitoring:
     enablePodMonitor: true
-  backup:
-    retentionPolicy: 30d
-    barmanObjectStore:
-      wal:
-        compression: bzip2
-        maxParallel: 8
-      destinationPath: s3://cnpg/v17
-      endpointURL: https://${S3_BACKUP_API}
-      serverName: &currentCluster enterprise-postgres-v1
-      s3Credentials:
-        accessKeyId:
-          name: cnpg-secret
-          key: AWS_ACCESS_KEY_ID
-        secretAccessKey:
-          name: cnpg-secret
-          key: AWS_SECRET_ACCESS_KEY
   # Note: externalClusters is needed when recovering from an existing cnpg cluster
   # externalClusters:
   #   - name: *previousCluster
