@@ -10,7 +10,7 @@ spec:
         maxParallel: 8
       destinationPath: s3://cnpg/v17
       endpointURL: https://${S3_BACKUP_API}
-      serverName: &currentCluster enterprise-postgres-v1
+      serverName: ßenterprise-postgres-v1
       s3Credentials:
         accessKeyId:
           name: cnpg-secret

@@ -2,12 +2,12 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: datadog-operator
+  name: datadog-agent
   namespace: flux-system
 spec:
   chart:
     spec:
-      chart: datadog-operator
+      chart: datadog-agent
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
@@ -19,14 +19,70 @@ spec:
     timeout: 7m
   interval: 1m0s
   timeout: 7m
-  releaseName: datadog-operator
+  releaseName: datadog-agent
   targetNamespace: monitoring
   upgrade:
     crds: CreateReplace
     timeout: 7m
-  # values:
-  #   # Configuration for Datadog operator
-  #   replicaCount: 2
-  #   image:
-  #     repository: gcr.io/datadoghq/datadog-operator
-  #     pullPolicy: IfNotPresent
+  values:
+    datadog:
+      site: "datadoghq.com"
+      clusterName: "k8s-home-talos"
+      apiKeyExistingSecret: "datadog-secret"
+      clusterChecks:
+        enabled: true
+      orchestratorExplorer:
+        enabled: true
+      otelCollector:
+        enabled: true
+        ports:
+          - containerPort: 4317
+            hostPort: 4317
+            name: "otel-grpc"
+          - containerPort: 4318
+            hostPort: 4318
+            name: "otel-http"
+      tags:
+        - "env:prod"
+      apm:
+        instrumentation:
+          enabled: true
+          targets:
+            - name: "default-target"
+              ddTraceVersions:
+                java: "1"
+                python: "4"
+                js: "5"
+                php: "1"
+                dotnet: "3"
+                ruby: "2"
+              ddTraceConfigs:
+                - name: "DD_PROFILING_ENABLED"
+                  value: "auto"
+      logs:
+        enabled: true
+        containerCollectAll: true
+      asm:
+        threats:
+          enabled: true
+        sca:
+          enabled: true
+        iast:
+          enabled: true
+      securityAgent:
+        runtime:
+          enabled: true
+        compliance:
+          enabled: true
+      sbom:
+        containerImage:
+          enabled: true
+        host:
+          enabled: true
+      serviceMonitoring:
+        enabled: true
+      networkMonitoring:
+        enabled: true
+    providers:
+      talos:
+        enabled: true
