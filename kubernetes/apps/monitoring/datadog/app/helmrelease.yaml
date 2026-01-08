@@ -33,8 +33,8 @@ spec:
         enabled: true
       orchestratorExplorer:
         enabled: true
-      otelCollector:
-        enabled: true
+      # otelCollector:
+      #   enabled: true
         ports:
           - containerPort: 4317
             hostPort: 4317
