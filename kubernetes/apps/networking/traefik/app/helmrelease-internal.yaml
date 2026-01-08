@@ -31,7 +31,7 @@ spec:
   values:
     additionalArguments:
     - --serversTransport.insecureSkipVerify=true
-    - --log.level=DEBUG
+    - --log.level=INFO
     deployment:
       additionalContainers: []
       annotations: {}
