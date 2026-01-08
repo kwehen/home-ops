@@ -62,27 +62,6 @@ spec:
       logs:
         enabled: true
         containerCollectAll: true
-      asm:
-        threats:
-          enabled: true
-        sca:
-          enabled: true
-        iast:
-          enabled: true
-      securityAgent:
-        runtime:
-          enabled: true
-        compliance:
-          enabled: true
-      sbom:
-        containerImage:
-          enabled: true
-        host:
-          enabled: true
-      serviceMonitoring:
-        enabled: true
-      networkMonitoring:
-        enabled: true
     providers:
       talos:
         enabled: true
