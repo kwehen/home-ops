@@ -26,6 +26,13 @@ spec:
     timeout: 7m
   values:
     datadog:
+      kubelet:
+        tlsVerify: false
+      env:
+        - name: DD_HOSTNAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
       site: "datadoghq.com"
       clusterName: "k8s-home-talos"
       apiKeyExistingSecret: "datadog-secret"
