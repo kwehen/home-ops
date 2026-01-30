@@ -13,7 +13,7 @@ spec:
         kind: HelmRepository
         name: longhorn
         namespace: flux-system
-      version: 1.8.1
+      version: 1.11.0
   install:
     crds: Create
     disableWait: true
