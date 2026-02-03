@@ -9,7 +9,7 @@ spec:
   instances: 3
   imageName: ghcr.io/cloudnative-pg/postgresql:17
   primaryUpdateStrategy: unsupervised
-  startDelay: 300
+  startDelay: 60
   storage:
     size: 30Gi
     storageClass: longhorn
