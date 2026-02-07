@@ -8,4 +8,4 @@ spec:
   interval: 24h
   url: oci://public.ecr.aws/dynatrace/dynatrace-operator
   ref:
-    tag: 1.6.0
+    tag: v1.8.1
