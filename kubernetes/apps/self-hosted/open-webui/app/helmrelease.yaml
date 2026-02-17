@@ -29,39 +29,38 @@ spec:
       enabled: false
     # -- A list of Ollama API endpoints. These can be added in lieu of automatically installing the Ollama Helm chart, or in addition to it.
     # ollamaUrls: ["http://ollama.${EXTERNAL_DOMAIN}:11434"]
-    ollamaUrls: ["http://192.168.10.4:11434"]
-    extraEnvVars:
-      - name: ENABLE_LOGIN_FORM
-        value: "false"
-      - name: OAUTH_PROVIDER_NAME
-        value: authentik
-      - name: ENABLE_OAUTH_SIGNUP
-        value: "true"
-      - name: OPENID_PROVIDER_URL
-        valueFrom:
-          secretKeyRef:
-            name: *app
-            key: OPENID_PROVIDER_URL
-      - name: OAUTH_CLIENT_ID
-        valueFrom:
-          secretKeyRef:
-            name: *app
-            key: OAUTH_CLIENT_ID
-      - name: OAUTH_CLIENT_SECRET
-        valueFrom:
-          secretKeyRef:
-            name: *app
-            key: OAUTH_CLIENT_SECRET
+    # ollamaUrls: ["http://192.168.10.4:11434"]
+    # extraEnvVars:
+    #   - name: ENABLE_LOGIN_FORM
+    #     value: "false"
+    #   - name: OAUTH_PROVIDER_NAME
+    #     value: authentik
+    #   - name: ENABLE_OAUTH_SIGNUP
+    #     value: "true"
+    #   - name: OPENID_PROVIDER_URL
+    #     valueFrom:
+    #       secretKeyRef:
+    #         name: *app
+    #         key: OPENID_PROVIDER_URL
+    #   - name: OAUTH_CLIENT_ID
+    #     valueFrom:
+    #       secretKeyRef:
+    #         name: *app
+    #         key: OAUTH_CLIENT_ID
+    #   - name: OAUTH_CLIENT_SECRET
+    #     valueFrom:
+    #       secretKeyRef:
+    #         name: *app
+    #         key: OAUTH_CLIENT_SECRET
     ingress:
       enabled: true
-      class: traefik
+      class: traefik-internal
       annotations:
-        cert-manager.io/cluster-issuer: letsencrypt-production-external
+        cert-manager.io/cluster-issuer: letsencrypt-production-internal
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         traefik.ingress.kubernetes.io/router.middlewares: |
-          networking-cloudflare-only@kubernetescrd,
           networking-request-limit@kubernetescrd
-      host: &host "chat.${EXTERNAL_DOMAIN}"
+      host: &host "chat.home.${INTERNAL_DOMAIN}"
       tls: true
     persistence:
       enabled: true
