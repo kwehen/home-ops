@@ -1,4 +1,3 @@
----
 # yaml-language-server: $schema=https://kochhaus-schemas.pages.dev/postgresql.cnpg.io/cluster_v1.json
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
@@ -15,7 +14,7 @@ spec:
     storageClass: longhorn
     pvcTemplate:
       accessModes:
-        - ReadWriteMany
+        - ReadWriteOnce
   superuserSecret:
     name: cnpg-secret
   enableSuperuserAccess: true
@@ -26,8 +25,6 @@ spec:
     parameters:
       max_connections: "500"
       shared_buffers: 512MB
-    # shared_preload_libraries:
-    #   - "vectors.so"
   nodeMaintenanceWindow:
     inProgress: false
     reusePVC: true
@@ -39,23 +36,24 @@ spec:
       memory: 10Gi
   monitoring:
     enablePodMonitor: true
-  # Note: externalClusters is needed when recovering from an existing cnpg cluster
-  # externalClusters:
-  #   - name: *previousCluster
-  #     barmanObjectStore:
-  #       serverName: *previousCluster
-  #       wal:
-  #         compression: bzip2
-  #         maxParallel: 8
-  #       destinationPath: s3://cnpg/v16
-  #       endpointURL: https://${S3_BACKUP_API}
-  #       s3Credentials:
-  #         accessKeyId:
-  #           name: cnpg-secret
-  #           key: AWS_ACCESS_KEY_ID
-  #         secretAccessKey:
-  #           name: cnpg-secret
-  #           key: AWS_SECRET_ACCESS_KEY
+  backup:
+    retentionPolicy: 30d
+    barmanObjectStore: &barmanObjectStore
+      data:
+        compression: bzip2
+      wal:
+        compression: bzip2
+        maxParallel: 8
+      destinationPath: s3://cnpg/v17
+      endpointURL: https://${S3_BACKUP_API}
+      serverName: &currentCluster enterprise-postgres
+      s3Credentials:
+        accessKeyId:
+          name: cnpg-secret
+          key: AWS_ACCESS_KEY_ID
+        secretAccessKey:
+          name: cnpg-secret
+          key: AWS_SECRET_ACCESS_KEY
   affinity:
     nodeSelector:
       beta.kubernetes.io/arch: amd64
