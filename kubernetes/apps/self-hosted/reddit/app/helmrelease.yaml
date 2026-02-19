@@ -37,8 +37,8 @@ spec:
                   name: reddit-subscriptions
             resources:
               requests:
-                cpu: 5m
-                memory: 50Mi
+                cpu: 50m
+                memory: 100Mi
               limits:
                 memory: 250Mi
             probes:
