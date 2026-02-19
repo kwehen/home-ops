@@ -13,3 +13,4 @@ resources:
   - ./open-webui/ks.yaml
   - ./audiobookshelf/ks.yaml
   - ./excalidraw/ks.yaml
+  - ./n8n/ks.yaml
