@@ -81,7 +81,17 @@ spec:
                 service:
                   identifier: app
                   port: http
-        tls: []
+        tls:
+          - hosts: ["n8n.home.${INTERNAL_DOMAIN}"]
+            secretName: n8n-tls
       webhook:
         enabled: true
         className: traefik-internal
+
+        hosts:
+          - host: n8n-webhook.home.${INTERNAL_DOMAIN}
+            paths:
+              - path: /webhook
+                service:
+                  identifier: app
+                  port: http
