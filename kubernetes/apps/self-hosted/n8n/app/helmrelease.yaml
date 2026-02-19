@@ -74,6 +74,10 @@ spec:
       app:
         enabled: true
         className: traefik-internal
+        annotations:
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: networking-ipwhitelist@kubernetescrd
+          cert-manager.io/cluster-issuer: letsencrypt-production-internal
         hosts:
           - host: n8n.home.${INTERNAL_DOMAIN}
             paths:
