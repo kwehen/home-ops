@@ -90,10 +90,10 @@ spec:
             secretName: n8n-tls
       webhook:
         enabled: true
-        className: traefik-internal
+        className: traefik-external
 
         hosts:
-          - host: n8n-webhook.home.${INTERNAL_DOMAIN}
+          - host: n8n-webhook.${EXTERNAL_DOMAIN}
             paths:
               - path: /webhook
                 service:
