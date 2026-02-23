@@ -91,7 +91,8 @@ spec:
       webhook:
         enabled: true
         className: traefik-external
-
+        annotations:
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         hosts:
           - host: n8n-webhook.${EXTERNAL_DOMAIN}
             paths:
