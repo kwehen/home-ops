@@ -51,6 +51,8 @@ spec:
 
     controllers:
       main:
+        labels: 
+          datadoghq.com/apm-instrumentation: "disabled"
         containers:
           main:
             image:
