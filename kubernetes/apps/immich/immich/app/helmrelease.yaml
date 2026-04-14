@@ -65,6 +65,7 @@ spec:
                   secretKeyRef:
                     name: immich-secret
                     key: DB_HOSTNAME
+              DD_TRACE_ENABLED: false
               DB_USERNAME:
                 valueFrom:
                   secretKeyRef:
