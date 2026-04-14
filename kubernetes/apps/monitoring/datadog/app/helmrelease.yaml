@@ -53,7 +53,7 @@ spec:
         - "env:prod"
       apm:
         instrumentation:
-          enabled: true
+          enabled: false
           targets:
             - name: "default-target"
               ddTraceVersions:
