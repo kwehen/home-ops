@@ -85,8 +85,8 @@ spec:
     server:
       resources:
         requests:
-          cpu: 500m
-          memory: 2048M
+          cpu: 1000m
+          memory: 4096M
       ingress:
         main:
           enabled: true
@@ -110,16 +110,16 @@ spec:
       probes:
         liveness:
           spec:
-            initialDelaySeconds: 60
+            initialDelaySeconds: 120
         readiness:
           spec:
-            initialDelaySeconds: 60
+            initialDelaySeconds: 120
 
     machine-learning:
       resources:
         requests:
-          cpu: 500m
-          memory: 2048M
+          cpu: 1000m
+          memory: 4096M
       persistence:
         cache:
           type: persistentVolumeClaim
