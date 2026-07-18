@@ -85,8 +85,8 @@ spec:
     server:
       resources:
         requests:
-          cpu: 1000m
-          memory: 4096M
+          cpu: 2000m
+          memory: 8192M
       ingress:
         main:
           enabled: true
