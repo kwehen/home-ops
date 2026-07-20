@@ -36,7 +36,7 @@ spec:
     policy: upsert-only
     sources: ["ingress", "service"]
     registry: noop
-    domainFilters: ["kamaufoundation.com", "kamau.cloud"]
+    domainFilters: ["kamau.cloud"]
     env:
       - name: &name EXTERNAL_DNS_PIHOLE_PASSWORD
         valueFrom:
@@ -83,7 +83,7 @@ spec:
     policy: upsert-only
     sources: ["ingress", "service"]
     registry: noop
-    domainFilters: ["kamaufoundation.com", "kamau.cloud"]
+    domainFilters: ["kamau.cloud"]
     env:
       - name: &name EXTERNAL_DNS_PIHOLE_PASSWORD
         valueFrom:

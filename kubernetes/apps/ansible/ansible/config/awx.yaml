@@ -11,6 +11,7 @@ spec:
     traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
     traefik.ingress.kubernetes.io/router.middlewares: networking-ipwhitelist@kubernetescrd
     cert-manager.io/cluster-issuer: letsencrypt-production-internal
+    external-dns.alpha.kubernetes.io/target: quietwarrior.home.${INTERNAL_DOMAIN}
   ingress_hosts:
     - hostname: ansible.home.${INTERNAL_DOMAIN}
       tls_secret: awx-tls

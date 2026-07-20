@@ -19,3 +19,4 @@ terraform/*
 !terraform/provider.tf
 cluster-secrets.yaml
 truenas/
+.claude/
