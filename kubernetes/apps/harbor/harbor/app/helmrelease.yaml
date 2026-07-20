@@ -45,17 +45,10 @@ spec:
             networking-ipwhitelist@kubernetescrd,
             networking-request-limit@kubernetescrd
     externalURL: https://registry.home.${INTERNAL_DOMAIN}
-    database:
-      type: external
-      external:
-        host: enterprise-postgres-rw.databases.svc.cluster.local
-        port: "5432"
-        username: harbor
-        coreDatabase: registry
-        existingSecret: harbor-postgres
     persistence:
       enabled: true
       persistentVolumeClaim:
         registry:
-          existingClaim: harbor-registry
+          storageClass: longhorn
+          size: 30Gi
     existingSecretAdminPassword: harbor-admin-password
