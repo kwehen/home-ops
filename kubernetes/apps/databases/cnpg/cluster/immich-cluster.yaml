@@ -16,7 +16,7 @@ spec:
     storageClass: longhorn
     pvcTemplate:
       accessModes:
-        - ReadWriteMany
+        - ReadWriteOnce
   superuserSecret:
     name: immich-postgres
   enableSuperuserAccess: true
