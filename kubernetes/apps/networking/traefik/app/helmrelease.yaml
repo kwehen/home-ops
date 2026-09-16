@@ -55,6 +55,11 @@ spec:
       websecure:
         tls:
           enabled: true
+        transport:
+          respondingTimeouts:
+            readTimeout: 600s
+            writeTimeout: 600s
+            idleTimeout: 180s
         forwardedHeaders:
           trustedIPs:
             - 173.245.48.0/20
