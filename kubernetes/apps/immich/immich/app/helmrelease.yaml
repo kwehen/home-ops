@@ -52,7 +52,7 @@ spec:
     controllers:
       main:
         labels: 
-          datadoghq.com/apm-instrumentation: "disabled"
+          datadoghq.com/apm-instrumentation: "enabled"
         containers:
           main:
             image:
