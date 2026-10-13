@@ -13,7 +13,7 @@ spec:
         kind: HelmRepository
         name: longhorn
         namespace: flux-system
-      version: 1.11.0
+      version: 1.12.0
   install:
     crds: Create
     disableWait: true
@@ -43,7 +43,6 @@ spec:
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         traefik.ingress.kubernetes.io/router.middlewares: networking-ipwhitelist@kubernetescrd
         cert-manager.io/cluster-issuer: letsencrypt-production-internal
-        external-dns.alpha.kubernetes.io/target: quietwarrior.home.${INTERNAL_DOMAIN}
     defaultSettings:
       storageReservedPercentageForDefaultDisk: 15
       storageOverProvisioningPercentage: 200
