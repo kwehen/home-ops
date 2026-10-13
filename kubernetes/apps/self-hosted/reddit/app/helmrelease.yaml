@@ -32,9 +32,9 @@ spec:
               REDLIB_DEFAULT_WIDE: on
               REDLIB_DEFAULT_USE_HLS: on
               REDLIB_DEFAULT_HIDE_HLS_NOTIFICATION: on
-            envFrom:
-              - secretRef:
-                  name: reddit-subscriptions
+            # envFrom:
+            #   - secretRef:
+            #       name: reddit-subscriptions
             resources:
               requests:
                 cpu: 50m
@@ -56,7 +56,6 @@ spec:
               readiness: *probes
               startup:
                 enabled: false
-
     service:
       main:
         controller: *app
