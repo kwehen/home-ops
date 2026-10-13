@@ -41,7 +41,7 @@ spec:
               N8N_RUNNERS_ENABLED: true
 
               DB_TYPE: postgresdb
-              DB_POSTGRESDB_HOST: enterprise-postgres-rw.databases.svc.cluster.local
+              DB_POSTGRESDB_HOST: postgres.kamau.cloud
               DB_POSTGRESDB_DATABASE: *app
               DB_POSTGRESDB_USER: *app
             envFrom:
