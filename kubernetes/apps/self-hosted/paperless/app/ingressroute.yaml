@@ -24,8 +24,6 @@ spec:
           port: 8000
           namespace: self-hosted
           passHostHeader: true
-  tls:
-    secretName: paperless-tls
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
@@ -48,5 +46,3 @@ spec:
           port: 8000
           namespace: self-hosted
           passHostHeader: true
-  tls:
-    secretName: paperless-tls
