@@ -57,7 +57,6 @@ spec:
       class: traefik-internal
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-production-internal
-        external-dns.alpha.kubernetes.io/target: quietwarrior.home.${INTERNAL_DOMAIN}
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         traefik.ingress.kubernetes.io/router.middlewares: |
           networking-request-limit@kubernetescrd
@@ -65,4 +64,7 @@ spec:
       tls: true
     persistence:
       enabled: true
-      existingClaim: "open-webui"
+      persistentVolumeClaim:
+        registry:
+          storageClass: longhorn
+          size: 30Gi
