@@ -6,7 +6,7 @@ resources:
   # Pre Flux-Kustomizations
   - ./namespace.yaml
   # Flux-Kustomizations
-  - ./kubevirt-operator/ks.yaml
+  # - ./kubevirt-operator/ks.yaml
   # - ./cdi/ks.yaml
   # - ./bluesky/ks.yaml
   # - ./kubeadm/ks.yaml
