@@ -37,7 +37,7 @@ spec:
               N8N_HOST: &hostName n8n.home.${INTERNAL_DOMAIN}
               N8N_LOG_LEVEL: info
               N8N_LOG_OUTPUT: console
-
+              DD_LLMOBS_ENABLED: True
               N8N_RUNNERS_ENABLED: true
 
               DB_TYPE: postgresdb
