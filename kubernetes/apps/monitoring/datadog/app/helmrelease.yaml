@@ -61,6 +61,12 @@ spec:
               ddTraceConfigs:
                 - name: "DD_PROFILING_ENABLED"
                   value: "auto"
+                - name: "DD_TRACE_PROPAGATION_STYLE"
+                  value: "datadog,tracecontext"
+                - name: "DD_TRACE_128_BIT_TRACEID_GENERATION_ENABLED"
+                  value: "true"
+                - name: "DD_LOGS_INJECTION"
+                  value: "true"
       logs:
         enabled: true
         containerCollectAll: true
