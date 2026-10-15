@@ -23,12 +23,6 @@ jobs:
     name: Renovate
     runs-on: ubuntu-latest
     steps:
-      - uses: plengauer/opentelemetry-github/actions/instrument/job@v5.21.0
-        env:
-          OTEL_EXPORTER_OTLP_ENDPOINT: ${{ secrets.OTEL_EXPORTER_OTLP_ENDPOINT }}
-          OTEL_EXPORTER_OTLP_HEADERS: ${{ secrets.OTEL_EXPORTER_OTLP_HEADERS }}
-        with:
-          secrets_to_redact: '["${{ github.token }}","${{ secrets.BOT_APP_ID }}","${{ secrets.BOT_PRIVATE_KEY }}"]'
       - name: Generate Token
         uses: actions/create-github-app-token@v1
         id: app-token
