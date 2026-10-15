@@ -9,7 +9,7 @@ resources:
   - ./metrics-server/ks.yaml
   # - ./keda/ks.yaml
   # - ./notready/ks.yaml
-  - ./kube-prometheus-stack/ks.yaml
-  - ./grafana/ks.yaml
+  # - ./kube-prometheus-stack/ks.yaml
+  # - ./grafana/ks.yaml
   - ./descheduler/ks.yaml
   - ./datadog/ks.yaml
