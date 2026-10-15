@@ -111,15 +111,15 @@ spec:
         liveness:
           spec:
             initialDelaySeconds: 120
-            timeoutSeconds: 10
+            timeoutSeconds: 120
             periodSeconds: 30
-            failureThreshold: 6
+            failureThreshold: 100
         readiness:
           spec:
             initialDelaySeconds: 120
-            timeoutSeconds: 10
+            timeoutSeconds: 120
             periodSeconds: 15
-            failureThreshold: 6
+            failureThreshold: 100
 
     machine-learning:
       resources:
