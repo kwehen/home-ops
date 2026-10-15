@@ -55,7 +55,7 @@ spec:
         enabled: true
         http:
           enabled: true
-          endpoint: "http://$(HOST_IP):4318/v1/traces"
+          endpoint: "http://datadog-agent.monitoring.svc.cluster.local:4318/v1/traces"
     ingressRoute:
       dashboard:
         enabled: true
