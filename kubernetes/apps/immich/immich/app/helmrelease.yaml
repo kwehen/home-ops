@@ -57,6 +57,19 @@ spec:
           main:
             image:
               tag: v3.1.0
+            probes:
+              liveness:
+                spec:
+                  initialDelaySeconds: 120
+                  timeoutSeconds: 10
+                  periodSeconds: 30
+                  failureThreshold: 10
+              readiness:
+                spec:
+                  initialDelaySeconds: 120
+                  timeoutSeconds: 10
+                  periodSeconds: 15
+                  failureThreshold: 10
             env:
               LOG_LEVEL: verbose
               TZ: ${TIMEZONE}
@@ -107,19 +120,6 @@ spec:
             - hosts:
                 - photos.${EXTERNAL_DOMAIN}
               secretName: immich-tls
-      probes:
-        liveness:
-          spec:
-            initialDelaySeconds: 120
-            timeoutSeconds: 120
-            periodSeconds: 30
-            failureThreshold: 100
-        readiness:
-          spec:
-            initialDelaySeconds: 120
-            timeoutSeconds: 120
-            periodSeconds: 15
-            failureThreshold: 100
 
     machine-learning:
       resources:
