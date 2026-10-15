@@ -13,7 +13,7 @@ spec:
         kind: HelmRepository
         name: traefik
         namespace: flux-system
-      version: 37.4.*
+      version: 41.7.*
   install:
     crds: Create
     remediation:
@@ -39,26 +39,38 @@ spec:
       initContainers: []
       podAnnotations: {}
       replicas: 2
+    global:
+      sendAnonymousUsage: false
+      checkNewVersion: false
+    env:
+      - name: HOST_IP
+        valueFrom:
+          fieldRef:
+            fieldPath: status.hostIP
     tracing:
+      serviceName: traefik-internal
+      resourceAttributes:
+        deployment.environment: prod
       otlp:
+        enabled: true
         http:
-          endpoint: ${ACTIVEGATE_TRACES_URL}
-    globalArguments:
-    - --global.sendanonymoususage=false
-    - --global.checknewversion=false
+          enabled: true
+          endpoint: "http://$(HOST_IP):4318/v1/traces"
     ingressRoute:
       dashboard:
-        enabled: false
+        enabled: true
     ports:
       web:
-        redirections:
-          entrypoint:
-            to: websecure
-            scheme: https
-            permanent: true
+        http:
+          redirections:
+            entryPoint:
+              to: websecure
+              scheme: https
+              permanent: true
       websecure:
-        tls:
-          enabled: true
+        http:
+          tls:
+            enabled: true
       metrics:
         port: 8082
         expose:

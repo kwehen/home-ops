@@ -40,15 +40,13 @@ spec:
         enabled: true
       orchestratorExplorer:
         enabled: true
-      # otelCollector:
-      #   enabled: true
-        ports:
-          - containerPort: 4317
-            hostPort: 4317
-            name: "otel-grpc"
-          - containerPort: 4318
-            hostPort: 4318
-            name: "otel-http"
+      otlp:
+        receiver:
+          protocols:
+            grpc:
+              enabled: true
+            http:
+              enabled: true
       tags:
         - "env:prod"
       apm:
