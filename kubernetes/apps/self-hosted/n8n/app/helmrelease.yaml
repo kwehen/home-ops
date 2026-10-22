@@ -39,6 +39,7 @@ spec:
               N8N_LOG_OUTPUT: console
               DD_LLMOBS_ENABLED: True
               N8N_RUNNERS_ENABLED: true
+              N8N_BLOCK_FILE_ACCESS_TO_N8N_FILES: false
 
               DB_TYPE: postgresdb
               DB_POSTGRESDB_HOST: postgres.kamau.cloud
