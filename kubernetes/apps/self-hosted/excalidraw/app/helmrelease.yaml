@@ -37,9 +37,9 @@ spec:
             resources:
               requests:
                 cpu: 50m
-                memory: 100Mi
+                memory: 64Mi
               limits:
-                memory: 50Mi
+                memory: 256Mi
         pod:
           topologySpreadConstraints:
             - maxSkew: 1

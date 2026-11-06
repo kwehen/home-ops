@@ -144,8 +144,12 @@ spec:
       kubernetesIngress:
         allowExternalNameServices: true
         enabled: true
+        ingressClass: traefik
         publishedService:
           enabled: false
+    ingressClass:
+      enabled: true
+      isDefaultClass: false
     rbac:
       enabled: true
     service:
