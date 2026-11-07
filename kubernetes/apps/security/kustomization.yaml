@@ -8,3 +8,4 @@ resources:
   
   # Post Flux-Kustomizations
   - ./authentik/ks.yaml
+  - ./hermes-access/ks.yaml
