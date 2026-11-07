@@ -37,7 +37,7 @@ spec:
         host: dragonfly.databases.svc.cluster.local
       email:
         use_tls: true
-      log_level: "debug"
+      log_level: "info"
     server:
       # autoscaling:
       #   enabled: true
