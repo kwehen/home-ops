@@ -6,4 +6,5 @@ resources:
   - ./it-tools/ks.yaml
   - ./ytmp3/ks.yaml
   - ./uptime/ks.yaml
+  - ./reloader/ks.yaml
   # - ./external-dns/ks.yaml
