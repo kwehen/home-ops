@@ -25,8 +25,8 @@ spec:
         containers:
           app:
             image:
-              repository: tagliasteel/redlib
-              tag: latest
+              repository: ghcr.io/mitchross/redlib
+              tag: "2.3.10"
             env:
               REDLIB_DEFAULT_SHOW_NSFW: on
               REDLIB_DEFAULT_WIDE: on
