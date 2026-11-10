@@ -25,8 +25,8 @@ spec:
         containers:
           app:
             image:
-              repository: quay.io/redlib/redlib
-              tag: "latest"
+              repository: ghcr.io/nachtalb/redlib
+              tag: sha-e498e6a
             env:
               REDLIB_DEFAULT_SHOW_NSFW: on
               REDLIB_DEFAULT_WIDE: on
