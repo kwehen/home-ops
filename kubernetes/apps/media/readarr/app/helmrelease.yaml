@@ -20,6 +20,8 @@ spec:
   values:
     controllers:
       readarr:
+        annotations:
+          reloader.stakater.com/auto: "true"
         labels:
           nfsMount: "true"
           postgres: "true"

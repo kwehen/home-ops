@@ -26,6 +26,21 @@ spec:
     remediation:
       strategy: rollback
       retries: 3
+  postRenderers:
+    # harbor-helm 1.19.1 exposes no Deployment-level annotation values key, so patch
+    # the core Deployment directly to let Reloader watch its secrets (admin password).
+    - kustomize:
+        patches:
+          - target:
+              kind: Deployment
+              name: harbor-core
+            patch: |
+              apiVersion: apps/v1
+              kind: Deployment
+              metadata:
+                name: harbor-core
+                annotations:
+                  reloader.stakater.com/auto: "true"
   values:
     expose:
       type: ingress

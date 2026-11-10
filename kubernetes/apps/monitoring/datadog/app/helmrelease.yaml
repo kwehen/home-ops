@@ -70,6 +70,14 @@ spec:
       logs:
         enabled: true
         containerCollectAll: true
+    agents:
+      # Reloader watches the DaemonSet metadata annotations (not the pod template).
+      daemonsetAnnotations:
+        reloader.stakater.com/auto: "true"
+    clusterAgent:
+      # Reloader watches the Deployment metadata annotations (not the pod template).
+      deploymentAnnotations:
+        reloader.stakater.com/auto: "true"
     providers:
       talos:
         enabled: true

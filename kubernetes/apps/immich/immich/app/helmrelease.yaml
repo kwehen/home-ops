@@ -51,7 +51,9 @@ spec:
 
     controllers:
       main:
-        labels: 
+        annotations:
+          reloader.stakater.com/auto: "true"
+        labels:
           datadoghq.com/apm-instrumentation: "enabled"
         containers:
           main:

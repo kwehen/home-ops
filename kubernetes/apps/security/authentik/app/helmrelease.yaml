@@ -24,6 +24,8 @@ spec:
       retries: 3
   values:
     global:
+      deploymentAnnotations:
+        reloader.stakater.com/auto: "true"
       deploymentStrategy:
         type: RollingUpdate
       envFrom:

@@ -20,6 +20,8 @@ spec:
   values:
     controllers:
       prowlarr:
+        annotations:
+          reloader.stakater.com/auto: "true"
         labels:
           postgres: "true"
         containers:

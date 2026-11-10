@@ -39,6 +39,8 @@ spec:
         limits:
           memory: 8Gi
     replicaCount: 1
+    deploymentAnnotations:
+      reloader.stakater.com/auto: "true"
     env:
       TZ: ${TIMEZONE}
       # PHP_MEMORY_LIMIT: 256M

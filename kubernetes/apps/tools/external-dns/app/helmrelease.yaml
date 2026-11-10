@@ -27,6 +27,8 @@ spec:
       strategy: rollback
       retries: 3
   values:
+    deploymentAnnotations:
+      reloader.stakater.com/auto: "true"
     provider:
       name: pihole
     extraArgs:
@@ -74,6 +76,8 @@ spec:
       strategy: rollback
       retries: 3
   values:
+    deploymentAnnotations:
+      reloader.stakater.com/auto: "true"
     provider:
       name: pihole
     extraArgs:
