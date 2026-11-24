@@ -1,0 +1,18 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: datadog-agent-syslog
+  namespace: monitoring
+  annotations:
+    metallb.io/loadBalancerIPs: 10.0.4.90
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Local
+  ports:
+    - name: syslog-udp
+      port: 514
+      protocol: UDP
+      targetPort: 10514
+  selector:
+    app: datadog-agent

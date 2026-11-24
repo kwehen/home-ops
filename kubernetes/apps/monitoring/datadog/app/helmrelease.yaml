@@ -70,10 +70,23 @@ spec:
       logs:
         enabled: true
         containerCollectAll: true
+      confd:
+        unifi-syslog.yaml: |-
+          logs:
+            - type: udp
+              port: 10514
+              service: unifi-gateway
+              source: unifi
     agents:
       # Reloader watches the DaemonSet metadata annotations (not the pod template).
       daemonsetAnnotations:
         reloader.stakater.com/auto: "true"
+      containers:
+        agent:
+          ports:
+            - name: syslog-udp
+              containerPort: 10514
+              protocol: UDP
     clusterAgent:
       # Reloader watches the Deployment metadata annotations (not the pod template).
       deploymentAnnotations:
