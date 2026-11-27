@@ -112,8 +112,7 @@ spec:
             cert-manager.io/cluster-issuer: letsencrypt-production-external
             traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
             kubernetes.io/ingress.class: traefik
-            traefik.ingress.kubernetes.io/router.middlewares: |
-              networking-cloudflare-only@kubernetescrd,
+            traefik.ingress.kubernetes.io/router.middlewares: networking-cloudflare-only@kubernetescrd
           hosts:
             - host: photos.${EXTERNAL_DOMAIN}
               paths:
