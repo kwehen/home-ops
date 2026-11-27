@@ -114,7 +114,6 @@ spec:
             kubernetes.io/ingress.class: traefik
             traefik.ingress.kubernetes.io/router.middlewares: |
               networking-cloudflare-only@kubernetescrd,
-              networking-request-limit@kubernetescrd
           hosts:
             - host: photos.${EXTERNAL_DOMAIN}
               paths:
